@@ -1,0 +1,3 @@
+App.Profile.View.Index = {
+
+}

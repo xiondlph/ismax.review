@@ -1,0 +1,3 @@
+App.Secure.Templates.Index = {
+
+}
