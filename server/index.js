@@ -27,7 +27,7 @@ var server = http.createServer(function(req, res){
 
 // Метод запуска сервера
 exports.start = function(){
-  // Запуск web сервера на порту 3000
-  server.listen(3000); 
-  console.log('Start server at port 3000');
+  // Запуск web сервера на порту 3001
+  server.listen(3001); 
+  console.log('Start server at port 3001');
 }

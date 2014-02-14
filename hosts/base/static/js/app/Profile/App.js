@@ -16,7 +16,7 @@ var Route = Backbone.Router.extend({
   },
   
   index: function(){
-    App.Profile.Apps.Form.render();
+
   }
 });
 

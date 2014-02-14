@@ -58,7 +58,7 @@ App.Secure.View.Login = {
     },
 
     changePassword: function(e){
-      var patern = /^[a-z]([0-9a-z_])+$/i
+      var patern = /^([0-9a-z_])+$/i
 
       var val = $(e.currentTarget).val();
       if(val.length < 1){

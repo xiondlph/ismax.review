@@ -13,7 +13,7 @@
 // Объявление модулей
 var crypto        = require('crypto'),
     nodemailer    = require("nodemailer"),
-    validator 		= require('validator');;
+    validator 		= require('validator');
 
 //---------------------- HTTP запросы ----------------------//
 
@@ -24,7 +24,7 @@ exports.index = function(req, res){
 
 // Получение пользователя
 exports.user = function(req, res, next){
-  model.getUserBySession(req.sessionId, function(user){
+  req.model.getUserBySession(req.sissionId, function(user){
     if(!user){
       next();
       return;
@@ -37,9 +37,11 @@ exports.user = function(req, res, next){
 
 // Авторизация
 exports.signin = function(req, res){
+  res.setHeader('Access-Control-Allow-Origin', 'http://ismax.ru');
+
   if(req.params){
 
-    if(!validator.isEmail(req.params.password)){
+    if(!validator.isEmail(req.params.email)){
       throw new Error('Validate error - email is invalid');
     }
   
@@ -70,16 +72,16 @@ exports.signin = function(req, res){
         return
       }
 
-      // req.model.setSession(req.params.email, req.sessionId, function(result){
-      //   var response = {
-      //     auth: true
-      //   }
+      req.model.setSession(req.params.email, req.sissionId, function(result){
+        var response = {
+          auth: true
+        }
   
-      //   res.statusCode = 200;
-      //   res.setHeader('Content-Type', 'application-json; charset=utf8');
-      //   res.write(JSON.stringify(response, null, "\t"));
-      //   res.end();
-      // });
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application-json; charset=utf8');
+        res.write(JSON.stringify(response, null, "\t"));
+        res.end();
+      });
     });    
   }else{
     var response = {

@@ -59,6 +59,53 @@ exports.middleware = function(req, res, next){
 		  });  
 		},
 
+		// Проверка уникальности по Email
+		isExistByEmail: function(email, accept){
+		  mongo.db.collection('users', function(err, collection){
+		    if(err){
+		      throw new Error('Mongo error - '+err.message);      
+		      return;
+		    }
+
+		    collection.count({'email': email}, function(err, count){
+		      if(err){
+		        throw new Error('Mongo error - '+err.message);
+		        return;
+		      }
+
+		      if(typeof accept == 'function'){
+		        accept(count);
+		      }
+		    });
+		  });
+		},
+
+		// Создание нового пользователя
+		create: function(user, accept){
+		  mongo.db.collection('users', function(err, collection){
+		    if(err){
+		      throw new Error('Mongo error - '+err.message);
+		      return;
+		    }
+
+		    collection.insert({
+		      email     : user.email,
+		      password  : user.password,
+		      salt      : user.salt,
+		      active    : user.active
+		    }, function(err, user){
+		      if(err){
+		        throw new Error('Mongo error - '+err.message);
+		        return;
+		      }
+
+		      if(typeof accept == 'function'){
+		        accept(user);
+		      }
+		    });
+		  });
+		},
+
 		// Установка хеша текущей сессии для пользователя
 		setSession: function(email, index, accept){
 		  mongo.db.collection('users', function(err, collection){

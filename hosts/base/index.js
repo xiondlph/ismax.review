@@ -21,21 +21,38 @@ var view 			= require('../../middleware/view');
 
 // Набор моделей
 var secureModel    = require('./model/secure');
+var reviewModel    = require('./model/review');
 
 // Нобор контроллеров
 var index     = require('./controller/index');
 var secure    = require('./controller/secure');
+var user      = require('./controller/user');
+var profile   = require('./controller/profile');
+var review    = require('./controller/review');
 
 // Назначение HTTP маршрутов
-router.get('^review\.ismaxonline\.my\/.*$', view.middleware);
-router.post('^review\.ismaxonline\.my\/.*$', post.middleware);
+router.get('^e-ismax\.ru\/.*$', view.middleware);
+router.post('^e-ismax\.ru\/.*$', post.middleware);
 
-router.get('^review\.ismaxonline\.my\/404$', index.notfound);
-router.get('^review\.ismaxonline\.my\/$', index.index);
+router.get('^e-ismax\.ru\/404\/?$', index.notfound);
+router.get('^e-ismax\.ru\/?$', index.index);
 
-// secure
-router.get('^review\.ismaxonline\.my\/user\/.*$', sessions.middleware, secureModel.middleware);
-router.post('^review\.ismaxonline\.my\/user\/.*$', sessions.middleware, secureModel.middleware);
+// Secure
+router.get('^e-ismax\.ru\/user.*$', sessions.middleware, secureModel.middleware);
+router.post('^e-ismax\.ru\/user.*$', sessions.middleware, secureModel.middleware);
 
-router.get('^review\.ismaxonline\.my\/user$', secure.index);
-router.post('^review\.ismaxonline\.my\/user\/signin$', secure.signin);
+router.get('^e-ismax\.ru\/user\/?$', secure.index);
+router.post('^e-ismax\.ru\/user\/signin\/?$', secure.signin);
+
+// User
+router.post('^e-ismax\.ru\/user/create\/?$', user.create);
+
+// Profile
+router.get('^e-ismax\.ru\/profile\/?$', sessions.middleware, secureModel.middleware, secure.user, secure.auth, profile.index);
+
+// Review
+router.get('^e-ismax\.ru\/review(\/.*)$', sessions.middleware);
+
+router.get('^e-ismax\.ru\/review$', review.index);
+router.post('^e-ismax\.ru\/review\/set\/?$', reviewModel.middleware, review.set);
+router.get('^e-ismax\.ru\/review\/list\/?$', reviewModel.middleware, review.list);
