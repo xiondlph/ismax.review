@@ -16,10 +16,10 @@
 
 // Домашняя страница
 exports.index = function(req, res, next){
-  res.render(__dirname+'/../view/index.jade');
+  res.render(__dirname+'/../view/', 'index');
 };
 
 // Страница 404 ошибки
 exports.notfound = function(req, res){
-  res.render(__dirname+'/../view/404.jade');
+  res.render(__dirname+'/../view/', '404');
 };

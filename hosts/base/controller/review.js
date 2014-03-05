@@ -1,5 +1,5 @@
 /**!
- * Profile controller
+ * Review controller
  *
  * @package    ismax.review
  * @subpackage Base host
@@ -7,14 +7,19 @@
  **/
 
 /**!
- * Profile контроллер
+ * Review контроллер
  **/
 
 // Объявление модулей
 
 //---------------------- HTTP запросы ----------------------//
 
-// Страница контроллера
-exports.index = function(req, res, next){
-  res.render(__dirname+'/../view/', 'profile');
+// Установать отзыв
+exports.set = function(req, res){
+  //
+};
+
+// Список отзывов
+exports.list = function(req, res){
+  //
 };

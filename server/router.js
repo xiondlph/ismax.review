@@ -35,12 +35,12 @@ var setRoute = function(){
     if(Array.isArray(arguments[i])){
       arguments[i].forEach(function(func){
         if(typeof func !== 'function'){
-          throw new Error('Argumet id not a function');
+          throw new Error('Argumet id not a function on ['+arguments[1]+']');
         }
       },this);
       funcs = funcs.concat(arguments[i]);
     }else if(typeof arguments[i] !== 'function'){
-      throw new Error('Argumet id not a function');
+      throw new Error('Argumet id not a function on ['+arguments[1]+']');
     }else{
       funcs = funcs.concat(arguments[i]);
     }

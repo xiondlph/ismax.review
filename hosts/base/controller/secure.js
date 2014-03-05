@@ -19,7 +19,7 @@ var crypto        = require('crypto'),
 
 // Страница контроллера
 exports.index = function(req, res){
-  res.render(__dirname+'/../view/secure.jade');
+  res.render(__dirname+'/../view/', 'secure');
 };
 
 // Получение пользователя

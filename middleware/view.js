@@ -11,14 +11,16 @@
  **/
 
 // Объявление модулей
-var jade        	= require('jade');
+var JUST = require('just');
 
 //---------------------- HTTP запросы ----------------------//
 exports.middleware = function(req, res, next){
-  res.render = function(page){
-    jade.renderFile(page, function (err, html){
+  res.render = function(root, page){
+    var just = new JUST({ root : root, useCache : false, ext : '.tpl' });
+
+    just.render(page, {}, function(err, html){
       if(err){
-        throw new Error('Jade error - '+err.message);
+        throw new Error('Just error - '+err.message);
         return;
       }
 
