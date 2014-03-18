@@ -146,6 +146,48 @@ exports.middleware = function(req, res, next){
 		      }
 		    });
 		  });
+		},
+
+		// Установка нового пароля для пользователя
+		setPassword: function(id, password, accept){
+		  mongo.db.collection('users', function(err, collection){
+		    if(err){
+		      throw new Error('Mongo error - '+err.message);
+		      return;
+		    }
+
+		    collection.update({_id: id}, {$set: {password: password}}, function(err, result){
+		      if(err){
+		        throw new Error('Mongo error - '+err.message);
+		        return;
+		      }
+
+		      if(typeof accept == 'function'){
+		        accept(result);
+		      }
+		    });
+		  });
+		},
+
+		// Установка нового пароля для пользователя по Email
+		setPasswordByEmail: function(email, password, accept){
+		  mongo.db.collection('users', function(err, collection){
+		    if(err){
+		      throw new Error('Mongo error - '+err.message);
+		      return;
+		    }
+
+		    collection.update({email: email}, {$set: {password: password}}, function(err, result){
+		      if(err){
+		        throw new Error('Mongo error - '+err.message);
+		        return;
+		      }
+
+		      if(typeof accept == 'function'){
+		        accept(result);
+		      }
+		    });
+		  });
 		}
 	}
 

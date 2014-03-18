@@ -46,6 +46,7 @@ router.post('^e-ismax\.ru\/user\/signin\/?$', secure.signin);
 
 // User
 router.post('^e-ismax\.ru\/user/create\/?$', user.create);
+router.post('^e-ismax\.ru\/user/forgot\/?$', user.forgot);
 
 // Profile
 router.get('^e-ismax\.ru\/profile\/?$', sessions.middleware, secureModel.middleware, secure.user, secure.auth, profile.index);
@@ -53,5 +54,6 @@ router.get('^e-ismax\.ru\/profile\/?$', sessions.middleware, secureModel.middlew
 // Review
 router.get('^e-ismax\.ru\/review(\/.*)$', sessions.middleware);
 
-router.post('^e-ismax\.ru\/review\/set\/?$', reviewModel.middleware, review.set);
+router.get('^e-ismax\.ru\/review\/?$', review.index);
+router.post('^e-ismax\.ru\/review\/add\/?$', reviewModel.middleware, review.add);
 router.get('^e-ismax\.ru\/review\/list\/?$', reviewModel.middleware, review.list);

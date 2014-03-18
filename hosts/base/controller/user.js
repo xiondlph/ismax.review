@@ -49,17 +49,17 @@ exports.create = function(req, res){
 
         req.model.create(data, function(user){
           var smtpTransport = nodemailer.createTransport("SMTP",{
-            service: "Gmail",
+            service: 'Gmail',
             auth: {
-              user: "admin@ismax.ru",
-              pass: "474484237QwErT"
+              user: 'admin@ismax.ru',
+              pass: '474484237QwErT'
             }
           });
         
           smtpTransport.sendMail({
-            from: "Shukhrat <admin@ismax.ru",
+            from: 'Shukhrat <admin@ismax.ru',
             to: data.email,
-            subject: "Регистрация в сервисе ISMAX",
+            subject: 'Регистрация в сервисе ISMAX',
             text: 'Email: '+data.email+'<br />'+'Пароль: '+_password
           }, function(error, response){
             if(error){
@@ -89,5 +89,64 @@ exports.create = function(req, res){
     res.setHeader('Content-Type', 'application-json; charset=utf8');
     res.write(JSON.stringify(response, null, "\t"));
     res.end();
+  }
+};
+
+// Генирация нового паролья (востановления доступа)
+exports.forgot = function(req, res){
+  res.setHeader('Access-Control-Allow-Origin', 'http://ismax.ru');
+  if(req.params){ 
+    if(!validator.isEmail(req.params.email)){
+      throw new Error('Validate error - email is invalid');
+    }
+
+    req.model.getUserByEmail(req.params.email, function(user){
+      if(!user){
+        var response = {
+          success: false
+        }
+  
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application-json; charset=utf8');
+        res.write(JSON.stringify(response, null, "\t"));
+        res.end();
+  
+        return;
+      }
+      var _password = generatePassword(12, false);
+      var password  = crypto.createHmac('sha256', _password).digest('hex');
+
+      req.model.setPasswordByEmail(req.params.email, password, function(result){
+        var smtpTransport = nodemailer.createTransport("SMTP",{
+          service: 'Gmail',
+          auth: {
+            user: 'admin@ismax.ru',
+            pass: '474484237QwErT'
+          }
+        });
+      
+        smtpTransport.sendMail({
+          from: "Shukhrat <admin@ismax.ru",
+          to: user.email,
+          subject: 'Востановления доступа к сервису ISMAX',
+          text: 'Ваш новый пароль: '+_password
+        }, function(error, response){
+          if(error){
+            var response = {
+              success: false
+            }
+          }else{
+            var response = {
+              success: true
+            }
+          }
+            
+          res.statusCode = 200;
+          res.setHeader('Content-Type', 'application-json; charset=utf8');
+          res.write(JSON.stringify(response, null, "\t"));
+          res.end();
+        });
+      });
+    });
   }
 };
