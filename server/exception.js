@@ -38,7 +38,7 @@ Error.prepareStackTrace = function(err, stack){
 process.on('uncaughtException', function(err){
 
   // Запись стека ошибки в лог файл
-  fs.open(__dirname+'/../logs/error.log', 'a', 0666, function(e, id){
+  fs.open(__dirname+'/../log/error.log', 'a', 0666, function(e, id){
     fs.write(id, err.stack+"\n", null, 'utf8', function(){
       fs.close(id, function(){});
     });
@@ -71,7 +71,7 @@ exports.httpErr = function(req, res){
   errHandler.on('error', function(err){
 
     // Запись стека ошибки в лог файл
-    fs.open(__dirname+'/../logs/error.log', 'a', 0666, function(e, id){
+    fs.open(__dirname+'/../log/error.log', 'a', 0666, function(e, id){
       fs.write(id, err.stack+"\n", null, 'utf8', function(){
         fs.close(id, function(){});
       });
@@ -100,7 +100,7 @@ exports.httpErr = function(req, res){
       res.end();
     }catch(er){
       // Запись стека ошибки в лог файл
-      fs.open(__dirname+'/../logs/error.log', 'a', 0666, function(e, id){
+      fs.open(__dirname+'/../log/error.log', 'a', 0666, function(e, id){
         fs.write(id, er.stack+"\n", null, 'utf8', function(){
           fs.close(id, function(){});
         });
@@ -129,7 +129,7 @@ exports.socketErr = function(socket){
   errHandler.on('error', function(err){
 
     // Запись стека ошибки в лог файл
-    fs.open(__dirname+'/../logs/error.log', 'a', 0666, function(e, id){
+    fs.open(__dirname+'/../log/error.log', 'a', 0666, function(e, id){
       fs.write(id, err.stack+"\n", null, 'utf8', function(){
         fs.close(id, function(){});
       });
@@ -143,7 +143,7 @@ exports.socketErr = function(socket){
       socket.disconnect();
     }catch(er){
       // Запись стека ошибки в лог файл
-      fs.open(__dirname+'/../logs/error.log', 'a', 0666, function(e, id){
+      fs.open(__dirname+'/../log/error.log', 'a', 0666, function(e, id){
         fs.write(id, er.stack+"\n", null, 'utf8', function(){
           fs.close(id, function(){});
         });
