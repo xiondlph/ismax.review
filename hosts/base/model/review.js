@@ -46,7 +46,7 @@ exports.middleware = function(req, res, next){
 		      return;
 		    }
 
-		    collection.find({}).toArray(function(err, reviews){
+		    collection.find({}).sort({date: -1}).skip(15).limit(2).toArray(function(err, reviews){
 		      if(err){
 		        throw new Error('Mongo error - '+err.message);
 		        return;

@@ -55,5 +55,6 @@ router.get('^e-ismax\.ru\/profile\/?$', sessions.middleware, secureModel.middlew
 router.get('^e-ismax\.ru\/review(\/.*)$', sessions.middleware);
 
 router.get('^e-ismax\.ru\/review\/?$', review.index);
+router.get('^e-ismax\.ru\/review\/widget\/?$', review.widget);
 router.post('^e-ismax\.ru\/review\/add\/?$', reviewModel.middleware, review.add);
 router.get('^e-ismax\.ru\/review\/list\/?$', reviewModel.middleware, review.list);
