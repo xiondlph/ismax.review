@@ -15,6 +15,7 @@
     "nodemailer": "latest",
     "password-generator": "latest",
     "validator": "latest",
-    "socket.io": "latest"
+    "socket.io": "latest",
+    "request": "latest"
   }
 }

@@ -28,5 +28,7 @@ exports.middleware = function(req, res, next){
 	for(var key in query){
 		req.params[key] = query[key];
 	}
+
+	req._path = url.parse(req.url).pathname;
 	next();
 };

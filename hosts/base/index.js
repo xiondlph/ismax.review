@@ -29,6 +29,7 @@ var secure    = require('./controller/secure');
 var user      = require('./controller/user');
 var profile   = require('./controller/profile');
 var review    = require('./controller/review');
+var market    = require('./controller/market');
 
 // Назначение HTTP маршрутов
 router.get('^e-ismax\.ru\/.*$', view.middleware);
@@ -58,3 +59,6 @@ router.get('^e-ismax\.ru\/review\/?$', review.index);
 router.get('^e-ismax\.ru\/review\/widget\/?$', review.widget);
 router.post('^e-ismax\.ru\/review\/add\/?$', reviewModel.middleware, review.add);
 router.get('^e-ismax\.ru\/review\/list\/?$', reviewModel.middleware, review.list);
+
+// Market
+router.get('^market.e-ismax\.ru\/.*$', query.middleware, market.index);
