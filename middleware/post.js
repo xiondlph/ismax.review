@@ -1,25 +1,33 @@
-/**!
- * Post middleware
- *
- * @package    ismax.review
- * @subpackage Мiddleware
- * @author     Ismax <admin@ismax.ru>
- **/
-
-/**!
+/**
  * Слой работы с post данными
- **/
+ *
+ * @module      Middleware.Post
+ * @class       Post
+ * @namespace   Middleware
+ * @main        Yandex.Market API
+ * @author      Ismax <admin@ismax.ru>
+ */
+
 
 // Объявление модулей
 var querystring 	= require('querystring'),
 		json 					= require('../lib/json');
 
 //---------------------- HTTP запросы ----------------------//
-exports.middleware = function(req, res, next){
+
+/**
+ * Экспорт метода получения post данных
+ * 
+ * @method post
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ * @param {Function} next
+ */
+module.exports = function(req, res, next){
 	// Объект POST данных
   var _post = '';
 
-	// Принятие POST данных
+	// Получение POST данных
   req.addListener("data", function(data){
     _post += data;
   });
@@ -33,6 +41,13 @@ exports.middleware = function(req, res, next){
 		// Зоздание объекта параметров
 		// в случае его отсудсвия
 		if(!('params' in req)){
+
+			/**
+			 * POST параметры в объекте запроса
+			 *
+			 * @property params
+			 * @type Object
+			 */
 			req.params = {}
 		}
 

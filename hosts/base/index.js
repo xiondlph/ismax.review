@@ -1,64 +1,73 @@
-/**!
- * Panel index
- *
- * @package    ismax.review
- * @subpackage Base host
- * @author     Ismax <admin@ismax.ru>
- **/
-
-/**!
+/**
  * Модуль инициализации хоста
- **/
+ *
+ * @module      Hosts.Base
+ * @class	      Base
+ * @namespace   Hosts
+ * @main        Yandex.Market API
+ * @author      Ismax <admin@ismax.ru>
+ */
+
 
 // Подклучения сервера
 var router = require('../../server/router');
 
-// Слои
-var post 			= require('../../middleware/post');
-var query 		= require('../../middleware/query');
-var sessions 	= require('../../middleware/sessions');
-var view 			= require('../../middleware/view');
 
-// Набор моделей
-var secureModel    = require('./model/secure');
-var reviewModel    = require('./model/review');
+/**
+ * Слои
+ *
+ * @attribute middleware 
+ * @type Object
+ */
+var middleware = {
+	post: 			require('../../middleware/post'),
+	query: 			require('../../middleware/query'),
+	sessions: 	require('../../middleware/sessions'),
+	view: 			require('../../middleware/view')
+}
 
-// Нобор контроллеров
-var index     = require('./controller/index');
-var secure    = require('./controller/secure');
-var user      = require('./controller/user');
-var profile   = require('./controller/profile');
-var review    = require('./controller/review');
-var market    = require('./controller/market');
 
-// Назначение HTTP маршрутов
-router.get('^e-ismax\.ru\/.*$', view.middleware);
-router.post('^e-ismax\.ru\/.*$', post.middleware);
 
-router.get('^e-ismax\.ru\/404\/?$', index.notfound);
-router.get('^e-ismax\.ru\/?$', index.index);
+/**
+ * Набор моделей
+ *
+ * @attribute model 
+ * @type Object
+ */
+var model = {
 
-// Secure
-router.get('^e-ismax\.ru\/user.*$', sessions.middleware, secureModel.middleware);
-router.post('^e-ismax\.ru\/user.*$', sessions.middleware, secureModel.middleware);
+}
 
-router.get('^e-ismax\.ru\/user\/?$', secure.index);
-router.post('^e-ismax\.ru\/user\/signin\/?$', secure.signin);
 
-// User
-router.post('^e-ismax\.ru\/user/create\/?$', user.create);
-router.post('^e-ismax\.ru\/user/forgot\/?$', user.forgot);
 
-// Profile
-router.get('^e-ismax\.ru\/profile\/?$', sessions.middleware, secureModel.middleware, secure.user, secure.auth, profile.index);
+/**
+ * Нобор контроллеров
+ *
+ * @attribute controller 
+ * @type Object
+ */
+var controller = {
+	index:     	require('./controller/index'),
+	review:     require('./controller/review')
+}
+
+
+/*** Назначение HTTP маршрутов ***/
+
+// Общие настройки для GET запросов
+router.get('^(http|https)://(www\.)?e-ismax\.ru\/.*$', middleware.view);
+
+// Общие настройки для POST запросов
+router.post('^(http|https)://(www\.)?e-ismax\.ru\/.*$', middleware.post);
+
+
+// Стр. 404 (Not found)
+router.get('^(http|https)://(www\.)?e-ismax\.ru\/404\/?$', controller.index.notfound);
+
+// Главная стр.
+router.get('^http://(www\.)?e-ismax\.ru\/?$', controller.index.index);
 
 // Review
-router.get('^e-ismax\.ru\/review(\/.*)$', sessions.middleware);
+router.get('^http://(www\.)?e-ismax\.ru\/review\/widget\/?$', middleware.query, controller.review.widget);
+router.get('^http://(www\.)?e-ismax\.ru\/review\/list\/?$', middleware.query, controller.review.list);
 
-router.get('^e-ismax\.ru\/review\/?$', review.index);
-router.get('^e-ismax\.ru\/review\/widget\/?$', review.widget);
-router.post('^e-ismax\.ru\/review\/add\/?$', reviewModel.middleware, review.add);
-router.get('^e-ismax\.ru\/review\/list\/?$', reviewModel.middleware, review.list);
-
-// Market
-router.get('^market.e-ismax\.ru\/.*$', query.middleware, market.index);

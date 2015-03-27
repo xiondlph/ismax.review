@@ -1,7 +1,17 @@
+html{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	margin: 8px;
+	padding: 0;
+}
+
 /*** Отзавы ***/
 #ismax #ismaxReview .ismaxReviewList .ismaxReviewItem{
 	margin: 10px 0 0 0;
-	display: none;
+	opacity: 0;
 }
 
 #ismax #ismaxReview .ismaxReviewList .ismaxReviewItem .label{
@@ -19,6 +29,7 @@
 #ismax #ismaxReview .ismaxReviewList .ismaxReviewItem .ismaxReviewItemAuthor{
 	background-color: #f6f5f3;
 	padding: 10px 10px 10px 10px;
+	white-space: nowrap;
 	float: left;
 	width: 50%;
 }
@@ -81,15 +92,24 @@
 	background-position: -49px -15px;
 }
 
-/*** Кнопка "еще отзывы..." ***/
-#ismax #ismaxMore .ismaxMoreBtn{
-	background-color: #ccc;
+/*** Блок "предыдущие отзывы" ***/
+#ismax #ismaxReview .ismaxMoreBtn{
 	text-align: center;
 	line-height: 30px;
+	cursor: pointer;
 	margin: 0 auto;
-	display: block;
-	width: 100px;
+	display: none;
 	height: 30px;
+	color: #ccc;
+}
+
+#ismax #ismaxReview .ismaxLoader{
+	text-align: center;
+	line-height: 30px;
+	cursor: pointer;
+	margin: 0 auto;
+	height: 30px;
+	color: #ccc;
 }
 
 /*** Форма ***/

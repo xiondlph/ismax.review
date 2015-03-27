@@ -1,14 +1,13 @@
-/**!
- * Socket module
- *
- * @package    ismax.review
- * @subpackage Socket
- * @author     Ismax <admin@ismax.ru>
- **/
-
-/**!
+/**
  * Модуль web сокета
- **/
+ *
+ * @module      Server.Socket
+ * @class       Socket
+ * @namespace   Server
+ * @main        Yandex.Market API
+ * @author      Ismax <admin@ismax.ru>
+ */
+
 
 // Объявление модулей
 var util          = require('util'),
@@ -20,7 +19,12 @@ var util          = require('util'),
 // Объект команд
 var command = {};
 
-// Назначение функций контроллеров командам
+
+/**
+ * Назначение функций контроллеров командам
+ *
+ * @method setCommand
+ */
 exports.setCommand = function(){
   if(util.isArray(command[arguments[0]])){
     funcs = command[arguments[0]];
@@ -47,10 +51,18 @@ exports.setCommand = function(){
 }
 
 
+/**
+ * Запуск сокет сервера
+ *
+ * @method listen
+ * @param {Object} server
+ * @return sio
+ */
 exports.listen = function(server){
   var sio = io.listen(server);
 
-  /**
+
+ /*
   * Начальная конфигурация
   * сокет объекта
   */
@@ -76,26 +88,21 @@ exports.listen = function(server){
   });
 
 
-  /**
-   * Блок обработки события
-   * сокет соединения
-   */
+  // Блок обработки события
+  // сокет соединения
   sio.sockets.on('connection',function(socket){
     // Объект перехвата исключений данного соединения
     var socketErr = exception.socketErr(socket);
 
 
-    /**
-     * Обработчик события сокета - command,
-     * основное события модели взаимодействия
-     */
+    // Обработчик события сокета - command,
+    // основное события модели взаимодействия
     socket.on('command', function(data){
       var me = arguments.callee;
 
-      /**
-       * Функция контроля последовательности
-       * выполнения функций связанных с команой
-       */
+
+      // Функция контроля последовательности
+      // выполнения функций связанных с команой
       function next(caller){
 
         // Определения наличия команды в списке
@@ -117,6 +124,7 @@ exports.listen = function(server){
       
       next(arguments.callee);
     });
+
 
     // Обработка события потери соединения
     socket.on('disconnect', function(){

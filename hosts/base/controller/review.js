@@ -1,90 +1,158 @@
-/**!
- * Review controller
- *
- * @package    ismax.review
- * @subpackage Base host
- * @author     Ismax <admin@ismax.ru>
- **/
-
-/**!
+/**
  * Review контроллер
- **/
+ *
+ * @module      Hosts.Base.Controller.Review
+ * @class				Controller.Review
+ * @namespace   Hosts.Base
+ * @main        Yandex.Market API
+ * @author      Ismax <admin@ismax.ru>
+ */
+ 
 
 // Объявление модулей
-var validator = require('validator');
+var http        = require('http'),
+    urlencode   = require("urlencode"),
+    validator   = require('validator'),
+    crypto      = require('crypto');
 
 //---------------------- HTTP запросы ----------------------//
 
-// Рендеринг виджета
-exports.index = function(req, res){
-	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.setHeader('Content-Type', 'application/javascript');
-  res.render(__dirname+'/../view/review', 'App');
-};
 
+/**
+ * Рендеринг виджета
+ *
+ * @method widget
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ */
 exports.widget = function(req, res){
-  res.render(__dirname+'/../view/review', 'Widget');
-}
 
-// Добавление нового отзыва
-exports.add = function(req, res){
-	res.setHeader('Access-Control-Allow-Origin', '*');
-  if(req.params){
+  if(!validator.isLength(req.params.text, 3)){
+    throw new Error('Validate error - text is invalid');
+  }
 
-    if(validator.isNull(req.params.author)){
-      throw new Error('Validate error - author is invalid');
-    }
+  if(!validator.isLength(req.params.hash, 3)){
+    throw new Error('Validate error - hash is invalid');
+  }
 
-    if(validator.isNull(req.params.grade)){
-      throw new Error('Validate error - grade is invalid');
-    }
+  var hash = crypto.createHash('sha1').update('53f72f62cc66010267000006'+req.params.text).digest('hex');
 
-  	var review = {};
+  if(hash == req.params.hash){
+    var request = http.request({
+      host:     'localhost',
+      port:     3000,
+      path:     '/v1/search.json?text='+urlencode(req.params.text)+'&count=1',
+      method:   'GET',
+      headers: {
+        'Host':               'market.icsystem.ru',
+        'X-Forwarded-Proto':  'http',
+        'X-Forwarded-For':    '78.24.219.141'
+      }
+    }, function(response){
+      var data = '';
 
-    review.author = req.params.author;
-    review.grade  = req.params.grade;
+      response.on('data', function(chunk){
+        data += chunk.toString();
+      });
 
-    if(req.params.email)  { review.email    = req.params.email };
-    if(req.params.contra) { review.contra   = req.params.contra };
-    if(req.params.pro)    { review.pro      = req.params.pro };
-    if(req.params.text)	  {	review.text     = req.params.text	};
+      response.on('end', function(){
+        var result = JSON.parse(data);
+        if(result.searchResult.results.length > 0 && 'model' in result.searchResult.results[0]){
+          req.local.modelId = result.searchResult.results[0].model.id;
+          req.local.hash    = req.params.hash;
+          req.local.text    = req.params.text;
+        }
 
-    review.date = new Date();
-
-    req.model.add(review, function(result){
-      var response = {
-        success: true,
-        review: result
-      };
-
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'application-json; charset=utf8');
-      res.write(JSON.stringify(response, null, "\t"));
-      res.end();
+        res.render(__dirname+'/../view', 'widget');
+      });
     });
-  }else{
-    var response = {
-      success: false
-    };
 
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application-json; charset=utf8');
-    res.write(JSON.stringify(response, null, "\t"));
-    res.end();
+    request.end();
+  }else{
+    res.render(__dirname+'/../view', 'widget');
   }
 };
 
-// Список отзывов
-exports.list = function(req, res){
-	req.model.list(function(reviews){
-    var response = {
-      success: true,
-      reviews: reviews
-    };
 
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application-json; charset=utf-8');
-    res.write(JSON.stringify(response, null, "\t"));
-    res.end();
+/**
+ * Список отзывов
+ *
+ * @method list
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ */
+exports.list = function(req, res){
+  if(!validator.isInt(req.params.modelId)){
+    throw new Error('Validate error - modelId is invalid');
+  }
+
+  if(!validator.isLength(req.params.text, 3)){
+    throw new Error('Validate error - text is invalid');
+  }
+
+  if(!validator.isLength(req.params.hash, 3)){
+    throw new Error('Validate error - hash is invalid');
+  }
+
+  if(!validator.isInt(req.params.page)){
+    throw new Error('Validate error - page is invalid');
+  }
+
+  var hash = crypto.createHash('sha1').update('53f72f62cc66010267000006'+req.params.text).digest('hex');
+
+  if(hash !== req.params.hash){
+    throw new Error('Auth error - key is invalid');
+  }
+
+  var request = http.request({
+    host:     'localhost',
+    port:     3000,
+    path:     '/v1/model/'+req.params.modelId+'/opinion.json?page='+req.params.page,
+    method:   'GET',
+    headers: {
+      'Host':               'market.icsystem.ru',
+      'X-Forwarded-Proto':  'http',
+      'X-Forwarded-For':    '78.24.219.141'
+    }
+  }, function(response){
+
+    response.setEncoding('utf8');
+    var data = '';
+
+    response.on('data', function(chunk){
+      data += chunk.toString();
+    });
+
+    response.on('end', function(){
+      var result = JSON.parse(data);
+
+      var reviews = [];
+      for (var i = 0; i < result.modelOpinions.opinion.length; i++){
+        reviews.push({
+          _id:    result.modelOpinions.opinion[i].id,
+          author: result.modelOpinions.opinion[i].author ? result.modelOpinions.opinion[i].author : '',
+          grade:  result.modelOpinions.opinion[i].grade,
+          contra: result.modelOpinions.opinion[i].contra,
+          pro:    result.modelOpinions.opinion[i].pro,
+          text:   result.modelOpinions.opinion[i].text ? result.modelOpinions.opinion[i].text : '',
+          date:   result.modelOpinions.opinion[i].date,
+        });
+      };
+
+      var response = {
+        success: true,
+        reviews: reviews,
+        count: result.modelOpinions.count,
+        total: result.modelOpinions.total
+      };
+
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application-json; charset=utf-8');
+      res.write(JSON.stringify(response, null, "\t"));
+      res.end();
+
+    });
   });
+
+  request.end();
 };

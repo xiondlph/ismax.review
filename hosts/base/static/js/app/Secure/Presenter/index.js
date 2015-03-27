@@ -1,3 +1,0 @@
-App.Secure.View.Index = {
-
-}

@@ -1,21 +1,35 @@
-/**!
- * Main App
+/**
+ * Главный модуль приложения - точка входа
  *
- * @package    ismax.review
- * @subpackage Main Application
- * @author     Ismax <admin@ismax.ru>
- **/
+ * @module 			Main
+ * @main        Yandex.Market API
+ * @author     	Ismax <admin@ismax.ru>
+ */
 
-/**!
- * Главный модуль приложения,
- * - точка входа
- **/
+// Объявление модулей
+var cluster       = require('cluster');
 
-// Подключение сервера
-var server        = require('./server');
+// Главный процесс
+if(cluster.isMaster){
+	if(process.env.NODE_ENV == 'debug') console.log('Start master');
+	cluster.fork();
+  
+  // В случае падения процесса, запуск нового
+  cluster.on('disconnect', function(worker) {
+    if(process.env.NODE_ENV == 'debug') console.error('Worker disconnect!');
+    cluster.fork();
+  });
 
-// Подключение хостов
-var index         = require('./hosts/base');
+// Дочерний процесс
+}else{
+	if(process.env.NODE_ENV == 'debug') console.log('Start worker');
+	// Модуль web-сервера
+	var server        = require('./server');
 
-// Запуск сервера
-server.start();
+
+	// Модуль виртуальных хостов
+	var index         = require('./hosts/base');
+
+	// Запуск сервера
+	server.start();
+}

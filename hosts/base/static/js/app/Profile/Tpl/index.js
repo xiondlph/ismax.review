@@ -1,3 +1,0 @@
-App.Profile.Templates.Index = {
-
-}

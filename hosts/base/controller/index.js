@@ -1,25 +1,40 @@
-/**!
- * Index controller
- *
- * @package    ismax.review
- * @subpackage Base host
- * @author     Ismax <admin@ismax.ru>
- **/
-
-/**!
+/**
  * Index контроллер
- **/
+ *
+ * @module      Hosts.Base.Controller.Index
+ * @class				Controller.Index
+ * @namespace   Hosts.Base
+ * @main        Yandex.Market API
+ * @author      Ismax <admin@ismax.ru>
+ */
+ 
 
 // Объявление модулей
 
 //---------------------- HTTP запросы ----------------------//
 
-// Домашняя страница
+
+/**
+ * Домашняя страница
+ *
+ * @method index
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ * @param {Function} next
+ */
 exports.index = function(req, res, next){
   res.render(__dirname+'/../view/', 'index');
 };
 
-// Страница 404 ошибки
+ 
+/**
+ * Страница 404 ошибки
+ *
+ * @method notfound
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ */
 exports.notfound = function(req, res){
+	res.statusCode = 404;
   res.render(__dirname+'/../view/', '404');
 };

@@ -8,14 +8,12 @@
     "url": "git@github.com:xiondlph/ismax.review.git"
   },
   "dependencies": {
-    "jade": "latest",
     "just": "latest",
     "mongodb": "0.9.9-8",
     "node-static":"latest",
     "nodemailer": "latest",
     "password-generator": "latest",
     "validator": "latest",
-    "socket.io": "latest",
-    "request": "latest"
+    "socket.io": "latest"
   }
 }
