@@ -10,49 +10,56 @@
 
 
 // Объявление модулей
-var url         = require('url'),
-    fs          = require('fs');
+var url        = require('url'),
+    fs         = require('fs');
 
 
 // Объекты набора маршрутов
 var handle            = [];
-    handle['GET']     = [];
-    handle['POST']    = [];
-    handle['PUT']     = [];
-    handle['DELETE']  = [];
+
+handle.GET      = [];
+handle.POST     = [];
+handle.PUT      = [];
+handle.DELETE   = [];
+handle.OPTIONS  = [];
 
 
 // Проверка соответствия запроса маршруту
-var match = function(elem){
-  var reg = new RegExp(elem.path);
-  return reg.test(this.proto+this.host+this.pathname);
-}
+var match = function (elem) {
+    var reg = new RegExp(elem.path);
+    return reg.test(this.proto + this.host + this.pathname);
+};
 
 
 // Назначение функций контроллеров маршрутам
-var setRoute = function(){
-  var funcs = new Array();
+var setRoute = function () {
+    var _arguments = arguments,
+        funcs = [],
+        i,
+        j;
 
-  for(var i=2;i<arguments.length;i++){
-    if(Array.isArray(arguments[i])){
-      arguments[i].forEach(function(func){
-        if(typeof func !== 'function'){
-          throw new Error('Argumet id not a function on ['+arguments[1]+']');
+    for (i = 2; i < _arguments.length; i++) {
+        if (Array.isArray(_arguments[i])) {
+            for (j = 0; j < _arguments[i].length; j++) {
+                if (typeof _arguments[i][j] !== 'function') {
+                    throw new Error('Argumet id not a function on [' + _arguments[i][j] + ']');
+                }
+            }
+            funcs = funcs.concat(_arguments[i]);
+        } else {
+            if (typeof _arguments[i] !== 'function') {
+                throw new Error('Argumet id not a function on [' + _arguments[1] + ']');
+            }
+
+            funcs = funcs.concat(_arguments[i]);
         }
-      },this);
-      funcs = funcs.concat(arguments[i]);
-    }else if(typeof arguments[i] !== 'function'){
-      throw new Error('Argumet id not a function on ['+arguments[1]+']');
-    }else{
-      funcs = funcs.concat(arguments[i]);
     }
-  }
 
-  handle[arguments[0]].push({
-    path: arguments[1],
-    funcs: funcs
-  });
-}
+    handle[_arguments[0]].push({
+        path: _arguments[1],
+        funcs: funcs
+    });
+};
 
 
 /**
@@ -60,11 +67,11 @@ var setRoute = function(){
  *
  * @method get
  */
-this.get = function(){
-  var _arguments = [].slice.call(arguments);
-  _arguments.unshift('GET');
-  setRoute.apply(this, _arguments);
-}
+exports.get = function () {
+    var _arguments = [].slice.call(arguments);
+    _arguments.unshift('GET');
+    setRoute.apply(this, _arguments);
+};
 
 
 /**
@@ -72,11 +79,11 @@ this.get = function(){
  *
  * @method post
  */
-this.post = function(){
-  var _arguments = [].slice.call(arguments);
-  _arguments.unshift('POST');
-  setRoute.apply(this, _arguments);
-}
+exports.post = function () {
+    var _arguments = [].slice.call(arguments);
+    _arguments.unshift('POST');
+    setRoute.apply(this, _arguments);
+};
 
 
 /**
@@ -84,11 +91,11 @@ this.post = function(){
  *
  * @method put
  */
-this.put = function(){
-  var _arguments = [].slice.call(arguments);
-  _arguments.unshift('PUT');
-  setRoute.apply(this, _arguments);
-}
+exports.put = function () {
+    var _arguments = [].slice.call(arguments);
+    _arguments.unshift('PUT');
+    setRoute.apply(this, _arguments);
+};
 
 
 /**
@@ -96,11 +103,23 @@ this.put = function(){
  *
  * @method delete
  */
-this.delete = function(){
-  var _arguments = [].slice.call(arguments);
-  _arguments.unshift('DELETE');
-  setRoute.apply(this, _arguments);
-}
+exports.delete = function () {
+    var _arguments = [].slice.call(arguments);
+    _arguments.unshift('DELETE');
+    setRoute.apply(this, _arguments);
+};
+
+
+/**
+ * Назначение обработчика OPTIONS запроса
+ *
+ * @method options
+ */
+exports.options = function () {
+    var _arguments = [].slice.call(arguments);
+    _arguments.unshift('OPTIONS');
+    setRoute.apply(this, _arguments);
+};
 
 
 /**
@@ -110,58 +129,83 @@ this.delete = function(){
  * @param {Object} req Объект запроса сервера
  * @param {Object} res Объект ответа сервера
  */
-this.route = function(req, res){
-  var _caller = arguments.callee;
-  var _method = req.method;
-  var _funcs  = [];
+exports.route = function (req, res, httpErr) {
+    var method = req.method,
+        funcs  = [],
+        routes,
+        notfound,
+        next,
+        i;
 
-
-  // Функция контроля последовательности
-  // выполнения функций связанных с маршрутом
-  var next = function(caller){
-    var index = _funcs.indexOf(caller);
-
-    if(typeof _funcs[index] === 'function'){
-      _funcs[index](req, res, function(){
-        next(_funcs[index+1]);
-      });
-    }else{
-      notfound();
+    if (handle[method] !== undefined) {
+        routes = handle[method].filter(match, {
+            proto: req.headers['x-forwarded-proto'] + '://',
+            host: req.headers.host,
+            pathname: url.parse(req.url).pathname
+        });
+    } else {
+        routes = [];
     }
-  }
+
+    // Обработчик ошибки 404
+    notfound = function () {
+        var _funcs = [],
+            _routes,
+            j;
+
+        if (handle[method] !== undefined) {
+            _routes = handle[method].filter(match, {
+                proto: req.headers['x-forwarded-proto'] + '://',
+                host: req.headers.host,
+                pathname: '/404'
+            });
+        } else {
+            _routes = [];
+        }
+
+        if (_routes.length) {
+            // формирования массива обработчиков маршрута
+            for (j = 0; j < _routes.length; j++) {
+                _funcs = _funcs.concat(_routes[j].funcs);
+            }
+
+            funcs = _funcs.filter(function (elem, index) { return funcs.indexOf(elem) === -1; }, this);
+
+            next(funcs[0]);
+
+        // В случае отсудсвия маршрута 404, вывод ошибки 404
+        } else {
+            res.statusCode = 404;
+            res.setHeader('Content-Type', 'text/html; charset=UTF-8');
+            res.end('<h1>Page not found</h1>');
+        }
+    };
+
+    // Функция контроля последовательности
+    // выполнения функций связанных с маршрутом
+    next = function (caller) {
+        var index = funcs.indexOf(caller);
+
+        if (typeof funcs[index] === 'function') {
+            funcs[index](req, res, function () {
+                next(funcs[index + 1]);
+            }, httpErr);
+        } else {
+            notfound();
+        }
+    };
 
 
-  // Обработчик ошибки 404
-  var notfound = function(){
-    if(handle[_method] !== undefined && (_route = handle[_method].filter(match, {proto: req.headers['x-forwarded-proto']+'://', host: req.headers.host, pathname: '/404'})).length){
-      // формирования массива обработчиков маршрута
-      var funcs = [];
-      _route.forEach(function(elem){
-        funcs = funcs.concat(elem.funcs);
-      },this);
+    // Определения наличия марщрута в списке
+    if (routes.length) {
+        // формирования массива обработчиков маршрута
+        for (i = 0; i < routes.length; i++) {
+            funcs = funcs.concat(routes[i].funcs);
+        }
 
-      _funcs = funcs.filter(function(elem, index){return _funcs.indexOf(elem) == -1}, this);
-
-      next(_funcs[0]);
-    // В случае отсудсвия маршрута 404, вывод ошибки 404
-    }else{
-      res.statusCode = 404;
-      res.setHeader('Content-Type','text/html; charset=UTF-8');
-      res.end('<h1>Page not found</h1>');
+        next(funcs[0]);
+    // В случае отсудсвия маршрута, диспетчеризация маршрута 404
+    } else {
+        notfound();
     }
-  }
-
-  // Определения наличия марщрута в списке
-  if(handle[_method] !== undefined && (_route = handle[_method].filter(match, {proto: req.headers['x-forwarded-proto']+'://', host: req.headers.host, pathname: url.parse(req.url).pathname})).length){
-    // формирования массива обработчиков маршрута
-    _route.forEach(function(elem){
-      _funcs = _funcs.concat(elem.funcs);
-    },this);
-
-    
-    next(_funcs[0]);
-  // В случае отсудсвия маршрута, диспетчеризация маршрута 404
-  }else{
-    notfound();
-  }
-}
+};

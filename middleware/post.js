@@ -10,8 +10,8 @@
 
 
 // Объявление модулей
-var querystring 	= require('querystring'),
-		json 					= require('../lib/json');
+var querystring     = require('querystring'),
+    json            = require('../lib/json');
 
 //---------------------- HTTP запросы ----------------------//
 
@@ -23,39 +23,43 @@ var querystring 	= require('querystring'),
  * @param {Object} res Объект ответа сервера
  * @param {Function} next
  */
-module.exports = function(req, res, next){
-	// Объект POST данных
-  var _post = '';
+module.exports = function (req, res, next) {
+    // Объект POST данных
+    var _post = '';
 
-	// Получение POST данных
-  req.addListener("data", function(data){
-    _post += data;
-  });
+    // Получение POST данных
+    req.addListener("data", function (data) {
+        _post += data;
+    });
 
-	// Обработка запроса при окончании
-  // получения данных запроса
-	req.addListener('end', function(){
-		var post;
-		req._post = _post;
+    // Обработка запроса при окончании
+    // получения данных запроса
+    req.addListener('end', function () {
+        var post,
+            key;
 
-		// Зоздание объекта параметров
-		// в случае его отсудсвия
-		if(!('params' in req)){
+        req._post = _post;
 
-			/**
-			 * POST параметры в объекте запроса
-			 *
-			 * @property params
-			 * @type Object
-			 */
-			req.params = {}
-		}
+        // Зоздание объекта параметров
+        // в случае его отсудсвия
+        if (!req.hasOwnProperty('params')) {
 
-		post = json.parse(_post) || querystring.parse(_post);
+            /**
+             * POST параметры в объекте запроса
+             *
+             * @property params
+             * @type Object
+             */
+            req.params = {};
+        }
 
-		for(var key in post){
-			req.params[key] = post[key];
-		}
-		next();
-  });
+        post = json.parse(_post) || querystring.parse(_post);
+
+        for (key in post) {
+            if (post.hasOwnProperty(key)) {
+                req.params[key] = post[key];
+            }
+        }
+        next();
+    });
 };

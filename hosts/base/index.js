@@ -2,7 +2,7 @@
  * Модуль инициализации хоста
  *
  * @module      Hosts.Base
- * @class	      Base
+ * @class       Base
  * @namespace   Hosts
  * @main        Yandex.Market API
  * @author      Ismax <admin@ismax.ru>
@@ -20,11 +20,11 @@ var router = require('../../server/router');
  * @type Object
  */
 var middleware = {
-	post: 			require('../../middleware/post'),
-	query: 			require('../../middleware/query'),
-	sessions: 	require('../../middleware/sessions'),
-	view: 			require('../../middleware/view')
-}
+    post:           require('../../middleware/post'),
+    query:          require('../../middleware/query'),
+    sessions:       require('../../middleware/sessions'),
+    view:           require('../../middleware/view')
+};
 
 
 
@@ -35,8 +35,8 @@ var middleware = {
  * @type Object
  */
 var model = {
-
-}
+    secure:     require('./model/secure')
+};
 
 
 
@@ -47,27 +47,79 @@ var model = {
  * @type Object
  */
 var controller = {
-	index:     	require('./controller/index'),
-	review:     require('./controller/review')
-}
+    index:      require('./controller/index'),
+    secure:     require('./controller/secure'),
+    user:       require('./controller/user'),
+    profile:    require('./controller/profile')
+};
 
+
+/**
+ * @config host
+ * @type String
+ */
+var host;
+
+if (process.env.NODE_ENV !== 'prod') {
+    host = process.env.HOST || 'dev.e-ismax';
+    console.log('host:%s', host);
+} else {
+    host = process.env.HOST || 'e-ismax';
+}
 
 /*** Назначение HTTP маршрутов ***/
 
 // Общие настройки для GET запросов
-router.get('^(http|https)://(www\.)?e-ismax\.ru\/.*$', middleware.view);
+router.get('^(http|https)://www.' + host + '.ru/.*$', middleware.view);
 
 // Общие настройки для POST запросов
-router.post('^(http|https)://(www\.)?e-ismax\.ru\/.*$', middleware.post);
+router.post('^(http|https)://www.' + host + '.ru/.*$', middleware.post);
 
+// Общие настройки для OPTIONS запросов (разрешительный заголовок для кросс-доменных запросов)
+router.options('^(http|https)://www.' + host + '.ru/.*$', controller.secure.options);
 
 // Стр. 404 (Not found)
-router.get('^(http|https)://(www\.)?e-ismax\.ru\/404\/?$', controller.index.notfound);
+router.get('^(http|https)://www.' + host + '.ru/404/?$', controller.index.notfound);
 
 // Главная стр.
-router.get('^http://(www\.)?e-ismax\.ru\/?$', controller.index.index);
+router.get('^http://www.' + host + '.ru/?$', controller.secure.guest, controller.index.index);
+router.get('^https://www.' + host + '.ru/?$', controller.secure.guest, controller.secure.http);
 
-// Review
-router.get('^http://(www\.)?e-ismax\.ru\/review\/widget\/?$', middleware.query, controller.review.widget);
-router.get('^http://(www\.)?e-ismax\.ru\/review\/list\/?$', middleware.query, controller.review.list);
+// Текстовые стр.
+router.get('^http://www.' + host + '.ru/(about|destiny|terms|ymparser|ymapi|review|solutions)/?$', controller.secure.auth);
+router.get('^https://www.' + host + '.ru/(about|destiny|terms|ymparser|ymapi|review|solutions)/?$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
 
+router.get('^(http|https)://www.' + host + '.ru/about/?$', controller.index.about);
+router.get('^(http|https)://www.' + host + '.ru/destiny/?$', controller.index.destiny);
+router.get('^(http|https)://www.' + host + '.ru/terms/?$', controller.index.terms);
+router.get('^(http|https)://www.' + host + '.ru/ymparser/?$', controller.index.ymparser);
+router.get('^(http|https)://www.' + host + '.ru/ymapi/?$', controller.index.ymapi);
+router.get('^(http|https)://www.' + host + '.ru/review/?$', controller.index.review);
+router.get('^(http|https)://www.' + host + '.ru/solutions/?$', controller.index.solutions);
+
+// Sitemap.xml
+router.get('^http://www.' + host + '.ru/Sitemap.xml$', controller.index.sitemap);
+
+// Secure
+router.get('^(http|https)://www.' + host + '.ru/user.*$', controller.secure.https, middleware.sessions, model.secure, controller.secure.user);
+router.post('^https://www.' + host + '.ru/user.*$', middleware.sessions, model.secure, controller.secure.user);
+
+router.get('^https://www.' + host + '.ru/user/?$', controller.secure.guest, controller.secure.index);
+router.post('^https://www.' + host + '.ru/user/signin/?$', controller.secure.guest, controller.secure.signin);
+router.get('^https://www.' + host + '.ru/user/signout/?$', controller.secure.auth, controller.secure.signout);
+
+// User
+router.post('^https://www.' + host + '.ru/user/create/?$', middleware.view, controller.secure.guest, controller.user.create);
+router.post('^https://www.' + host + '.ru/user/forgot/?$', middleware.view, controller.secure.guest, controller.user.forgot);
+router.get('^(http|https)://www.' + host + '.ru/request/remaining(/|.xml|.json)?$', model.secure, controller.user.remaining);
+
+// Profile
+router.get('^(http|https)://www.' + host + '.ru/profile.*$', controller.secure.https, middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
+router.post('^https://www.' + host + '.ru/profile.*$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
+
+router.get('^https://www.' + host + '.ru/profile/?$', controller.profile.index);
+router.get('^https://www.' + host + '.ru/profile/get/?$', controller.profile.get);
+router.post('^https://www.' + host + '.ru/profile/email/?$', controller.profile.email);
+router.post('^https://www.' + host + '.ru/profile/pass/?$', controller.profile.password);
+router.get('^https://www.' + host + '.ru/profile/access/?$', controller.profile.access);
+router.post('^https://www.' + host + '.ru/profile/address/set/?$', controller.profile.setAddress);

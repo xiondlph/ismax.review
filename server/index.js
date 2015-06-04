@@ -16,17 +16,17 @@ var http          = require('http'),
 
 
 // Создание HTTP сервера
-var server = http.createServer(function(req, res){
+var server = http.createServer(function (req, res) {
 
-  // Объект перехвата исключений запроса
-  var httpErr = exception.httpErr(req, res);
+    // Объект перехвата исключений запроса
+    var httpErr = exception.httpErr(req, res);
 
-  // Инициализация объекта локальных переменных
-  req.local = {}
+    // Инициализация объекта локальных переменных
+    req.local = {};
 
-  httpErr.run(function(){
-    router.route(req, res);
-  });
+    httpErr.run(function () {
+        router.route(req, res, httpErr);
+    });
 });
 
 
@@ -35,8 +35,12 @@ var server = http.createServer(function(req, res){
  *
  * @method start
  */
-exports.start = function(){
-  // Запуск web сервера на порту 3001
-  server.listen(3001); 
-  if(process.env.NODE_ENV == 'debug') console.log('Start server at port 3001');
-}
+exports.start = function () {
+    // Запуск web сервера на порту 3005/4005
+    if (process.env.NODE_ENV !== 'prod') {
+        server.listen(4005);
+        console.log('Start server at port 4005');
+    } else {
+        server.listen(process.env.PORT || 3005);
+    }
+};

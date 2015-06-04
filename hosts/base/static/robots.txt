@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow:
+Host: www.icsystem.ru
+Sitemap: http://www.icsystem.ru/Sitemap.xml
