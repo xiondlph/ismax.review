@@ -44,13 +44,13 @@ exports.user = function (req, res, next) {
 
     req.model.secure.getUserBySession(req.sissionId, function (user) {
         if (user) {
-            _cookie.push('ismax_auth=true; path=/; domain=icsystem.ru;');
+            _cookie.push('ismax_auth=true; path=/; domain=' + req.assignedHost + '.ru;');
             res.setHeader('Set-Cookie', _cookie);
 
             req.user        = user;
             req.local.user  = user;
         } else {
-            _cookie.push('ismax_auth=false; path=/; domain=icsystem.ru;');
+            _cookie.push('ismax_auth=false; path=/; domain=' + req.assignedHost + '.ru;');
             res.setHeader('Set-Cookie', _cookie);
         }
         next();
@@ -146,7 +146,7 @@ exports.auth = function (req, res, next) {
         }
 
         res.statusCode = 302;
-        res.setHeader('Location', 'https://www.icsystem.ru/user');
+        res.setHeader('Location', 'https://www.' + req.assignedHost + '.ru/user');
         res.end();
         return;
     }
@@ -192,7 +192,7 @@ exports.guest = function (req, res, next) {
     }
 
     res.statusCode = 302;
-    res.setHeader('Location', 'https://www.icsystem.ru/profile');
+    res.setHeader('Location', 'https://www.' + req.assignedHost + '.ru/profile');
     res.end();
     return;
 };
@@ -289,6 +289,6 @@ exports.signout = function (req, res) {
  */
 exports.options = function (req, res) {
     res.statusCode = 200;
-    res.setHeader('Access-Control-Allow-Origin', 'http://www.icsystem.ru');
+    res.setHeader('Access-Control-Allow-Origin', 'http://www.' + req.assignedHost + '.ru');
     res.end();
 };

@@ -150,7 +150,7 @@ exports.route = function (req, res, httpErr) {
 
     // Передача назначеного хоста
     req.assignedHost = assignedHost;
-console.log(req.assignedHost);
+
     if (handle[method] !== undefined) {
         routes = handle[method].filter(match, {
             proto: req.headers['x-forwarded-proto'] + '://',
