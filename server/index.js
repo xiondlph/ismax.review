@@ -17,7 +17,7 @@ var http          = require('http'),
 
 // Создание HTTP сервера
 var server = http.createServer(function (req, res) {
-console.log(req.assignedHost);
+console.log(req);
     // Объект перехвата исключений запроса
     var httpErr = exception.httpErr(req, res);
 
