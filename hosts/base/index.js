@@ -68,7 +68,7 @@ if (process.env.NODE_ENV !== 'prod') {
 }
 
 /*** Назначение хоста ***/
-router.asignHost(host);
+router.assignHost(host);
 
 /*** Назначение HTTP маршрутов ***/
 

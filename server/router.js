@@ -24,7 +24,7 @@ handle.DELETE   = [];
 handle.OPTIONS  = [];
 
 // Назначеный хост
-var asignedHost;
+var assignedHost;
 
 // Проверка соответствия запроса маршруту
 var match = function (elem) {
@@ -67,10 +67,10 @@ var setRoute = function () {
 /**
  * Определение назначеного хоста
  *
- * @method asignHost
+ * @method assignHost
  */
-exports.asignHost = function (host) {
-    asignedHost = host;
+exports.assignHost = function (host) {
+    assignedHost = host;
 };
 
 /**
@@ -149,7 +149,7 @@ exports.route = function (req, res, httpErr) {
         i;
 
     // Передача назначеного хоста
-    req.asignedHost = asignedHost;
+    req.assignedHost = assignedHost;
 
     if (handle[method] !== undefined) {
         routes = handle[method].filter(match, {
