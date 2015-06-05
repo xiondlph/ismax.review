@@ -76,7 +76,7 @@ define([
 
             if (valid) {
                 $.ajax({
-                    url         : 'https://www.icsystem.ru/user/create',
+                    url         : 'https://' + document.location.host + '/user/create',
                     type        : 'POST',
                     dataType    : 'json',
                     data: JSON.stringify({

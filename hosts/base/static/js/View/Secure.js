@@ -106,7 +106,7 @@ define([
 
             if (valid) {
                 $.ajax({
-                    url         : 'https://www.icsystem.ru/user/signin',
+                    url         : 'https://' + document.location.host + '/user/signin',
                     type        : 'POST',
                     dataType    : 'json',
                     data: JSON.stringify({
@@ -207,7 +207,7 @@ define([
 
             if (valid) {
                 $.ajax({
-                    url         : 'https://www.icsystem.ru/user/forgot',
+                    url         : 'https://' + document.location.host + '/user/forgot',
                     type        : 'POST',
                     dataType    : 'json',
                     data: JSON.stringify({
