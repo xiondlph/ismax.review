@@ -11,15 +11,8 @@
                 <label for="password" class="b-form__field__label">Пароль<span class="b-form__field__label__invalid"></span></label>
                 <a href="#pass" class="b-form__field__action icon-pencil">Изменить</a>
             </div>
-            <div class="b-form__field">
-                <input type="text" name="requests" value="" id="requests" class="b-form__field__input b-form__field__input_fill j-form__field__input" disabled>
-                <label for="requests" class="b-form__field__label">Запросы<span class="b-form__field__label__invalid"></span></label>
-                <a href="/payment" class="b-form__field__action icon-wallet">Пополнить</a>
-            </div>
         </div>
-        <div class="b-table__tr__td">
-            Запросы - показатель количества запросов для Вашего аккаунта, на которые не действует лимит.
-        </div>
+        <div class="b-table__tr__td"></div>
     </div>
     <div class="b-table__tr">
         <div class="b-table__tr__td"></div>

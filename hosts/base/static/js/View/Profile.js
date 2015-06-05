@@ -63,12 +63,6 @@ define([
             }).done(function (data) {
                 me.$el.find('input[name="email"]').val(data.profile.email);
 
-                if (data.profile.hasOwnProperty('requests')) {
-                    me.$el.find('input[name="requests"]').val(data.profile.requests);
-                } else {
-                    me.$el.find('input[name="requests"]').val('0');
-                }
-
                 me.$el.find('.j-form__field__input').trigger('input');
             }).fail(function () {
                 popup = new Popup({content: $(_error)});
