@@ -71,6 +71,7 @@ var setRoute = function () {
  */
 exports.assignHost = function (host) {
     assignedHost = host;
+    console.log(assignedHost);
 };
 
 /**
