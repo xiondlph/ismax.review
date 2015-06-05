@@ -67,6 +67,9 @@ if (process.env.NODE_ENV !== 'prod') {
     host = process.env.HOST || 'e-ismax';
 }
 
+/*** Назначение хоста ***/
+router.asignHost(host);
+
 /*** Назначение HTTP маршрутов ***/
 
 // Общие настройки для GET запросов

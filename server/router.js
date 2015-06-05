@@ -23,6 +23,8 @@ handle.PUT      = [];
 handle.DELETE   = [];
 handle.OPTIONS  = [];
 
+// Назначеный хост
+var asignedHost;
 
 // Проверка соответствия запроса маршруту
 var match = function (elem) {
@@ -61,6 +63,15 @@ var setRoute = function () {
     });
 };
 
+
+/**
+ * Определение назначеного хоста
+ *
+ * @method asignHost
+ */
+exports.asignHost = function (host) {
+    asignedHost = host;
+};
 
 /**
  * Назначение обработчика GET запроса
@@ -136,6 +147,9 @@ exports.route = function (req, res, httpErr) {
         notfound,
         next,
         i;
+
+    // Передача назначеного хоста
+    req.asignedHost = asignedHost;
 
     if (handle[method] !== undefined) {
         routes = handle[method].filter(match, {
