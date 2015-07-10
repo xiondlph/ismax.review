@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/OpenSans/opensans-regular.eot');
+  src: local('Open Sans'), local('OpenSans'), url('../fonts/OpenSans/opensans-regular.eot') format('embedded-opentype'), url('../fonts/OpenSans/opensans-regular.woff') format('woff'), url('../fonts/OpenSans/opensans-regular.ttf') format('truetype'), url('../fonts/OpenSans/opensans-regular.svg') format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/OpenSans/opensans-bold.eot');
+  src: local('Open Sans Bold'), local('OpenSans-Bold'), url('../fonts/OpenSans/opensans-bold.eot') format('embedded-opentype'), url('../fonts/OpenSans/opensans-bold.woff') format('woff'), url('../fonts/OpenSans/opensans-bold.ttf') format('truetype'), url('../fonts/OpenSans/opensans-bold.svg') format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../fonts/OpenSans/opensans-light.eot');
+  src: local('Open Sans Light'), local('OpenSans-Light'), url('../fonts/OpenSans/opensans-light.eot') format('embedded-opentype'), url('../fonts/OpenSans/opensans-light.woff') format('woff'), url('../fonts/OpenSans/opensans-light.ttf') format('truetype'), url('../fonts/OpenSans/opensans-light.svg') format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/OpenSans/opensans-italic.eot');
+  src: local('Open Sans Italic'), local('OpenSans-Italic'), url('../fonts/OpenSans/opensans-italic.eot') format('embedded-opentype'), url('../fonts/OpenSans/opensans-italic.woff') format('woff'), url('../fonts/OpenSans/opensans-italic.ttf') format('truetype'), url('../fonts/OpenSans/opensans-italic.svg') format('svg');
+}
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon/icomoon.eot?-xpanr9');
+  src: url('../fonts/icomoon/icomoon.eot?#iefix-xpanr9') format('embedded-opentype'), url('../fonts/icomoon/icomoon.woff?-xpanr9') format('woff'), url('../fonts/icomoon/icomoon.ttf?-xpanr9') format('truetype'), url('../fonts/icomoon/icomoon.svg?-xpanr9#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

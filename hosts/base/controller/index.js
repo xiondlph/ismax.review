@@ -68,57 +68,6 @@ exports.terms = function (req, res, next) {
 
 
 /**
- * Страница о парсере яндекс маркет
- *
- * @method ymparser
- * @param {Object} req Объект запроса сервера
- * @param {Object} res Объект ответа сервера
- * @param {Function} next
- */
-exports.ymparser = function (req, res, next) {
-    res.render(__dirname + '/../view/', 'ymparser');
-};
-
-/**
- * Страница о API яндекс маркет
- *
- * @method ymapi
- * @param {Object} req Объект запроса сервера
- * @param {Object} res Объект ответа сервера
- * @param {Function} next
- */
-exports.ymapi = function (req, res, next) {
-    res.render(__dirname + '/../view/', 'ymapi');
-};
-
-
-/**
- * Страница об отзывах яднекс маркет
- *
- * @method review
- * @param {Object} req Объект запроса сервера
- * @param {Object} res Объект ответа сервера
- * @param {Function} next
- */
-exports.review = function (req, res, next) {
-    res.render(__dirname + '/../view/', 'review');
-};
-
-
-/**
- * Страница списка готовых решений
- *
- * @method solutions
- * @param {Object} req Объект запроса сервера
- * @param {Object} res Объект ответа сервера
- * @param {Function} next
- */
-exports.solutions = function (req, res, next) {
-    res.render(__dirname + '/../view/', 'solutions');
-};
-
-
-/**
  * Страница Sitemap.xml
  *
  * @method sitemap

@@ -1,4 +1,4 @@
-<div class="b-table b-form__table">
+<div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
         <div class="b-table__tr__td">
             <div class="b-form__title">Личные данные</div>

@@ -15,7 +15,6 @@
                 <# } else { #>
                 <a href="/user" class="b-nav__item b-nav__item_right">Вход</a>
                 <# } #>
-                <a href="/solutions" class="b-nav__item b-nav__item_right">Решения</a>
                 <div class="b-menu">
                     <ul class="b-menu__sub">
                         <li class="b-menu__sub__item"><a href="/about" class="b-menu__sub__item__link icon-page">Описание</a></li>

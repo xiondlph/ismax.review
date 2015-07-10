@@ -23,15 +23,14 @@ handle.PUT      = [];
 handle.DELETE   = [];
 handle.OPTIONS  = [];
 
-// Назначеный хост
-var assignedHost;
+// Текущий хост
+var currentHost;
 
 // Проверка соответствия запроса маршруту
 var match = function (elem) {
     var reg = new RegExp(elem.path);
     return reg.test(this.proto + this.host + this.pathname);
 };
-
 
 // Назначение функций контроллеров маршрутам
 var setRoute = function () {
@@ -64,14 +63,11 @@ var setRoute = function () {
 };
 
 
-/**
- * Определение назначеного хоста
- *
- * @method assignHost
- */
-exports.assignHost = function (host) {
-    assignedHost = host;
+// Назначение текущего хоста
+exports.setCurrentHost = function (host) {
+    currentHost = host;
 };
+
 
 /**
  * Назначение обработчика GET запроса
@@ -148,8 +144,8 @@ exports.route = function (req, res, httpErr) {
         next,
         i;
 
-    // Передача назначеного хоста
-    req.assignedHost = assignedHost;
+    // Установка текущего хоста
+    req.currentHost = currentHost;
 
     if (handle[method] !== undefined) {
         routes = handle[method].filter(match, {

@@ -4,7 +4,7 @@
  * @module      Middleware.Sessions
  * @class       Sessions
  * @namespace   Middleware
- * @main        Yandex.Market API
+ * @main        Prices monitoring service
  * @author      Ismax <admin@ismax.ru>
  */
 
@@ -31,7 +31,7 @@ module.exports = function (req, res, next) {
         index = _cookie.ismax_session;
     } else {
         index = cookie.uid(64);
-        res.setHeader("Set-Cookie", 'ismax_session=' + index + '; path=/; domain=' + req.assignedHost + '.ru; secure');
+        res.setHeader("Set-Cookie", 'ismax_session=' + index + '; path=/; domain=' + req.currentHost + '.ru; secure');
     }
 
     /**

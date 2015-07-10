@@ -84,6 +84,9 @@ b,
 strong {
   font-weight: 400;
 }
+li {
+  padding: 0 0 10px 0;
+}
 /*** Иконки Icomoon ***/
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
@@ -192,11 +195,11 @@ strong {
   transition: color 0.2s ease-in-out;
   background-color: #fff;
   color: #5CE0C7;
-  /*&:hover {
-            background-color: #fff;
-            color: #5CE0C7;
-        }*/
 }
+/*.f-btn_back:hover {
+    background-color: #fff;
+    color: #5CE0C7;
+}*/
 .f-btn_red {
   background-color: #e05d6f;
   border: 1px solid #e05d6f;

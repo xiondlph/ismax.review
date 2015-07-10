@@ -28,7 +28,7 @@ var crypto            = require('crypto'),
 exports.create = function (req, res) {
     var response;
 
-    res.setHeader('Access-Control-Allow-Origin', 'http://www.' + req.assignedHost + '.ru');
+    res.setHeader('Access-Control-Allow-Origin', 'http://www.' + req.currentHost + '.ru');
 
     if (req.params) {
         if (!validator.isEmail(req.params.email)) {

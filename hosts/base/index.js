@@ -50,7 +50,9 @@ var controller = {
     index:      require('./controller/index'),
     secure:     require('./controller/secure'),
     user:       require('./controller/user'),
-    profile:    require('./controller/profile')
+    profile:    require('./controller/profile'),
+    request:    require('./controller/request'),
+    widget:     require('./controller/widget')
 };
 
 
@@ -67,8 +69,8 @@ if (process.env.NODE_ENV !== 'prod') {
     host = process.env.HOST || 'e-ismax';
 }
 
-/*** Назначение хоста ***/
-router.assignHost(host);
+/*** Установка текущего хоста ***/
+router.setCurrentHost(host);
 
 /*** Назначение HTTP маршрутов ***/
 
@@ -89,16 +91,12 @@ router.get('^http://www.' + host + '.ru/?$', controller.secure.guest, controller
 router.get('^https://www.' + host + '.ru/?$', controller.secure.guest, controller.secure.http);
 
 // Текстовые стр.
-router.get('^http://www.' + host + '.ru/(about|destiny|terms|ymparser|ymapi|review|solutions)/?$', controller.secure.auth);
-router.get('^https://www.' + host + '.ru/(about|destiny|terms|ymparser|ymapi|review|solutions)/?$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
+router.get('^http://www.' + host + '.ru/(about|destiny|terms)/?$', controller.secure.auth);
+router.get('^https://www.' + host + '.ru/(about|destiny|terms)/?$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
 
 router.get('^(http|https)://www.' + host + '.ru/about/?$', controller.index.about);
 router.get('^(http|https)://www.' + host + '.ru/destiny/?$', controller.index.destiny);
 router.get('^(http|https)://www.' + host + '.ru/terms/?$', controller.index.terms);
-router.get('^(http|https)://www.' + host + '.ru/ymparser/?$', controller.index.ymparser);
-router.get('^(http|https)://www.' + host + '.ru/ymapi/?$', controller.index.ymapi);
-router.get('^(http|https)://www.' + host + '.ru/review/?$', controller.index.review);
-router.get('^(http|https)://www.' + host + '.ru/solutions/?$', controller.index.solutions);
 
 // Sitemap.xml
 router.get('^http://www.' + host + '.ru/Sitemap.xml$', controller.index.sitemap);
@@ -126,3 +124,6 @@ router.post('^https://www.' + host + '.ru/profile/email/?$', controller.profile.
 router.post('^https://www.' + host + '.ru/profile/pass/?$', controller.profile.password);
 router.get('^https://www.' + host + '.ru/profile/access/?$', controller.profile.access);
 router.post('^https://www.' + host + '.ru/profile/address/set/?$', controller.profile.setAddress);
+
+// Widget
+router.get('^(http|https)://www.' + host + '.ru/widget/?$', middleware.query, controller.request.api, controller.widget.index);
