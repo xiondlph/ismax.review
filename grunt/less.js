@@ -1,25 +1,25 @@
 module.exports = {
     common: {
         files: {
-            'hosts/base/static/css/common.css': 'hosts/base/static/css/common.less'
+            'hosts/base/static/css/common.css': 'hosts/base/static/less/common.less'
         }
     },
 
     index: {
         files: {
-            'hosts/base/static/css/index.css': 'hosts/base/static/css/index.less'
+            'hosts/base/static/css/index.css': 'hosts/base/static/less/index.less'
         }
     },
 
     profile: {
         files: {
-            'hosts/base/static/css/profile.css': 'hosts/base/static/css/profile.less'
+            'hosts/base/static/css/profile.css': 'hosts/base/static/less/profile.less'
         }
     },
 
     simple: {
         files: {
-            'hosts/base/static/css/simple.css': 'hosts/base/static/css/simple.less'
+            'hosts/base/static/css/simple.css': 'hosts/base/static/less/simple.less'
         }
-    },
+    }
 };

@@ -1,8 +1,7 @@
         <header class="b-header" <# if(this.data.user){#> auth="<#= this.data.user.email #>"<# } #>>
             <nav class="b-nav">
                 <a href="/" class="b-nav__logo">
-                    ism<span class="b-nav__logo__ismax icon-ismax"></span>x
-                    <span class="b-nav__logo__icsystem">icsystem</span>
+                    sh<span class="b-nav__logo__ismax icon-ismax"></span>review
                 </a>
                 <# if(this.data.user){#>
                 <div class="b-menu">

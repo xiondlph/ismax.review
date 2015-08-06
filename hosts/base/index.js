@@ -127,3 +127,4 @@ router.post('^https://www.' + host + '.ru/profile/address/set/?$', controller.pr
 
 // Widget
 router.get('^(http|https)://www.' + host + '.ru/widget/?$', middleware.query, controller.request.api, controller.widget.index);
+router.get('^(http|https)://www.' + host + '.ru/iframe/?$', middleware.query, controller.request.api, controller.widget.iframe);
