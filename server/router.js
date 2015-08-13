@@ -32,6 +32,7 @@ var match = function (elem) {
     return reg.test(this.proto + this.host + this.pathname);
 };
 
+
 // Назначение функций контроллеров маршрутам
 var setRoute = function () {
     var _arguments = arguments,
@@ -63,7 +64,11 @@ var setRoute = function () {
 };
 
 
-// Назначение текущего хоста
+/**
+ * Назначение текущего хоста
+ *
+ * @method setCurrentHost
+ */
 exports.setCurrentHost = function (host) {
     currentHost = host;
 };
@@ -196,12 +201,18 @@ exports.route = function (req, res, httpErr) {
     next = function (caller) {
         var index = funcs.indexOf(caller);
 
-        if (typeof funcs[index] === 'function') {
+        if (typeof funcs[index] === 'function' && (req.connection.remoteAddress === '127.0.0.1' || req.connection.remoteAddress === '::ffff:127.0.0.1' || req.connection.remoteAddress === '194.58.98.18')) {
             funcs[index](req, res, function () {
                 next(funcs[index + 1]);
             }, httpErr);
         } else {
-            notfound();
+            if (req.connection.remoteAddress === '127.0.0.1' || req.connection.remoteAddress === '194.58.98.18') {
+                notfound();
+            } else {
+                res.statusCode = 404;
+                res.setHeader('Content-Type', 'text/html; charset=UTF-8');
+                res.end('<h1>Page not found</h1>');
+            }
         }
     };
 

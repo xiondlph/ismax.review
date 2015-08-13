@@ -50,6 +50,9 @@ exports.index = function (req, res, next) {
                 }
                 reviews = JSON.parse(data);
                 req.local.reviews = reviews;
+                req.local.modelId = result.searchResult.results[0].model.id;
+                req.local.text    = req.params.text;
+
                 res.render(__dirname + '/../view/', 'widget', function (out) {
                     res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
                     res.write(out);
