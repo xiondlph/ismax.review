@@ -11,7 +11,8 @@
 
 // Объявление модулей
 var url        = require('url'),
-    fs         = require('fs');
+    fs         = require('fs'),
+    mongo      = require('../lib/db');
 
 
 // Объекты набора маршрутов
@@ -148,6 +149,13 @@ exports.route = function (req, res, httpErr) {
         notfound,
         next,
         i;
+
+    if (typeof mongo.db().collection !== 'function') {
+        res.statusCode = 500;
+        res.setHeader('Content-Type', 'text/html; charset=UTF-8');
+        res.end('Internal server error');
+        return;
+    }
 
     // Установка текущего хоста
     req.currentHost = currentHost;

@@ -63,10 +63,10 @@ var controller = {
 var host;
 
 if (process.env.NODE_ENV !== 'prod') {
-    host = process.env.HOST || 'dev.e-ismax';
+    host = process.env.HOST || 'dev.shareview';
     console.log('host:%s', host);
 } else {
-    host = process.env.HOST || 'e-ismax';
+    host = process.env.HOST || 'shareview';
 }
 
 /*** Установка текущего хоста ***/
