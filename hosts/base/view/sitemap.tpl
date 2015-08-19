@@ -1,50 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
         <url>
-            <loc>http://www.icsystem.ru/</loc>
-            <lastmod>2014-08-07</lastmod>
+            <loc>http://www.shareview.ru/</loc>
+            <lastmod>2015-08-19</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
         </url>
         <url>
-            <loc>http://www.icsystem.ru/ymapi</loc>
-            <lastmod>2014-08-16</lastmod>
+            <loc>http://shareview.ru/destiny</loc>
+            <lastmod>2015-09-19</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
         </url>
         <url>
-            <loc>http://www.icsystem.ru/ymparser</loc>
-            <lastmod>2014-09-07</lastmod>
+            <loc>http://www.shareview.ru/about</loc>
+            <lastmod>2015-08-19</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
         </url>
         <url>
-            <loc>http://icsystem.ru/destiny</loc>
-            <lastmod>2014-09-30</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-        </url>
-        <url>
-            <loc>http://www.icsystem.ru/about</loc>
-            <lastmod>2014-08-16</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-        </url>
-        <url>
-            <loc>http://www.icsystem.ru/terms</loc>
-            <lastmod>2014-08-16</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-        </url>
-        <url>
-            <loc>http://www.icsystem.ru/review</loc>
-            <lastmod>2015-05-04</lastmod>
-            <changefreq>daily</changefreq>
-            <priority>0.5</priority>
-        </url>
-        <url>
-            <loc>http://www.icsystem.ru/solutions</loc>
-            <lastmod>2015-06-01</lastmod>
+            <loc>http://www.shareview.ru/terms</loc>
+            <lastmod>2015-08-19</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
         </url>

@@ -291,12 +291,18 @@ function removeClass(obj, cls) {
         '      <li _<#= ('grade' + text).fnv32a() #>="2"></li>', 
         '    </ul>'
     ].join('\n')) );
+<#     if (reviews.modelOpinions.opinion[index].hasOwnProperty('pro')) { #>
     _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemProLabel' + text).fnv32a() #> _<#= ('ismaxReviewItemLabel' + text).fnv32a() #>'}, null, "Достоинства:") );
     _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemPro' + text).fnv32a() #> _<#= ('ismaxReviewItemField' + text).fnv32a() #>'}, null, <#= JSON.stringify(reviews.modelOpinions.opinion[index].pro) #>) );
+<#     }  #>
+<#     if (reviews.modelOpinions.opinion[index].hasOwnProperty('contra')) { #>
     _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemContraLabel' + text).fnv32a() #> _<#= ('ismaxReviewItemLabel' + text).fnv32a() #>'}, null, "Недостатки:") );
     _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemContra' + text).fnv32a() #> _<#= ('ismaxReviewItemField' + text).fnv32a() #>'}, null, <#= JSON.stringify(reviews.modelOpinions.opinion[index].contra) #>) );
+<#     }  #>
+<#     if (reviews.modelOpinions.opinion[index].hasOwnProperty('text')) { #>
     _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemTextLabel' + text).fnv32a() #> _<#= ('ismaxReviewItemLabel' + text).fnv32a() #>'}, null, "Комментарий:") );
     _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemText' + text).fnv32a() #> _<#= ('ismaxReviewItemField' + text).fnv32a() #>'}, null, <#= JSON.stringify(reviews.modelOpinions.opinion[index].text) #>) );
+<#     }  #>
 <# }  #>
     setTimeout(function () {
         var items = document.getElementsByClassName('_<#= ('ismaxReviewItemAnimate' + text).fnv32a() #>');

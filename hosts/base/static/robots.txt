@@ -1,4 +1,4 @@
 User-Agent: *
 Disallow:
-Host: www.icsystem.ru
-Sitemap: http://www.icsystem.ru/Sitemap.xml
+Host: www.shareview.ru
+Sitemap: http://www.shareview.ru/Sitemap.xml

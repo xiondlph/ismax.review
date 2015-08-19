@@ -70,19 +70,18 @@ exports.create = function (req, res) {
                         smtpTransport = nodemailer.createTransport({
                             service: 'Gmail',
                             auth: {
-                                user: 'admin@ismax.ru',
-                                pass: '5ss27di2'
+                                user: 'support@shareview.ru',
+                                pass: 'hwnd_des83'
                             }
                         });
 
                         smtpTransport.sendMail({
-                            from: 'ICSYSTEM <support@icsystem.ru>',
+                            from: 'Support Shareview <support@shareview.ru>',
                             to: data.email,
-                            bcc: 'Исмаилов Шухрат <admin@ismax.ru>',
-                            subject: 'Регистрация в сервисе ICSYSTEM',
+                            subject: 'Регистрация в сервисе Shareview',
                             text: text,
                             headers: {
-                                'X-Mailer': 'ICSYSTEM'
+                                'X-Mailer': 'SHAREVIEW'
                             }
                         }, function (error, response) {
                             if (error) {
@@ -159,19 +158,18 @@ exports.forgot = function (req, res) {
                     smtpTransport = nodemailer.createTransport({
                         service: 'Gmail',
                         auth: {
-                            user: 'admin@ismax.ru',
-                            pass: '5ss27di2'
+                            user: 'support@shareview.ru',
+                            pass: 'hwnd_des83'
                         }
                     });
 
                     smtpTransport.sendMail({
-                        from: 'ICSYSTEM <support@icsystem.ru>',
+                        from: 'Support Shareview <support@shareview.ru>',
                         to: user.email,
-                        bcc: 'Исмаилов Шухрат <admin@ismax.ru>',
-                        subject: 'Востановления доступа к сервису ICSYSTEM',
+                        subject: 'Востановления доступа к сервису Shareview',
                         text: text,
                         headers: {
-                            'X-Mailer': 'ICSYSTEM'
+                            'X-Mailer': 'SHAREVIEW'
                         }
                     }, function (error, response) {
                         if (error) {
@@ -192,47 +190,5 @@ exports.forgot = function (req, res) {
                 });
             });
         });
-    }
-};
-
-
-/**
- * Количество оставшихся запросов
- *
- * @method remaining
- * @param {Object} req Объект запроса сервера
- * @param {Object} res Объект ответа сервера
- */
-exports.remaining = function (req, res) {
-    function proceed(user) {
-        var format,
-            requests;
-
-        if (user) {
-            requests = user.requests;
-        } else {
-            requests = -1;
-        }
-
-        format = /[\w\W]*(xml|json)[\w\W]*/.exec(req.url) ? /[\w\W]*(xml|json)[\w\W]*/.exec(req.url)[1] : '';
-
-        res.setHeader('Server', 'ICSYSTEM');
-        res.statusCode = 200;
-        if (format === 'xml') {
-            res.setHeader('Content-Type', 'application/xml;charset=UTF-8');
-            res.end('<?xml version="1.0" encoding="UTF-8"?>\n<request remaining="' + requests.toString() + '"/>');
-        } else if (format === 'json') {
-            res.setHeader('Content-Type', 'application/json;charset=UTF-8');
-            res.end('{"request":{"remaining":' + requests.toString() + '}}');
-        } else {
-            res.setHeader('Content-Type', 'text/html; charset=UTF-8');
-            res.end(requests.toString());
-        }
-    }
-
-    if (req.headers.hasOwnProperty('x-ismax-key')) {
-        req.model.secure.getUserByKey(req.headers['x-ismax-key'], proceed);
-    } else {
-        req.model.secure.getUserByAddress(req.headers['x-forwarded-for'], proceed);
     }
 };
