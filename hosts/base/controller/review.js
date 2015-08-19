@@ -1,8 +1,8 @@
 /**
- * Widget контроллер
+ * Review контроллер
  *
- * @module      Hosts.Base.Controller.Widget
- * @class       Controller.Widget
+ * @module      Hosts.Base.Controller.Review
+ * @class       Controller.Review
  * @namespace   Hosts.Base
  * @main        Yandex.Market API
  * @author      Ismax <admin@ismax.ru>
@@ -73,14 +73,49 @@ var http            = require('http'),
 
 
 /**
- * Виджет
+ * Код для вставки
  *
- * @method index
+ * @method code
  * @param {Object} req Объект запроса сервера
  * @param {Object} res Объект ответа сервера
  * @param {Function} next
  */
-exports.index = function (req, res, next) {
+exports.code = function (req, res, next) {
+    req.local.search = req.params.search;
+    res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+    res.render(__dirname + '/../view/', 'code', function (out) {
+        var _out = UglifyJS.minify(out, {fromString: true});
+
+        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+        res.write(_out.code);
+        res.end();
+    });
+};
+
+
+/**
+ * Айфрейм
+ *
+ * @method iframe
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ * @param {Function} next
+ */
+exports.iframe = function (req, res, next) {
+    req.local.search = req.params.search;
+    res.render(__dirname + '/../view/', 'iframe');
+};
+
+
+/**
+ * Виджет
+ *
+ * @method widget
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ * @param {Function} next
+ */
+exports.widget = function (req, res, next) {
     var result,
         reviews,
         page = 1;
@@ -131,17 +166,4 @@ exports.index = function (req, res, next) {
             res.render(__dirname + '/../view/', 'widget');
         }
     });
-};
-
-/**
- * Айфрейм
- *
- * @method iframe
- * @param {Object} req Объект запроса сервера
- * @param {Object} res Объект ответа сервера
- * @param {Function} next
- */
-exports.iframe = function (req, res, next) {
-    req.local.search = req.params.search;
-    res.render(__dirname + '/../view/', 'iframe');
 };

@@ -52,7 +52,7 @@ var controller = {
     user:       require('./controller/user'),
     profile:    require('./controller/profile'),
     request:    require('./controller/request'),
-    widget:     require('./controller/widget')
+    review:     require('./controller/review')
 };
 
 
@@ -126,5 +126,6 @@ router.get('^https://www.' + host + '.ru/profile/access/?$', controller.profile.
 router.post('^https://www.' + host + '.ru/profile/address/set/?$', controller.profile.setAddress);
 
 // Widget
-router.get('^(http|https)://www.' + host + '.ru/widget/?$', middleware.query, controller.request.api, controller.widget.index);
-router.get('^(http|https)://www.' + host + '.ru/iframe/?$', middleware.query, controller.request.api, controller.widget.iframe);
+router.get('^(http|https)://www.' + host + '.ru/code/?$', middleware.query, controller.request.api, controller.review.code);
+router.get('^(http|https)://www.' + host + '.ru/iframe/?$', middleware.query, controller.request.api, controller.review.iframe);
+router.get('^(http|https)://www.' + host + '.ru/widget/?$', middleware.query, controller.request.api, controller.review.widget);
