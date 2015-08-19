@@ -112,7 +112,6 @@ router.get('^https://www.' + host + '.ru/user/signout/?$', controller.secure.aut
 // User
 router.post('^https://www.' + host + '.ru/user/create/?$', middleware.view, controller.secure.guest, controller.user.create);
 router.post('^https://www.' + host + '.ru/user/forgot/?$', middleware.view, controller.secure.guest, controller.user.forgot);
-router.get('^(http|https)://www.' + host + '.ru/request/remaining(/|.xml|.json)?$', model.secure, controller.user.remaining);
 
 // Profile
 router.get('^(http|https)://www.' + host + '.ru/profile.*$', controller.secure.https, middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);

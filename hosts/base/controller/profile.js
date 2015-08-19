@@ -162,30 +162,6 @@ exports.password = function (req, res) {
 };
 
 
-/**
- * Получение информации о доступе
- *
- * @method access
- * @param {Object} req Объект запроса сервера
- * @param {Object} res Объект ответа сервера
- */
-exports.access = function (req, res) {
-    var response = {
-        auth: true,
-        success: true,
-        profile: {
-            address:    req.user.address,
-            key:        req.user.salt
-        }
-    };
-
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application-json; charset=UTF-8');
-    res.write(JSON.stringify(response, null, "\t"));
-    res.end();
-};
-
-
 
 /**
  * Установка IP адреса
