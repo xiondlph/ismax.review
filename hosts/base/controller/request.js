@@ -46,7 +46,7 @@ exports.api = function (req, res, next) {
             path:     url,
             method:   'GET',
             headers: {
-                'Host':                 'market.local.icsystem.ru',
+                'Host':                 'market.icsystem.ru',
                 'X-Ismax-Key':          '85d1fb3b78dfab1d14aebdb44d78eb9ff6b9811515e0698078ad93d7477dc370',
                 'X-Forwarded-Proto':    'http',
                 'X-Forwarded-for':      req.headers['x-forwarded-for']
