@@ -164,13 +164,36 @@ exports.password = function (req, res) {
 
 
 /**
- * Установка IP адреса
+ * Получение информации о настройках
+ *
+ * @method access
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ */
+exports.getSettings = function (req, res) {
+    var response = {
+        auth: true,
+        success: true,
+        settings: {
+            domain:    req.user.domain
+        }
+    };
+
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application-json; charset=UTF-8');
+    res.write(JSON.stringify(response, null, "\t"));
+    res.end();
+};
+
+
+/**
+ * Сохранение настроек
  *
  * @method setAddress
  * @param {Object} req Объект запроса сервера
  * @param {Object} res Объект ответа сервера
  */
-exports.setAddress = function (req, res) {
+exports.setSettings = function (req, res) {
     var response;
 
     if (req.params) {

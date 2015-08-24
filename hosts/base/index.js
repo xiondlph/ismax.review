@@ -121,7 +121,8 @@ router.get('^https://www.' + host + '.ru/profile/?$', controller.profile.index);
 router.get('^https://www.' + host + '.ru/profile/get/?$', controller.profile.get);
 router.post('^https://www.' + host + '.ru/profile/email/?$', controller.profile.email);
 router.post('^https://www.' + host + '.ru/profile/pass/?$', controller.profile.password);
-router.post('^https://www.' + host + '.ru/profile/address/set/?$', controller.profile.setAddress);
+router.get('^https://www.' + host + '.ru/profile/settings/?$', controller.profile.getSettings);
+router.post('^https://www.' + host + '.ru/profile/settings/?$', controller.profile.setSettings);
 
 // Widget
 router.get('^(http|https)://www.' + host + '.ru/code/?$', middleware.query, controller.request.api, controller.review.code);

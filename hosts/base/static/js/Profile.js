@@ -47,6 +47,13 @@ require([
         pass.render();
     }
 
+    function settings() {
+        $('.b-menu__sub__item__link_active').removeClass('b-menu__sub__item__link_active');
+        $('.b-menu__sub__item__link[href="/profile#settings"]').addClass('b-menu__sub__item__link_active');
+        var addr = new Profile.Settings({obj: $('.b-section')});
+        addr.render();
+    }
+
     $(function () {
         var router  = new Backbone.Router(),
             menu    = new Menu({el: $('.b-menu')}),
@@ -59,6 +66,7 @@ require([
         router.route('*other', 'default', profile);
         router.route('profile', 'profile', profile);
         router.route('pass', 'pass', password);
+        router.route('settings', 'settings', settings);
 
         Backbone.history.start();
     });
