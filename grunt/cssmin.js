@@ -26,21 +26,21 @@ module.exports = {
         }
     },
 
+    payment: {
+        options: {
+            banner: '/* Payment minified */'
+        },
+        files: {
+            'hosts/base/static/build/payment.css': ['hosts/base/static/css/common.css', 'hosts/base/static/css/payment.css']
+        }
+    },
+
     simple: {
         options: {
             banner: '/* Simple minified */'
         },
         files: {
             'hosts/base/static/build/simple.css': ['hosts/base/static/css/common.css', 'hosts/base/static/css/simple.css']
-        }
-    },
-
-    solutions: {
-        options: {
-            banner: '/* Solutions minified */'
-        },
-        files: {
-            'hosts/base/static/build/solutions.css': ['hosts/base/static/css/common.css', 'hosts/base/static/css/simple.css', 'hosts/base/static/css/solutions.css']
         }
     }
 };

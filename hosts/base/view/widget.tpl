@@ -1,4 +1,4 @@
-<# if (this.data.hasOwnProperty('reviews')){ #>
+<# if (this.data.hasOwnProperty('reviews')) { #>
 <#     if (isFirst) { #>
 var Event = (function() {
 

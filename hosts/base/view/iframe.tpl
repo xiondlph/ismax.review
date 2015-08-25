@@ -10,8 +10,6 @@
     <title>Widget</title>
 </head>
 <body>
-<# if (this.data.hasOwnProperty('search') && search){ #>
-    <script src="/widget?text=<#= search #>"></script>
-<# } #>
+	<script type="text/javascript"><#= code #></script>
 </body>
 </html>

@@ -189,24 +189,26 @@ exports.getSettings = function (req, res) {
 /**
  * Сохранение настроек
  *
- * @method setAddress
+ * @method setSettings
  * @param {Object} req Объект запроса сервера
  * @param {Object} res Объект ответа сервера
  */
 exports.setSettings = function (req, res) {
-    var response;
+    var response,
+        settings = {};
 
     if (req.params) {
 
-        if (!validator.isLength(req.params.address, 1, 255)) {
-            throw new Error('Validate error - address is invalid');
+        if (req.params.hasOwnProperty('domain') && req.params.domain.length) {
+            if (!validator.isURL(req.params.domain)) {
+                throw new Error('Validate error - domain is invalid');
+            }
+
+            settings.domain = req.params.domain;
         }
 
-        if (!validator.isIP(req.params.address)) {
-            throw new Error('Validate error - address is invalid');
-        }
 
-        req.model.secure.setAddress(req.sissionId, req.params.address, function (result) {
+        req.model.secure.setSettings(req.sissionId, settings, function (result) {
             response = {
                 auth: true,
                 success: true

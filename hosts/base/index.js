@@ -35,7 +35,8 @@ var middleware = {
  * @type Object
  */
 var model = {
-    secure:     require('./model/secure')
+    secure:     require('./model/secure'),
+    payment:    require('./model/payment')
 };
 
 
@@ -51,6 +52,7 @@ var controller = {
     secure:     require('./controller/secure'),
     user:       require('./controller/user'),
     profile:    require('./controller/profile'),
+    payment:    require('./controller/payment'),
     request:    require('./controller/request'),
     review:     require('./controller/review')
 };
@@ -123,6 +125,15 @@ router.post('^https://www.' + host + '.ru/profile/email/?$', controller.profile.
 router.post('^https://www.' + host + '.ru/profile/pass/?$', controller.profile.password);
 router.get('^https://www.' + host + '.ru/profile/settings/?$', controller.profile.getSettings);
 router.post('^https://www.' + host + '.ru/profile/settings/?$', controller.profile.setSettings);
+
+// Payment
+router.get('^https://www.' + host + '.ru/payment.*$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
+router.post('^https://www.' + host + '.ru/payment.*$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
+
+router.get('^https://www.' + host + '.ru/payment/?$', controller.payment.index);
+router.get('^https://www.' + host + '.ru/payment/last/?$', model.payment, controller.payment.last);
+router.get('^https://www.' + host + '.ru/payment/list/?$', model.payment, middleware.query, controller.payment.list);
+router.post('^https://www.' + host + '.ru/ym_notification/?$', model.secure, model.payment, controller.payment.notification);
 
 // Widget
 router.get('^(http|https)://www.' + host + '.ru/code/?$', middleware.query, controller.request.api, controller.review.code);

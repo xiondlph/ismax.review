@@ -19,7 +19,8 @@ define([
     'text!Templates/Popup/Error.tpl'
 ], function (Backbone, Validator, PopupView, formTpl, passwordTpl, settingsTpl, successTpl, errorTpl) {
     var Form,
-        Password;
+        Password,
+        Settings;
 
 
     /**
@@ -62,7 +63,16 @@ define([
                 dataType    : 'json',
                 global      : false
             }).done(function (data) {
+                var period = new Date(data.profile.period);
                 me.$el.find('input[name="email"]').val(data.profile.email);
+
+                if (data.profile.hasOwnProperty('_active') && data.profile._active) {
+                    me.$el.find('input[name="state"]').val('Активен');
+                    me.$el.find('input[name="paidup"]').val(period.toLocaleDateString());
+                } else {
+                    me.$el.find('input[name="state"]').val('Заблокирован');
+                    me.$el.find('input[name="paidup"]').val(period.toLocaleDateString());
+                }
 
                 me.$el.find('.j-form__field__input').trigger('input');
             }).fail(function () {
@@ -249,7 +259,9 @@ define([
         },
 
         render: function () {
-            var me = this;
+            var me = this,
+                popup;
+
             me.$el.html(_.template(settingsTpl));
 
             me.options.obj.find('.b-switch').addClass('b-switch_animate');
@@ -268,6 +280,7 @@ define([
                 dataType    : 'json',
                 global      : false
             }).done(function (data) {
+                me.$el.find('input[name="domain"]').val(data.settings.domain);
                 me.$el.find('.j-form__field__input').trigger('input');
             }).fail(function () {
                 popup = new PopupView({content: $(errorTpl)});
@@ -292,13 +305,30 @@ define([
 
             e.preventDefault();
 
-            if (!Validator.isURL(me.$el.find('#domain').val())) {
-                me.$el.find('#domain').addClass('b-form__field__input_invalid');
-                me.$el.find('#domain').next('.b-form__field__label').find('.b-form__field__label__invalid').text('Некорректный домен');
+            if (this.$el.find('input[name="domain"]').val().length && !Validator.isURL(this.$el.find('input[name="domain"]').val())) {
+                this.$el.find('input[name="domain"]').addClass('b-form__field__input_invalid');
+                this.$el.find('input[name="domain"]').next('.b-form__field__label').find('.b-form__field__label__invalid').text('Некорректный домен');
                 valid = false;
             } else {
-                me.$el.find('#domain').removeClass('invalid');
-                me.$el.find('#domain').next('.b-form__field__label').find('.b-form__field__label__invalid').text('');
+                this.$el.find('input[name="domain"]').removeClass('invalid');
+                this.$el.find('input[name="domain"]').next('.b-form__field__label').find('.b-form__field__label__invalid').text('');
+            }
+
+            if (valid) {
+                $.ajax({
+                    url         : '/profile/settings',
+                    type        : 'POST',
+                    dataType    : 'json',
+                    data: JSON.stringify({
+                        domain: this.$el.find('input[name="domain"]').val()
+                    })
+                }).done(function (data) {
+                    popup = new PopupView({content: $(_.template(successTpl)({message: 'Данные сохранены'}))});
+                    popup.render();
+                }).fail(function (data) {
+                    popup = new PopupView({content: $(errorTpl)});
+                    popup.render();
+                });
             }
 
             return false;

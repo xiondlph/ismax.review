@@ -119,51 +119,51 @@ exports.widget = function (req, res, next) {
     var result,
         reviews,
         page = 1;
-
-    if (!req.params.hasOwnProperty('text')) {
+console.log(req.headers.referer);
+    if (!req.params.hasOwnProperty('text') || !req.headers.hasOwnProperty('referer')) {
         res.render(__dirname + '/../view/', 'widget');
-    }
-
-    if (req.params.hasOwnProperty('page')) {
-        page = req.params.page;
-        delete req.params.page;
-    }
-
-    req.params.count    = 1;
-
-    req.api('/v1/search.json?' + querystring.stringify(req.params), function (err, status, data) {
-        if (err || status !== 200) {
-            res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
-            res.render(__dirname + '/../view/', 'widget');
-            return;
+    } else {
+        if (req.params.hasOwnProperty('page')) {
+            page = req.params.page;
+            delete req.params.page;
         }
 
+        req.params.count    = 1;
 
-        result = JSON.parse(data);
+        req.api('/v1/search.json?' + querystring.stringify(req.params), function (err, status, data) {
+            if (err || status !== 200) {
+                res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+                res.render(__dirname + '/../view/', 'widget');
+                return;
+            }
 
-        if (result.searchResult.results.length > 0 && result.searchResult.results[0].hasOwnProperty('model')) {
-            req.api('/v1/model/' + result.searchResult.results[0].model.id + '/opinion.json?page=' + page, function (err, status, data) {
-                if (err || status !== 200) {
-                    res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
-                    res.render(__dirname + '/../view/', 'widget');
-                    return;
-                }
-                reviews = JSON.parse(data);
-                req.local.reviews = reviews;
-                req.local.modelId = result.searchResult.results[0].model.id;
-                req.local.text    = req.params.text;
-                req.local.isFirst = +page === 1;
-                res.render(__dirname + '/../view/', 'widget', function (out) {
-                    var _out = UglifyJS.minify(out, {fromString: true});
 
-                    res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
-                    res.write(_out.code);
-                    res.end();
+            result = JSON.parse(data);
+
+            if (result.searchResult.results.length > 0 && result.searchResult.results[0].hasOwnProperty('model')) {
+                req.api('/v1/model/' + result.searchResult.results[0].model.id + '/opinion.json?page=' + page, function (err, status, data) {
+                    if (err || status !== 200) {
+                        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+                        res.render(__dirname + '/../view/', 'widget');
+                        return;
+                    }
+                    reviews = JSON.parse(data);
+                    req.local.reviews = reviews;
+                    req.local.modelId = result.searchResult.results[0].model.id;
+                    req.local.text    = req.params.text;
+                    req.local.isFirst = +page === 1;
+                    res.render(__dirname + '/../view/', 'widget', function (out) {
+                        var _out = UglifyJS.minify(out, {fromString: true});
+
+                        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+                        res.write(_out.code);
+                        res.end();
+                    });
                 });
-            });
-        } else {
-            res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
-            res.render(__dirname + '/../view/', 'widget');
-        }
-    });
+            } else {
+                res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+                res.render(__dirname + '/../view/', 'widget');
+            }
+        });
+    } 
 };

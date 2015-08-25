@@ -3,7 +3,7 @@
         <div class="b-table__tr__td">
             <div class="b-form__title">Настройки</div>
             <div class="b-form__field">
-                <input type="text" value="" id="domain" class="b-form__field__input j-form__field__input">
+                <input type="text" name="domain" value="" id="domain" class="b-form__field__input j-form__field__input">
                 <label for="domain" class="b-form__field__label">Домен<span class="b-form__field__label__invalid"></span></label>
             </div>
         </div>

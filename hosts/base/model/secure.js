@@ -116,19 +116,19 @@ module.exports = function (req, res, next, httpErr) {
 
 
         /**
-         * Получения пользователя по IP адресу
+         * Получения пользователя по IP домену
          *
-         * @method getUserByAddress
-         * @param {String} address
+         * @method getUserByDomain
+         * @param {String} domain
          * @param {Function} accept
          */
-        getUserByAddress: function (address, accept) {
+        getUserByDomain: function (domain, accept) {
             mongo.db().collection('users', function (err, collection) {
                 if (err) {
                     throw new Error('Mongo error - ' + err.message);
                 }
 
-                collection.findOne({'address': address}, httpErr.bind(function (err, user) {
+                collection.findOne({'domain': domain}, httpErr.bind(function (err, user) {
                     if (err) {
                         throw new Error('Mongo error - ' + err.message);
                     }
@@ -226,20 +226,20 @@ module.exports = function (req, res, next, httpErr) {
 
 
         /**
-         * Установка IP адреса для пользователя
+         * Сохранение настроек
          *
-         * @method setAddress
+         * @method setSettings
          * @param {String} index
-         * @param {String} address
+         * @param {String} settings
          * @param {Function} accept 
          */
-        setAddress: function (index, address, accept) {
+        setSettings: function (index, settings, accept) {
             mongo.db().collection('users', function (err, collection) {
                 if (err) {
                     throw new Error('Mongo error - ' + err.message);
                 }
 
-                collection.update({sid: index}, {$set: {'address': address}}, function (err, result) {
+                collection.update({sid: index}, {$set: settings}, function (err, result) {
                     if (err) {
                         throw new Error('Mongo error - ' + err.message);
                     }
@@ -352,33 +352,6 @@ module.exports = function (req, res, next, httpErr) {
 
                     if (typeof accept === 'function') {
                         accept(result);
-                    }
-                });
-            });
-        },
-
-
-        /**
-         * Модификация количества запросов для пользователя по email
-         *
-         * @method incRequestsByEmail
-         * @param {String} email
-         * @param {String} quantity
-         * @param {Function} accept
-         */
-        incRequestsByEmail: function (email, quantity, accept) {
-            mongo.db().collection('users', function (err, collection) {
-                if (err) {
-                    throw new Error('Mongo error - ' + err.message);
-                }
-
-                collection.findAndModify({email: email}, [['email', 1]], {$inc: {requests: quantity}}, {new: true},  function (err, user) {
-                    if (err) {
-                        throw new Error('Mongo error - ' + err.message);
-                    }
-
-                    if (typeof accept === 'function') {
-                        accept(user);
                     }
                 });
             });

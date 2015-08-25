@@ -28,8 +28,8 @@
 }
 @font-face {
   font-family: 'icomoon';
-  src: url('../fonts/icomoon/icomoon.eot?-xpanr9');
-  src: url('../fonts/icomoon/icomoon.eot?#iefix-xpanr9') format('embedded-opentype'), url('../fonts/icomoon/icomoon.woff?-xpanr9') format('woff'), url('../fonts/icomoon/icomoon.ttf?-xpanr9') format('truetype'), url('../fonts/icomoon/icomoon.svg?-xpanr9#icomoon') format('svg');
+  src: url('../fonts/icomoon/fonts/icomoon.eot?-xpanr9');
+  src: url('../fonts/icomoon/fonts/icomoon.eot?#iefix-xpanr9') format('embedded-opentype'), url('../fonts/icomoon/fonts/icomoon.woff?-xpanr9') format('woff'), url('../fonts/icomoon/fonts/icomoon.ttf?-xpanr9') format('truetype'), url('../fonts/icomoon/fonts/icomoon.svg?-xpanr9#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -136,6 +136,9 @@ strong {
 }
 .icon-page:before {
   content: "\e926";
+}
+.icon-settings:before {
+  content: "\e60d";
 }
 /*Табличная разметка*/
 .b-table {
