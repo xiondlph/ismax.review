@@ -30,17 +30,16 @@ function logPayment(data) {
 // Отправка оповещения о платеже
 function notice(data, subject) {
     var smtpTransport = nodemailer.createTransport({
-        service: 'Gmail',
+        service: 'Yandex',
         auth: {
-            user: 'notification@ismax.ru',
-            pass: '159753qSeFt'
+            user: 'notification@shareview.ru',
+            pass: 'hwnd_des83'
         }
     });
 
     smtpTransport.sendMail({
-        from: 'Notification Ismax <notification@ismax.ru>',
-        to: 'Support Ismax <support@ismax.ru>',
-        bcc: 'Исмаилов Шухрат <shukhrat@ismax.ru>',
+        from: 'Notification Shareview <notification@shareview.ru>',
+        to: 'Support Shareview <support@shareview.ru>',
         subject: subject,
         text: JSON.stringify(data, null, "\t"),
         headers: {

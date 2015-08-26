@@ -10,6 +10,8 @@
     <title>Widget</title>
 </head>
 <body>
-	<script type="text/javascript"><#= code #></script>
+<# if (this.data.hasOwnProperty('text') && text){ #>
+    <script src="/widget?text=<#= text #>"></script>
+<# } #>
 </body>
 </html>

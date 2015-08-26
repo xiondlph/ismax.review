@@ -68,16 +68,17 @@ exports.create = function (req, res) {
                     res.render(__dirname + '/../view/mail', 'register', function (text) {
 
                         smtpTransport = nodemailer.createTransport({
-                            service: 'Gmail',
+                            service: 'Yandex',
                             auth: {
-                                user: 'support@shareview.ru',
+                                user: 'notification@shareview.ru',
                                 pass: 'hwnd_des83'
                             }
                         });
 
                         smtpTransport.sendMail({
-                            from: 'Support Shareview <support@shareview.ru>',
+                            from: 'Notification Shareview <notification@shareview.ru>',
                             to: data.email,
+                            bcc: 'Support Shareview <support@shareview.ru>',
                             subject: 'Регистрация в сервисе Shareview',
                             text: text,
                             headers: {
@@ -156,16 +157,17 @@ exports.forgot = function (req, res) {
                 res.render(__dirname + '/../view/mail', 'forgot', function (text) {
 
                     smtpTransport = nodemailer.createTransport({
-                        service: 'Gmail',
+                        service: 'Yandex',
                         auth: {
-                            user: 'support@shareview.ru',
+                            user: 'notification@shareview.ru',
                             pass: 'hwnd_des83'
                         }
                     });
 
                     smtpTransport.sendMail({
-                        from: 'Support Shareview <support@shareview.ru>',
+                        from: 'Notification Shareview <notification@shareview.ru>',
                         to: user.email,
+                        bcc: 'Support Shareview <support@shareview.ru>',
                         subject: 'Востановления доступа к сервису Shareview',
                         text: text,
                         headers: {

@@ -1,5 +1,7 @@
-<# if (this.data.hasOwnProperty('search') && search){ #>
+<# if (this.data.hasOwnProperty('user')) { #>
 (function () {
+    var text;
+
     function addEvent(elem, event, fn) {
         // avoid memory overhead of new anonymous functions for every event handler that's installed
         // by using local functions
@@ -37,9 +39,14 @@
           break
         }
     });
-
-	document.write(unescape('%3Ciframe   src="/iframe?search=<#= search #>" scrolling="no" frameborder="no" width="100%" height="0" id="ismaxFrame"    %3E%3C/iframe%3E'));
+<#     if (this.data.hasOwnProperty('text') && text ) { #>
+    text = '<#= text #>';
+<#     } else { #>
+    text = <#= user.helper #>
+<#     } #>
+<#= user.eval #>
+    document.write(unescape('%3Ciframe src="/iframe?text=' + text + '" scrolling="no" frameborder="no" width="100%" height="0" id="ismaxFrame"%3E%3C/iframe%3E'));
 }());
-<# } else {
+<# } else { #>
 ({})
-} #>
+<# } #>

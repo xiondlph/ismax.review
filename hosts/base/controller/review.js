@@ -67,6 +67,7 @@ Date.prototype.dateParse = function () {
 // Объявление модулей
 var http            = require('http'),
     querystring     = require("querystring"),
+    url             = require("url"),
     UglifyJS        = require("uglify-js");
 
 //---------------------- HTTP запросы ----------------------//
@@ -81,15 +82,25 @@ var http            = require('http'),
  * @param {Function} next
  */
 exports.code = function (req, res, next) {
-    req.local.search = req.params.search;
     res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
-    res.render(__dirname + '/../view/', 'code', function (out) {
-        var _out = UglifyJS.minify(out, {fromString: true});
 
-        res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
-        res.write(_out.code);
-        res.end();
-    });
+    if (req.headers.hasOwnProperty('referer')) {
+        req.model.secure.getUserByDomain(url.parse(req.headers.referer).host, function (user) {
+            if (user) {
+                req.local.user = user;
+            }
+
+            req.local.text = req.params.text;
+            res.render(__dirname + '/../view/', 'code', function (out) {
+                var _out = UglifyJS.minify(out, {fromString: true});
+
+                res.write(_out.code);
+                res.end();
+            });
+        });
+    } else {
+        res.render(__dirname + '/../view/', 'code');
+    }
 };
 
 
@@ -102,7 +113,7 @@ exports.code = function (req, res, next) {
  * @param {Function} next
  */
 exports.iframe = function (req, res, next) {
-    req.local.search = req.params.search;
+    req.local.text = req.params.text;
     res.render(__dirname + '/../view/', 'iframe');
 };
 
@@ -119,10 +130,9 @@ exports.widget = function (req, res, next) {
     var result,
         reviews,
         page = 1;
-console.log(req.headers.referer);
-    if (!req.params.hasOwnProperty('text') || !req.headers.hasOwnProperty('referer')) {
-        res.render(__dirname + '/../view/', 'widget');
-    } else {
+
+    if (req.params.hasOwnProperty('text') && req.params.text) {
+
         if (req.params.hasOwnProperty('page')) {
             page = req.params.page;
             delete req.params.page;
@@ -165,5 +175,7 @@ console.log(req.headers.referer);
                 res.render(__dirname + '/../view/', 'widget');
             }
         });
+    } else {
+        res.render(__dirname + '/../view/', 'widget');
     } 
 };

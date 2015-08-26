@@ -175,7 +175,8 @@ exports.getSettings = function (req, res) {
         auth: true,
         success: true,
         settings: {
-            domain:    req.user.domain
+            domain:    req.user.domain,
+            helper:    req.user.helper
         }
     };
 
@@ -207,6 +208,10 @@ exports.setSettings = function (req, res) {
             settings.domain = req.params.domain;
         }
 
+
+        if (req.params.hasOwnProperty('helper') && req.params.helper.length) {
+            settings.helper = req.params.helper;
+        }
 
         req.model.secure.setSettings(req.sissionId, settings, function (result) {
             response = {

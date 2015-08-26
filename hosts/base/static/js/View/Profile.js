@@ -255,6 +255,7 @@ define([
 
         events: {
             'input input':                              'input',
+            'input textarea':                           'input',
             'submit':                                   'submit'
         },
 
@@ -281,6 +282,7 @@ define([
                 global      : false
             }).done(function (data) {
                 me.$el.find('input[name="domain"]').val(data.settings.domain);
+                me.$el.find('textarea[name="helper"]').val(data.settings.helper);
                 me.$el.find('.j-form__field__input').trigger('input');
             }).fail(function () {
                 popup = new PopupView({content: $(errorTpl)});
@@ -320,7 +322,8 @@ define([
                     type        : 'POST',
                     dataType    : 'json',
                     data: JSON.stringify({
-                        domain: this.$el.find('input[name="domain"]').val()
+                        domain: this.$el.find('input[name="domain"]').val(),
+                        helper: this.$el.find('textarea[name="helper"]').val()
                     })
                 }).done(function (data) {
                     popup = new PopupView({content: $(_.template(successTpl)({message: 'Данные сохранены'}))});

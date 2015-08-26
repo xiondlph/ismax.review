@@ -136,6 +136,6 @@ router.get('^https://www.' + host + '.ru/payment/list/?$', model.payment, middle
 router.post('^https://www.' + host + '.ru/ym_notification/?$', model.secure, model.payment, controller.payment.notification);
 
 // Widget
-router.get('^(http|https)://www.' + host + '.ru/code/?$', middleware.query, controller.request.api, controller.review.code);
-router.get('^(http|https)://www.' + host + '.ru/iframe/?$', middleware.query, controller.request.api, controller.review.iframe);
-router.get('^(http|https)://www.' + host + '.ru/widget/?$', middleware.query, controller.request.api, controller.review.widget);
+router.get('^(http|https)://www.' + host + '.ru/code/?$', middleware.query, model.secure, controller.request.api, controller.review.code);
+router.get('^(http|https)://www.' + host + '.ru/iframe/?$', middleware.query, model.secure, controller.request.api, controller.review.iframe);
+router.get('^(http|https)://www.' + host + '.ru/widget/?$', middleware.query, model.secure, controller.request.api, controller.review.widget);
