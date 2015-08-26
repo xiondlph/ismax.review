@@ -177,5 +177,5 @@ exports.widget = function (req, res, next) {
         });
     } else {
         res.render(__dirname + '/../view/', 'widget');
-    } 
+    }
 };
