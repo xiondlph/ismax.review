@@ -8,7 +8,7 @@
         </url>
         <url>
             <loc>http://shareview.ru/destiny</loc>
-            <lastmod>2015-09-19</lastmod>
+            <lastmod>2015-08-19</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
         </url>
