@@ -55,10 +55,10 @@
     loader              = document.createElement('div');
     loader.id           = 'ismaxLoader';
     loader.style        = 'height: 30px;line-height: 30px;margin: 0 auto;text-align: center;';
-    loader.innerHTML    = '<img src="/images/loader.gif" />';
+    loader.innerHTML    = '<img src="http://www.shareview.ru/images/loader.gif" />';
 
     frame               = document.createElement('iframe');
-    frame.src           = '/iframe?text=' + text;
+    frame.src           = 'http://www.shareview.ru/iframe?text=' + text;
     frame.scrolling     = 'no';
     frame.frameBorder   = 'no';
     frame.width         = '100%';
