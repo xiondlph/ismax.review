@@ -54,7 +54,12 @@
 
     loader              = document.createElement('div');
     loader.id           = 'ismaxLoader';
-    loader.style        = 'height: 30px;line-height: 30px;margin: 0 auto;text-align: center;';
+    
+    loader.style.height     = '30px';
+    loader.style.lineHeight = '30px';
+    loader.style.margin     = '0px auto';
+    loader.style.textAlign  = 'center';
+
     loader.innerHTML    = '<img src="http://www.shareview.ru/images/loader.gif" />';
 
     frame               = document.createElement('iframe');
