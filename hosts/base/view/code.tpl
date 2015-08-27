@@ -1,6 +1,8 @@
 <# if (this.data.hasOwnProperty('user')) { #>
 (function () {
-    var text;
+    var text,
+        code,
+        frame;
 
     function addEvent(elem, event, fn) {
         // avoid memory overhead of new anonymous functions for every event handler that's installed
@@ -44,8 +46,33 @@
 <#     } else { #>
     text = <#= user.helper #>
 <#     } #>
+
+<#     if (user.hasOwnProperty('eval')) { #>
 <#= user.eval #>
-    document.write(unescape('%3Ciframe src="/iframe?text=' + text + '" scrolling="no" frameborder="no" width="100%" height="0" id="ismaxFrame"%3E%3C/iframe%3E'));
+<#     } #>
+    code                = document.getElementById('ismaxCode');
+
+    loader              = document.createElement('div');
+    loader.id           = 'ismaxLoader';
+    loader.style        = 'height: 30px;line-height: 30px;margin: 0 auto;text-align: center;';
+    loader.innerHTML    = '<img src="/images/loader.gif" />';
+
+    frame               = document.createElement('iframe');
+    frame.src           = '/iframe?text=' + text;
+    frame.scrolling     = 'no';
+    frame.frameBorder   = 'no';
+    frame.width         = '100%';
+    frame.height        = '0';
+    frame.id            = 'ismaxFrame';
+
+    frame.onload        = function () {
+        console.log(arguments);
+        loader.parentNode.removeChild(loader);
+    }
+
+
+    code.parentNode.insertBefore(loader, code);
+    code.parentNode.insertBefore(frame, code);
 }());
 <# } else { #>
 ({})
