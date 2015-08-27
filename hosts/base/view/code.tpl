@@ -71,7 +71,6 @@
     frame.id            = 'ismaxFrame';
 
     frame.onload        = function () {
-        console.log(arguments);
         loader.parentNode.removeChild(loader);
     }
 
