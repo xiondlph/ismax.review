@@ -13,7 +13,7 @@
             </div>
             <div class="b-form__field">
                 <input type="text" name="paidup" value="" id="paidup" class="b-form__field__input b-form__field__input_fill j-form__field__input" disabled>
-                <label for="paidup" class="b-form__field__label">Оплачен до<span class="b-form__field__label__invalid"></span></label>
+                <label for="paidup" class="b-form__field__label">Действителен до<span class="b-form__field__label__invalid"></span></label>
                 <a href="/payment" class="b-form__field__action icon-wallet">Продлить</a>
             </div>
             <div class="b-form__field">

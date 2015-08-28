@@ -43,7 +43,7 @@ function notice(data, subject) {
         subject: subject,
         text: JSON.stringify(data, null, "\t"),
         headers: {
-            'X-Mailer': 'ISMAX'
+            'X-Mailer': 'SHAREVIEW'
         }
     }, function (error, response) {
         if (error) {
@@ -58,17 +58,23 @@ function getPeriod(currentPeriod, amount) {
         _currentPeriod = currentPeriod && currentPeriod > currentDate ? new Date(currentPeriod) : currentDate;
 
     switch (amount) {
-    case 100:
+    case 50:
         _currentPeriod.setDate(_currentPeriod.getDate() + 1);
         break;
-    case 3000:
+    case 500:
         _currentPeriod.setMonth(_currentPeriod.getMonth() + 1);
         break;
-    case 6000:
+    case 1000:
         _currentPeriod.setMonth(_currentPeriod.getMonth() + 2);
         break;
+    case 1500:
+        _currentPeriod.setMonth(_currentPeriod.getMonth() + 3);
+        break;
+    case 2000:
+        _currentPeriod.setMonth(_currentPeriod.getMonth() + 4);
+        break;
     default:
-        _currentPeriod.setDate(_currentPeriod.getDate() + 1);
+        _currentPeriod.setDate(_currentPeriod.getDate() + (Math.ceil(amount / 50)));
         break;
     }
 

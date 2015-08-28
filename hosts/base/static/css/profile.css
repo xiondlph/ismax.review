@@ -1,11 +1,6 @@
-.b-form__field__list-domains__item {
-  border: 1px solid #cbcbcb;
-  border-radius: 3px;
-  padding: 0 3px;
-  margin: 0 0 3px 0;
-  width: 70%;
+.b-form__field__input_green {
+  color: #39d1b4;
 }
-.b-form__field__list-domains__item__remove-action {
-  cursor: pointer;
-  float: right;
+.b-form__field__input_red {
+  color: #e05d6f;
 }

@@ -86,7 +86,7 @@ exports.code = function (req, res, next) {
 
     if (req.headers.hasOwnProperty('referer')) {
         req.model.secure.getUserByDomain(url.parse(req.headers.referer).host, function (user) {
-            if (user) {
+            if (user && user.period > Date.now()) {
                 req.local.user = user;
             }
 

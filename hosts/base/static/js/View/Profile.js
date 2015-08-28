@@ -15,12 +15,14 @@ define([
     'text!Templates/Profile/Form.tpl',
     'text!Templates/Profile/Password.tpl',
     'text!Templates/Profile/Settings.tpl',
+    'text!Templates/Profile/Advanced.tpl',
     'text!Templates/Popup/Success.tpl',
     'text!Templates/Popup/Error.tpl'
-], function (Backbone, Validator, PopupView, formTpl, passwordTpl, settingsTpl, successTpl, errorTpl) {
+], function (Backbone, Validator, PopupView, formTpl, passwordTpl, settingsTpl, advancedTpl, successTpl, errorTpl) {
     var Form,
         Password,
-        Settings;
+        Settings,
+        Advanced;
 
 
     /**
@@ -63,15 +65,20 @@ define([
                 dataType    : 'json',
                 global      : false
             }).done(function (data) {
-                var period = new Date(data.profile.period);
+                var period = '--.--.----';
+                if (data.profile.hasOwnProperty('period') && data.profile.period) {
+                    period = (new Date(data.profile.period)).toLocaleDateString();
+                }
                 me.$el.find('input[name="email"]').val(data.profile.email);
 
                 if (data.profile.hasOwnProperty('_active') && data.profile._active) {
+                    me.$el.find('input[name="state"]').addClass('b-form__field__input_green');
                     me.$el.find('input[name="state"]').val('Активен');
-                    me.$el.find('input[name="paidup"]').val(period.toLocaleDateString());
+                    me.$el.find('input[name="paidup"]').val(period);
                 } else {
+                    me.$el.find('input[name="state"]').addClass('b-form__field__input_red');
                     me.$el.find('input[name="state"]').val('Заблокирован');
-                    me.$el.find('input[name="paidup"]').val(period.toLocaleDateString());
+                    me.$el.find('input[name="paidup"]').val(period);
                 }
 
                 me.$el.find('.j-form__field__input').trigger('input');
@@ -242,7 +249,7 @@ define([
 
 
     /**
-     * Представление формы настроек
+     * Представление формы базовых настроек
      *
      * @class       Settings
      * @namespace   Profile
@@ -282,7 +289,6 @@ define([
                 global      : false
             }).done(function (data) {
                 me.$el.find('input[name="domain"]').val(data.settings.domain);
-                me.$el.find('textarea[name="helper"]').val(data.settings.helper);
                 me.$el.find('.j-form__field__input').trigger('input');
             }).fail(function () {
                 popup = new PopupView({content: $(errorTpl)});
@@ -322,8 +328,7 @@ define([
                     type        : 'POST',
                     dataType    : 'json',
                     data: JSON.stringify({
-                        domain: this.$el.find('input[name="domain"]').val(),
-                        helper: this.$el.find('textarea[name="helper"]').val()
+                        domain: this.$el.find('input[name="domain"]').val()
                     })
                 }).done(function (data) {
                     popup = new PopupView({content: $(_.template(successTpl)({message: 'Данные сохранены'}))});
@@ -338,9 +343,96 @@ define([
         }
     });
 
+
+    /**
+     * Представление формы расширенных настроек
+     *
+     * @class       Advanced
+     * @namespace   Profile
+     * @constructor
+     * @extends     Backbone.View
+     */
+    Advanced = Backbone.View.extend({
+        tagName:    'form',
+        className:  'b-form  b-switch b-switch_animate',
+
+        events: {
+            'input input':                              'input',
+            'input textarea':                           'input',
+            'submit':                                   'submit'
+        },
+
+        render: function () {
+            var me = this,
+                popup;
+
+            me.$el.html(_.template(advancedTpl));
+
+            me.options.obj.find('.b-switch').addClass('b-switch_animate');
+            me.options.obj.append(me.$el);
+            setTimeout(function () {
+                me.$el.removeClass('b-switch_animate');
+            });
+
+            setTimeout(function () {
+                me.options.obj.find('.b-switch_animate').remove();
+            }, 200);
+
+            $.ajax({
+                url         : '/profile/settings/',
+                type        : 'GET',
+                dataType    : 'json',
+                global      : false
+            }).done(function (data) {
+                me.$el.find('textarea[name="script"]').val(data.settings.script);
+                me.$el.find('.j-form__field__input').trigger('input');
+            }).fail(function () {
+                popup = new PopupView({content: $(errorTpl)});
+                popup.render();
+            });
+
+            return this.$el;
+        },
+
+        input: function (e) {
+            if ($(e.currentTarget).val().length > 0) {
+                $(e.currentTarget).addClass('b-form__field__input_fill');
+                $(e.currentTarget).removeClass('b-form__field__input_invalid');
+            } else {
+                $(e.currentTarget).removeClass('b-form__field__input_fill');
+            }
+        },
+
+        submit: function (e) {
+            var valid   = true,
+                popup;
+
+            e.preventDefault();
+
+            if (valid) {
+                $.ajax({
+                    url         : '/profile/settings',
+                    type        : 'POST',
+                    dataType    : 'json',
+                    data: JSON.stringify({
+                        script: this.$el.find('textarea[name="script"]').val()
+                    })
+                }).done(function (data) {
+                    popup = new PopupView({content: $(_.template(successTpl)({message: 'Данные сохранены'}))});
+                    popup.render();
+                }).fail(function (data) {
+                    popup = new PopupView({content: $(errorTpl)});
+                    popup.render();
+                });
+            }
+
+            return false;
+        }
+    });
     return {
         Form        : Form,
         Password    : Password,
-        Settings    : Settings
+        Settings    : Settings,
+        Advanced    : Advanced
     };
 });

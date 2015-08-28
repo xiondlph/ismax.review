@@ -41,7 +41,8 @@ exports.get = function (req, res) {
         success: true,
         profile: {
             email:    req.user.email,
-            requests: req.user.requests
+            period:     req.user.period,
+            _active:    req.user._active
         }
     };
 
@@ -176,7 +177,7 @@ exports.getSettings = function (req, res) {
         success: true,
         settings: {
             domain:    req.user.domain,
-            helper:    req.user.helper
+            script:    req.user.script
         }
     };
 
@@ -209,8 +210,8 @@ exports.setSettings = function (req, res) {
         }
 
 
-        if (req.params.hasOwnProperty('helper') && req.params.helper.length) {
-            settings.helper = req.params.helper;
+        if (req.params.hasOwnProperty('script') && req.params.script.length) {
+            settings.script = req.params.script;
         }
 
         req.model.secure.setSettings(req.sissionId, settings, function (result) {

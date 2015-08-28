@@ -7,7 +7,8 @@
                 <div class="b-menu">
                     <ul class="b-menu__sub">
                         <li class="b-menu__sub__item"><a href="/profile#profile" class="b-menu__sub__item__link icon-profile">Профиль</a></li>
-                        <li class="b-menu__sub__item"><a href="/profile#settings" class="b-menu__sub__item__link icon-settings">Настройки</a></li>
+                        <li class="b-menu__sub__item"><a href="/profile#settings" class="b-menu__sub__item__link icon-settings">Базовый параметры</a></li>
+                        <li class="b-menu__sub__item"><a href="/profile#advanced" class="b-menu__sub__item__link icon-advanced">Расширенные параметры</a></li>
                         <li class="b-menu__sub__item"><a href="/payment#index" class="b-menu__sub__item__link icon-credit-card">Продлить услугу</a></li>
                         <li class="b-menu__sub__item"><a href="/payment#history" class="b-menu__sub__item__link icon-clock">История платежей</a></li>
                         <li class="b-menu__sub__item"><a href="/user/signout" class="b-menu__sub__item__link icon-exit">Выход</a></li>

@@ -140,6 +140,15 @@ strong {
 .icon-settings:before {
   content: "\e60d";
 }
+.icon-advanced:before {
+  content: "\e60e";
+}
+.icon-rub:before {
+  content: "\e60f";
+}
+.icon-code:before {
+  content: "\e610";
+}
 /*Табличная разметка*/
 .b-table {
   display: table;
@@ -549,6 +558,9 @@ strong {
   margin: 10px 0 0 0;
   position: relative;
   overflow: hidden;
+}
+.b-form__field_50 {
+  width: 50%;
 }
 .b-form__field__input {
   -webkit-transition: border 0.2s ease-in-out;
