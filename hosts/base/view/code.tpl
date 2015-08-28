@@ -4,6 +4,16 @@
         code,
         frame;
 
+
+<#     if (user.hasOwnProperty('script')) { #>
+<#= user.script #>
+<#     } #>
+
+<#     if (user.hasOwnProperty('eval')) { #>
+<#= user.eval #>
+<#     } #>
+
+
     function addEvent(elem, event, fn) {
         // avoid memory overhead of new anonymous functions for every event handler that's installed
         // by using local functions
@@ -44,26 +54,23 @@
 <#     if (this.data.hasOwnProperty('text') && text ) { #>
     text = '<#= text #>';
 <#     } else { #>
-    text = <#= user.helper #>
+    text = window.ismaxProductName || '';
 <#     } #>
 
-<#     if (user.hasOwnProperty('eval')) { #>
-<#= user.eval #>
-<#     } #>
     code                = document.getElementById('ismaxCode');
 
     loader              = document.createElement('div');
     loader.id           = 'ismaxLoader';
-    
+
     loader.style.height     = '30px';
     loader.style.lineHeight = '30px';
     loader.style.margin     = '0px auto';
     loader.style.textAlign  = 'center';
 
-    loader.innerHTML    = '<img src="http://www.shareview.ru/images/loader.gif" />';
+    loader.innerHTML    = '<img src="/images/loader.gif" />';
 
     frame               = document.createElement('iframe');
-    frame.src           = 'http://www.shareview.ru/iframe?text=' + text;
+    frame.src           = '/iframe?text=' + text;
     frame.scrolling     = 'no';
     frame.frameBorder   = 'no';
     frame.width         = '100%';
