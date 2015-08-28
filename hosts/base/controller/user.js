@@ -52,8 +52,9 @@ exports.create = function (req, res) {
             } else {
                 password   = generatePassword(12, false);
                 data        = {
-                    email: req.params.email,
-                    active: false
+                    email:      req.params.email,
+                    active:     false,
+                    script:     'window.ismaxWidget.text = document.getElementsByTagName(\'title\')[0].innerHTML;'
                 };
 
                 // Шифрование

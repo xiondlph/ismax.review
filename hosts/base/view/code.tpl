@@ -1,5 +1,6 @@
 <# if (this.data.hasOwnProperty('user')) { #>
-(function () {
+window.ismaxWidget = {};
+(function (window) {
     var text,
         code,
         frame;
@@ -54,7 +55,7 @@
 <#     if (this.data.hasOwnProperty('text') && text ) { #>
     text = '<#= text #>';
 <#     } else { #>
-    text = window.ismaxProductName || '';
+    text = window.ismaxWidget.text || '';
 <#     } #>
 
     code                = document.getElementById('ismaxCode');
@@ -67,7 +68,7 @@
     loader.style.margin     = '0px auto';
     loader.style.textAlign  = 'center';
 
-    loader.innerHTML    = '<img src="/images/loader.gif" />';
+    loader.innerHTML    = '<img src="http://www.shareview.ru/images/loader.gif" />';
 
     frame               = document.createElement('iframe');
     frame.src           = '/iframe?text=' + text;
@@ -84,7 +85,7 @@
 
     code.parentNode.insertBefore(loader, code);
     code.parentNode.insertBefore(frame, code);
-}());
+}(window));
 <# } else { #>
 ({})
 <# } #>

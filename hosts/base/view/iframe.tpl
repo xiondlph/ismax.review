@@ -11,7 +11,7 @@
 </head>
 <body>
 <# if (this.data.hasOwnProperty('text') && text){ #>
-    <script src="/widget?text=<#= text #>"></script>
+    <script src="http://www.shareview.ru/widget?text=<#= text #>"></script>
 <# } #>
 </body>
 </html>
