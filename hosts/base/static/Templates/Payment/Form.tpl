@@ -1,3 +1,5 @@
+<a href="/payment#index" class="b-section__action b-section__action_active icon-credit-card">Продление услуги</a>
+<a href="/payment#history" class="b-section__action icon-clock">История платежей</a>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
         <div class="b-table__tr__td b-table__tr__td_nowidth">

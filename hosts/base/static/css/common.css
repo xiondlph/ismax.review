@@ -530,6 +530,21 @@ strong {
 .b-section__article_col-2 + .b-section__article_col-2 {
   margin: 0 0 30px 0;
 }
+.b-section__action {
+  padding: 5px 5px 5px 25px;
+  background-color: #fff;
+  position: relative;
+  font-size: 12px;
+}
+.b-section__action:before {
+  position: absolute;
+  font-size: 16px;
+  left: 5px;
+  top: 4px;
+}
+.b-section__action_active {
+  border-top: 2px solid #e05d6f;
+}
 /*** Блок сменяющегося контейнера ***/
 .b-switch {
   transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
@@ -641,6 +656,32 @@ strong {
   font-size: 16px;
   left: 5px;
   top: 0;
+}
+/*** Разметка блока ***/
+.b-block {
+  width: 100%;
+}
+.b-block__action {
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  color: #aeaeae;
+  height: 150px;
+  width: 150px;
+}
+.b-block__action:hover {
+  text-decoration: none;
+  color: #23527c;
+}
+.b-block__action:before {
+  text-shadow: 1px 1px 0 #fff;
+  line-height: 100px;
+  text-align: center;
+  font-size: 50px;
+  color: #aeaeae;
+  display: block;
+  heigth: 100px;
+  width: 150px;
 }
 /*** Блок табличных данных ***/
 .b-grid {

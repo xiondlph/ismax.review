@@ -4,3 +4,6 @@
 .b-form__field__input_red {
   color: #e05d6f;
 }
+.b-form__hint {
+  display: none;
+}

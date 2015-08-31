@@ -35,6 +35,11 @@ require([
 ], function ($, Menu, Profile, Loader) {
 
     // Маршруты
+    function index() {
+        var form = new Profile.Index({obj: $('.b-section')});
+        form.render();
+    }
+
     function profile() {
         $('.b-menu__sub__item__link_active').removeClass('b-menu__sub__item__link_active');
         $('.b-menu__sub__item__link[href="/profile#profile"]').addClass('b-menu__sub__item__link_active');
@@ -56,7 +61,7 @@ require([
 
     function advanced() {
         $('.b-menu__sub__item__link_active').removeClass('b-menu__sub__item__link_active');
-        $('.b-menu__sub__item__link[href="/profile#advanced"]').addClass('b-menu__sub__item__link_active');
+        $('.b-menu__sub__item__link[href="/profile#settings"]').addClass('b-menu__sub__item__link_active');
         var addr = new Profile.Advanced({obj: $('.b-section')});
         addr.render();
     }
@@ -70,7 +75,7 @@ require([
         loader.render();
 
         // Маршрутизация
-        router.route('*other', 'default', profile);
+        router.route('*other', 'default', index);
         router.route('profile', 'profile', profile);
         router.route('pass', 'pass', password);
         router.route('settings', 'settings', settings);

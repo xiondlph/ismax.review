@@ -598,6 +598,22 @@ b, strong {
             }
         }
     }
+
+    &__action {
+        padding: 5px 5px 5px 25px;
+        background-color: #fff;
+        position: relative;
+        font-size: 12px;
+        &:before {
+            position: absolute;
+            font-size: 16px;
+            left: 5px;
+            top: 4px;
+        }
+        &_active {
+            border-top: 2px solid #e05d6f;
+        }
+    } 
 }
 
 
@@ -717,6 +733,34 @@ b, strong {
                 left: 5px;
                 top: 0;
             }
+        }
+    }
+}
+
+
+/*** Разметка блока ***/
+.b-block {
+    width: 100%;
+    &__action {
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        color: #aeaeae;
+        height: 150px;
+        width: 150px;
+        &:hover {
+           text-decoration: none;
+           color: #23527c;
+        }
+        &:before {
+            text-shadow: 1px 1px 0 #fff;
+            line-height: 100px;
+            text-align: center;
+            font-size: 50px;
+            color: #aeaeae;
+            display: block;
+            heigth: 100px;
+            width: 150px;
         }
     }
 }

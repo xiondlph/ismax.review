@@ -1,4 +1,4 @@
-<div class="b-table b-form__table">
+<div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
         <div class="b-table__tr__td">
             <div class="b-form__title">Сменить пароль</div>
@@ -12,7 +12,9 @@
             </div>
         </div>
         <div class="b-table__tr__td">
-            Обратите внимание, что после смены пароля все Ваши открытые сессии на всех компьютерах и устройствах, будут автоматически завершены.
+            <div class="b-form__hint j-form__hint">Обратите внимание, что после смены пароля все Ваши открытые сессии на всех компьютерах и устройствах, будут автоматически завершены.</div>
+            <div class="b-form__hint j-form__hint_password">Введите ваш новый пароль.</div>
+            <div class="b-form__hint j-form__hint_confirm">Для подтверждения вашего пароля, введите его повторно</div>
         </div>
     </div>
     <div class="b-table__tr">

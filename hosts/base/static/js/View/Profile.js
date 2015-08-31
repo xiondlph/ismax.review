@@ -12,17 +12,55 @@ define([
     'backbone',
     'validator',
     'View/Popup',
+    'text!Templates/Profile/Index.tpl',
     'text!Templates/Profile/Form.tpl',
     'text!Templates/Profile/Password.tpl',
     'text!Templates/Profile/Settings.tpl',
     'text!Templates/Profile/Advanced.tpl',
     'text!Templates/Popup/Success.tpl',
     'text!Templates/Popup/Error.tpl'
-], function (Backbone, Validator, PopupView, formTpl, passwordTpl, settingsTpl, advancedTpl, successTpl, errorTpl) {
-    var Form,
+], function (Backbone, Validator, PopupView, indexTpl, formTpl, passwordTpl, settingsTpl, advancedTpl, successTpl, errorTpl) {
+    var Index,
+        Form,
         Password,
         Settings,
         Advanced;
+
+
+    /**
+     * Представление скрина по умолчанию
+     *
+     * @class       Index
+     * @namespace   Profile
+     * @constructor
+     * @extends     Backbone.View
+     */
+    Index = Backbone.View.extend({
+        tagName:    'div',
+        className:  'b-block  b-switch b-switch_animate',
+
+        events: {
+
+        },
+
+        render: function () {
+            var me = this;
+
+            me.$el.html(_.template(indexTpl));
+
+            me.options.obj.find('.b-switch').addClass('b-switch_animate');
+            me.options.obj.append(me.$el);
+            setTimeout(function () {
+                me.$el.removeClass('b-switch_animate');
+            });
+
+            setTimeout(function () {
+                me.options.obj.find('.b-switch_animate').remove();
+            }, 200);
+
+            return me.$el;
+        }
+    });
 
 
     /**
@@ -39,6 +77,9 @@ define([
 
         events: {
             'input .j-form__field__input':      'input',
+            'focus .j-form__field__input':      'focus',
+            'blur .j-form__field__input':       'blur',
+            'click .j-form__field__input':      'click',
             'submit':                           'submit'
         },
 
@@ -82,6 +123,7 @@ define([
                 }
 
                 me.$el.find('.j-form__field__input').trigger('input');
+                me.$el.find('input[name="email"]').trigger('focus');
             }).fail(function () {
                 popup = new PopupView({content: $(errorTpl)});
                 popup.render();
@@ -97,6 +139,30 @@ define([
             } else {
                 $(e.currentTarget).removeClass('b-form__field__input_fill');
             }
+        },
+
+        focus: function (e) {
+            var me = this;
+
+            me.$el.find('.b-form__hint').hide();
+
+            me.$el.find('.j-form__hint_' + e.currentTarget.id).stop().fadeIn();
+        },
+
+        blur: function (e) {
+            var me = this;
+
+            me.$el.find('.j-form__hint_' + e.currentTarget.id).stop().fadeOut();
+
+            setTimeout(function () {
+                if (!me.$el.find('.b-form__hint:visible').length && me.$el.find('.j-form__hint').length) {
+                    me.$el.find('.j-form__hint').stop().fadeIn();
+                }
+            }, 500);
+        },
+
+        click: function (e) {
+            console.log(e.currentTarget);
         },
 
         submit: function (e) {
@@ -161,8 +227,10 @@ define([
         className:  'b-form  b-switch b-switch_animate',
 
         events: {
-            'input input':      'input',
-            'submit':           'submit'
+            'input input':                      'input',
+            'focus .j-form__field__input':      'focus',
+            'blur .j-form__field__input':       'blur',
+            'submit':                           'submit'
         },
 
         render: function () {
@@ -191,6 +259,26 @@ define([
             } else {
                 $(e.currentTarget).removeClass('b-form__field__input_fill');
             }
+        },
+
+        focus: function (e) {
+            var me = this;
+
+            me.$el.find('.b-form__hint').hide();
+
+            me.$el.find('.j-form__hint_' + e.currentTarget.id).stop().fadeIn();
+        },
+
+        blur: function (e) {
+            var me = this;
+
+            me.$el.find('.j-form__hint_' + e.currentTarget.id).stop().fadeOut();
+
+            setTimeout(function () {
+                if (!me.$el.find('.b-form__hint:visible').length && me.$el.find('.j-form__hint').length) {
+                    me.$el.find('.j-form__hint').stop().fadeIn();
+                }
+            }, 500);
         },
 
         submit: function (e) {
@@ -430,6 +518,7 @@ define([
         }
     });
     return {
+        Index       : Index,
         Form        : Form,
         Password    : Password,
         Settings    : Settings,

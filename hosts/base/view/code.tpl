@@ -5,15 +5,12 @@ window.ismaxWidget = {};
         code,
         frame;
 
-
 <#     if (user.hasOwnProperty('script')) { #>
-<#= user.script #>
+    <#= user.script #>
 <#     } #>
-
 <#     if (user.hasOwnProperty('eval')) { #>
-<#= user.eval #>
+    <#= user.eval #>
 <#     } #>
-
 
     function addEvent(elem, event, fn) {
         // avoid memory overhead of new anonymous functions for every event handler that's installed
@@ -24,7 +21,7 @@ window.ismaxWidget = {};
                 e.stopPropagation();
                 e.preventDefault();
             }
-            return(ret);
+            return ret;
         }
 
         function attachHandler() {
@@ -35,7 +32,7 @@ window.ismaxWidget = {};
                 window.event.returnValue = false;
                 window.event.cancelBubble = true;
             }
-            return(ret);
+            return ret;
         }
 
         if (elem.addEventListener) {
@@ -46,10 +43,10 @@ window.ismaxWidget = {};
     }
 
     addEvent(window, 'message', function (event) {
-        switch(event.data.action){
+        switch (event.data.action) {
         case 'ismaxSetHeight':
-          document.getElementById('ismaxFrame').setAttribute('height', event.data.height);
-          break
+            document.getElementById('ismaxFrame').setAttribute('height', event.data.height);
+            break;
         }
     });
 <#     if (this.data.hasOwnProperty('text') && text ) { #>
