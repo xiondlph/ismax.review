@@ -9,17 +9,17 @@
  */
 
 
-// String.prototype.fnv32a = function () {
-//     var i,
-//         FNV1_32A_INIT   = 0x811c9dc5,
-//         hval            = FNV1_32A_INIT;
+String.prototype.fnv32a = function () {
+    var i,
+        FNV1_32A_INIT   = 0x811c9dc5,
+        hval            = FNV1_32A_INIT;
 
-//     for (i = 0; i < this.length; ++i) {
-//         hval ^= this.charCodeAt(i);
-//         hval += (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
-//     }
-//     return hval >>> 0;
-// };
+    for (i = 0; i < this.length; ++i) {
+        hval ^= this.charCodeAt(i);
+        hval += (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
+    }
+    return hval >>> 0;
+};
 
 
 Date.prototype.dateParse = function () {
