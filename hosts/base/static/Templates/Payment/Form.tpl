@@ -1,5 +1,5 @@
-<a href="/payment#index" class="b-section__action b-section__action_active icon-credit-card">Продление услуги</a>
-<a href="/payment#history" class="b-section__action icon-clock">История платежей</a>
+<a href="/profile#payment" class="b-section__action b-section__action_active icon-credit-card">Продление услуги</a>
+<a href="/profile#history" class="b-section__action icon-clock">История платежей</a>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
         <div class="b-table__tr__td b-table__tr__td_nowidth">
@@ -10,7 +10,7 @@
                     <option value="500">1 мес. - 500 руб.</option>
                     <option value="1000">2 мес. - 1000 руб.</option>
                     <option value="1500">3 мес. - 1500 руб.</option>
-                    <option value="1500">4 мес. - 1500 руб.</option>
+                    <option value="2000">4 мес. - 2000 руб.</option>
                 </select>
                 <label for="sum" class="b-form__field__label b-form__field__label_payment j-form__field__label_payment">Срок продления</label>
             </div>

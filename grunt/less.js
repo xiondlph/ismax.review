@@ -17,12 +17,6 @@ module.exports = {
         }
     },
 
-    payment: {
-        files: {
-            'hosts/base/static/css/payment.css': 'hosts/base/static/less/payment.less'
-        }
-    },
-
     simple: {
         files: {
             'hosts/base/static/css/simple.css': 'hosts/base/static/less/simple.less'

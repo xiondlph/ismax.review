@@ -85,19 +85,6 @@ function getPeriod(currentPeriod, amount) {
 
 
 /**
- * Страница контроллера
- *
- * @method index
- * @param {Object} req Объект запроса сервера
- * @param {Object} res Объект ответа сервера
- * @param {Function} next
- */
-exports.index = function (req, res, next) {
-    res.render(__dirname + '/../view/', 'payment');
-};
-
-
-/**
  * Уведомление о платеже
  *
  * @method notification

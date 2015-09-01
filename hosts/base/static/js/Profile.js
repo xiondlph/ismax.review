@@ -31,39 +31,57 @@ require([
     'jquery',
     'View/Menu',
     'View/Profile',
+    'View/Payment',
     'View/Loader'
-], function ($, Menu, Profile, Loader) {
+], function ($, Menu, ProfileView, PaymentView, Loader) {
 
     // Маршруты
-    function index() {
-        var form = new Profile.Index({obj: $('.b-section')});
-        form.render();
-    }
-
     function profile() {
         $('.b-menu__sub__item__link_active').removeClass('b-menu__sub__item__link_active');
         $('.b-menu__sub__item__link[href="/profile#profile"]').addClass('b-menu__sub__item__link_active');
-        var form = new Profile.Form({obj: $('.b-section')});
+        var form = new ProfileView.Form({obj: $('.b-section')});
         form.render();
     }
 
     function password() {
-        var pass = new Profile.Password({obj: $('.b-section')});
+        var pass = new ProfileView.Password({obj: $('.b-section')});
         pass.render();
     }
 
     function settings() {
         $('.b-menu__sub__item__link_active').removeClass('b-menu__sub__item__link_active');
         $('.b-menu__sub__item__link[href="/profile#settings"]').addClass('b-menu__sub__item__link_active');
-        var addr = new Profile.Settings({obj: $('.b-section')});
+        var addr = new ProfileView.Settings({obj: $('.b-section')});
+        addr.render();
+    }
+
+    function code() {
+        $('.b-menu__sub__item__link_active').removeClass('b-menu__sub__item__link_active');
+        $('.b-menu__sub__item__link[href="/profile#settings"]').addClass('b-menu__sub__item__link_active');
+        var addr = new ProfileView.Code({obj: $('.b-section')});
         addr.render();
     }
 
     function advanced() {
         $('.b-menu__sub__item__link_active').removeClass('b-menu__sub__item__link_active');
         $('.b-menu__sub__item__link[href="/profile#settings"]').addClass('b-menu__sub__item__link_active');
-        var addr = new Profile.Advanced({obj: $('.b-section')});
+        var addr = new ProfileView.Advanced({obj: $('.b-section')});
         addr.render();
+    }
+
+    // Оплата
+    function payment() {
+        $('.b-menu__sub__item__link_active').removeClass('b-menu__sub__item__link_active');
+        $('.b-menu__sub__item__link[href="/profile#payment"]').addClass('b-menu__sub__item__link_active');
+        var Form = new PaymentView.Form({obj: $('.b-section')});
+        Form.render();
+    }
+
+    function history() {
+        $('.b-menu__sub__item__link_active').removeClass('b-menu__sub__item__link_active');
+        $('.b-menu__sub__item__link[href="/profile#payment"]').addClass('b-menu__sub__item__link_active');
+        var Form = new PaymentView.History({obj: $('.b-section')});
+        Form.render();
     }
 
     $(function () {
@@ -75,11 +93,15 @@ require([
         loader.render();
 
         // Маршрутизация
-        router.route('*other', 'default', index);
+        router.route('*other', 'default', profile);
         router.route('profile', 'profile', profile);
         router.route('pass', 'pass', password);
         router.route('settings', 'settings', settings);
+        router.route('code', 'code', code);
         router.route('advanced', 'advanced', advanced);
+
+        router.route('payment', 'payment', payment);
+        router.route('history', 'history', history);
 
         Backbone.history.start();
     });

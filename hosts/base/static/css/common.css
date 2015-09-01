@@ -56,11 +56,11 @@ a {
   -o-transition: color 0.3s linear;
   transition: color 0.3s linear;
   text-decoration: none;
-  color: #337ab7;
+  color: #4e8bba;
 }
 a:hover {
   text-decoration: underline;
-  color: #23527c;
+  color: #3c7199;
 }
 h2 a:hover {
   text-decoration: none;
@@ -180,8 +180,8 @@ strong {
   -moz-transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
   -o-transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
   transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
-  background-color: #39d1b4;
-  border: 1px solid #39d1b4;
+  background-color: #669999;
+  border: 1px solid #669999;
   display: inline-block;
   margin: 10px 0 0 0;
   line-height: 30px;
@@ -192,8 +192,8 @@ strong {
   color: #fff;
 }
 .f-btn:hover {
-  background-color: #5CE0C7;
-  border: 1px solid #5CE0C7;
+  background-color: #527a7a;
+  border: 1px solid #527a7a;
   text-decoration: none;
   color: #fff;
 }
@@ -203,19 +203,19 @@ strong {
   -o-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
   background-color: #fff;
-  color: #5CE0C7;
+  color: #527a7a;
   /*&:hover {
             background-color: #fff;
-            color: #5CE0C7;
+            color: @green-color-active;
         }*/
 }
 .f-btn_red {
-  background-color: #e05d6f;
-  border: 1px solid #e05d6f;
+  background-color: #cc6666;
+  border: 1px solid #cc6666;
 }
 .f-btn_red:hover {
-  background-color: #dc485c;
-  border: 1px solid #dc485c;
+  background-color: #bc5d58;
+  border: 1px solid #bc5d58;
 }
 .f-btn_center {
   margin: 0 auto 30px auto;
@@ -254,7 +254,7 @@ strong {
 }
 /*** Всплывающий контейнер ***/
 .b-popup {
-  background-color: rgba(64, 147, 115, 0.62);
+  background-color: rgba(0, 0, 0, 0.62);
   -webkit-transition: opacity 0.1s linear;
   -moz-transition: opacity 0.1s linear;
   -o-transition: opacity 0.1s linear;
@@ -385,10 +385,10 @@ strong {
 }
 .b-nav__item:hover {
   text-decoration: none;
-  color: #e05d6f;
+  color: #cc6666;
 }
 .b-nav__item_active:before {
-  background-color: #e05d6f;
+  background-color: #cc6666;
   position: absolute;
   display: block;
   content: "";
@@ -420,7 +420,7 @@ strong {
   color: #aeaeae;
 }
 .b-menu__label_active:before {
-  background-color: #e05d6f;
+  background-color: #cc6666;
   position: absolute;
   display: block;
   content: "";
@@ -430,7 +430,7 @@ strong {
   top: 0;
 }
 .b-menu__label:hover {
-  color: #e05d6f;
+  color: #cc6666;
 }
 .b-menu__sub {
   -webkit-transition: top 0.1s linear;
@@ -471,7 +471,7 @@ strong {
   top: 38px;
 }
 .b-menu__sub_active + .b-menu__label {
-  color: #e05d6f;
+  color: #cc6666;
 }
 .b-menu__sub__item {
   position: relative;
@@ -492,7 +492,7 @@ strong {
   text-decoration: none;
 }
 .b-menu__sub__item__link:hover:before {
-  color: #e05d6f;
+  color: #cc6666;
 }
 .b-menu__sub__item__link:before {
   position: absolute;
@@ -502,7 +502,7 @@ strong {
 }
 .b-menu__sub__item__link_active {
   background-position: 13px center;
-  border-left: 3px solid #e05d6f;
+  border-left: 3px solid #cc6666;
   padding: 10px 10px 10px 38px;
 }
 /*** Главный контейнер ***/
@@ -531,8 +531,8 @@ strong {
   margin: 0 0 30px 0;
 }
 .b-section__action {
-  padding: 5px 5px 5px 25px;
-  background-color: #fff;
+  padding: 5px 5px 5px 30px;
+  display: inline-block;
   position: relative;
   font-size: 12px;
 }
@@ -540,10 +540,16 @@ strong {
   position: absolute;
   font-size: 16px;
   left: 5px;
-  top: 4px;
+  top: 5px;
+}
+.b-section__action:hover {
+  text-decoration: none;
+}
+.b-section__action:hover:before {
+  color: #cc6666;
 }
 .b-section__action_active {
-  border-top: 2px solid #e05d6f;
+  border-bottom: 2px solid #cc6666;
 }
 /*** Блок сменяющегося контейнера ***/
 .b-switch {
@@ -562,6 +568,7 @@ strong {
   width: 100%;
 }
 .b-form__table {
+  border: 1px solid #ddd;
   background-color: #fff;
   margin: 0 auto;
   padding: 10px;
@@ -597,7 +604,7 @@ strong {
   margin: 0;
 }
 .b-form__field__input_fill:focus + .b-form__field__label {
-  color: #4CADDD;
+  color: #4e8bba;
 }
 .b-form__field__input_fill + .b-form__field__label {
   top: 4px;
@@ -605,11 +612,14 @@ strong {
 .b-form__field__input_invalid + .b-form__field__label .b-form__field__label__invalid {
   opacity: 1;
 }
+.b-form__field__input[readonly="true"] {
+  cursor: pointer;
+}
 .b-form__field:hover .b-form__field__input {
   border: 1px solid #bbb;
 }
 .b-form__field .b-form__field__input:focus {
-  border: 1px solid #4CADDD;
+  border: 1px solid #4e8bba;
 }
 .b-form__field__label {
   -webkit-transition: top 0.2s ease-in-out, color 0.2s ease-in-out;

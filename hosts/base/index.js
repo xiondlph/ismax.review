@@ -130,7 +130,6 @@ router.post('^https://www.' + host + '.ru/profile/settings/?$', controller.profi
 router.get('^https://www.' + host + '.ru/payment.*$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
 router.post('^https://www.' + host + '.ru/payment.*$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
 
-router.get('^https://www.' + host + '.ru/payment/?$', controller.payment.index);
 router.get('^https://www.' + host + '.ru/payment/last/?$', model.payment, controller.payment.last);
 router.get('^https://www.' + host + '.ru/payment/list/?$', model.payment, middleware.query, controller.payment.list);
 router.post('^https://www.' + host + '.ru/ym_notification/?$', model.secure, model.payment, controller.payment.notification);

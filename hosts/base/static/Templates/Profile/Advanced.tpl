@@ -1,4 +1,5 @@
 <a href="/profile#settings" class="b-section__action icon-settings">Настройки</a>
+<a href="/profile#code" class="b-section__action icon-code">Код виджета</a>
 <a href="/profile#advanced" class="b-section__action b-section__action_active icon-advanced">Интерграция</a>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
