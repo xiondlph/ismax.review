@@ -14,7 +14,7 @@
             <div class="b-form__field j-form__field">
                 <input type="text" name="paidup" value="" id="paidup" class="b-form__field__input b-form__field__input_fill j-form__field__input" readonly="true">
                 <label for="paidup" class="b-form__field__label">Действителен до<span class="b-form__field__label__invalid"></span></label>
-                <a href="/payment" class="b-form__field__action icon-wallet">Продлить</a>
+                <a href="/profile#payment" class="b-form__field__action icon-wallet">Продлить</a>
             </div>
             <div class="b-form__field j-form__field">
                 <input type="text" name="state" value="" id="state" class="b-form__field__input b-form__field__input_fill j-form__field__input" readonly="true">

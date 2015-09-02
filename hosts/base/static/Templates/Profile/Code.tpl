@@ -12,15 +12,10 @@
         </div>
         <div class="b-table__tr__td"></div>
     </div>
-</div>
-<div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
         <div class="b-table__tr__td">
-            <div class="b-form__title">Демо виджета</div>
-            <div class="b-form__field">
-                <input type="text" value="" id="demo" class="b-form__field__input b-form__field__input_fill j-form__field__input">
-                <label for="demo" class="b-form__field__label">Для товара<span class="b-form__field__label__invalid"></span></label>
-            </div>
+            <a href="#profile" class="f-btn f-btn_back">Назад</a>
         </div>
+        <div class="b-table__tr__td b-table__tr__td_right"></div>
     </div>
 </div>

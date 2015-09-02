@@ -532,8 +532,12 @@ strong {
 }
 .b-section__action {
   padding: 5px 5px 5px 30px;
+  border: 1px solid #ddd;
+  background-color: #fff;
   display: inline-block;
+  margin-bottom: -1px;
   position: relative;
+  height: 27px;
   font-size: 12px;
 }
 .b-section__action:before {
@@ -549,7 +553,8 @@ strong {
   color: #cc6666;
 }
 .b-section__action_active {
-  border-bottom: 2px solid #cc6666;
+  border-bottom: none;
+  height: 30px;
 }
 /*** Блок сменяющегося контейнера ***/
 .b-switch {

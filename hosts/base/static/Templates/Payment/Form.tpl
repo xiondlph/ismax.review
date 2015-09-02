@@ -20,7 +20,9 @@
         </div>
     </div>
     <div class="b-table__tr">
-        <div class="b-table__tr__td"></div>
+        <div class="b-table__tr__td">
+            <a href="#profile" class="f-btn f-btn_back">Назад</a>
+        </div>
         <div class="b-table__tr__td b-table__tr__td_right">
             <input type="submit" value="Оплатить" class="f-btn">
         </div>
