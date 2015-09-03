@@ -60,37 +60,39 @@ define([
 
             setTimeout(function () {
                 me.options.obj.find('.b-switch_animate').remove();
+
+
+                $.ajax({
+                    url         : '/profile/get/',
+                    type        : 'GET',
+                    dataType    : 'json'
+                }).done(function (data) {
+                    var period = '--.--.----';
+                    if (data.profile.hasOwnProperty('period') && data.profile.period) {
+                        period = (new Date(data.profile.period)).toLocaleDateString();
+                    }
+                    me.$el.find('input[name="email"]').val(data.profile.email);
+
+                    if (data.profile.hasOwnProperty('_active') && data.profile._active) {
+                        me.$el.find('input[name="state"]').addClass('b-form__field__input_green');
+                        me.$el.find('input[name="state"]').val('Активен');
+                        me.$el.find('input[name="paidup"]').val(period);
+                    } else {
+                        me.$el.find('input[name="state"]').addClass('b-form__field__input_red');
+                        me.$el.find('input[name="state"]').val('Заблокирован');
+                        me.$el.find('input[name="paidup"]').val(period);
+                    }
+
+                    me.$el.find('.j-form__field__input').trigger('input');
+                    me.$el.find('input[name="email"]').trigger('focus');
+                }).fail(function () {
+                    popup = new PopupView({content: $(errorTpl)});
+                    popup.render();
+                });
+
+
+
             }, 200);
-
-
-            $.ajax({
-                url         : '/profile/get/',
-                type        : 'GET',
-                dataType    : 'json',
-                global      : false
-            }).done(function (data) {
-                var period = '--.--.----';
-                if (data.profile.hasOwnProperty('period') && data.profile.period) {
-                    period = (new Date(data.profile.period)).toLocaleDateString();
-                }
-                me.$el.find('input[name="email"]').val(data.profile.email);
-
-                if (data.profile.hasOwnProperty('_active') && data.profile._active) {
-                    me.$el.find('input[name="state"]').addClass('b-form__field__input_green');
-                    me.$el.find('input[name="state"]').val('Активен');
-                    me.$el.find('input[name="paidup"]').val(period);
-                } else {
-                    me.$el.find('input[name="state"]').addClass('b-form__field__input_red');
-                    me.$el.find('input[name="state"]').val('Заблокирован');
-                    me.$el.find('input[name="paidup"]').val(period);
-                }
-
-                me.$el.find('.j-form__field__input').trigger('input');
-                me.$el.find('input[name="email"]').trigger('focus');
-            }).fail(function () {
-                popup = new PopupView({content: $(errorTpl)});
-                popup.render();
-            });
 
             return me.$el;
         },
@@ -327,20 +329,19 @@ define([
 
             setTimeout(function () {
                 me.options.obj.find('.b-switch_animate').remove();
-            }, 200);
 
-            $.ajax({
-                url         : '/profile/settings/',
-                type        : 'GET',
-                dataType    : 'json',
-                global      : false
-            }).done(function (data) {
-                me.$el.find('input[name="domain"]').val(data.settings.domain);
-                me.$el.find('.j-form__field__input').trigger('input');
-            }).fail(function () {
-                popup = new PopupView({content: $(errorTpl)});
-                popup.render();
-            });
+                $.ajax({
+                    url         : '/profile/settings/',
+                    type        : 'GET',
+                    dataType    : 'json'
+                }).done(function (data) {
+                    me.$el.find('input[name="domain"]').val(data.settings.domain);
+                    me.$el.find('.j-form__field__input').trigger('input');
+                }).fail(function () {
+                    popup = new PopupView({content: $(errorTpl)});
+                    popup.render();
+                });
+            }, 200);
 
             return this.$el;
         },
@@ -458,20 +459,19 @@ define([
 
             setTimeout(function () {
                 me.options.obj.find('.b-switch_animate').remove();
-            }, 200);
 
-            $.ajax({
-                url         : '/profile/settings/',
-                type        : 'GET',
-                dataType    : 'json',
-                global      : false
-            }).done(function (data) {
-                me.$el.find('textarea[name="script"]').val(data.settings.script);
-                me.$el.find('.j-form__field__input').trigger('input');
-            }).fail(function () {
-                popup = new PopupView({content: $(errorTpl)});
-                popup.render();
-            });
+                $.ajax({
+                    url         : '/profile/settings/',
+                    type        : 'GET',
+                    dataType    : 'json'
+                }).done(function (data) {
+                    me.$el.find('textarea[name="script"]').val(data.settings.script);
+                    me.$el.find('.j-form__field__input').trigger('input');
+                }).fail(function () {
+                    popup = new PopupView({content: $(errorTpl)});
+                    popup.render();
+                });
+            }, 200);
 
             return this.$el;
         },

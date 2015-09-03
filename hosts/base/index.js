@@ -100,6 +100,8 @@ router.get('^(http|https)://www.' + host + '.ru/about/?$', controller.index.abou
 router.get('^(http|https)://www.' + host + '.ru/destiny/?$', controller.index.destiny);
 router.get('^(http|https)://www.' + host + '.ru/terms/?$', controller.index.terms);
 
+router.get('^(http|https)://www.' + host + '.ru/demo/?$', middleware.query, controller.index.demo);
+
 // Sitemap.xml
 router.get('^http://www.' + host + '.ru/Sitemap.xml$', controller.index.sitemap);
 

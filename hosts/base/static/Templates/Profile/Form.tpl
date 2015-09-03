@@ -1,7 +1,15 @@
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td">
+        <div class="b-table__tr__td b-form__table_head">
             <div class="b-form__title">Личные данные</div>
+        </div>
+        <div class="b-table__tr__td b-form__table_head"></div>
+    </div>
+</div>
+<div class="b-loader__holder"></div>
+<div class="b-table b-table_wide b-form__table">
+    <div class="b-table__tr">
+        <div class="b-table__tr__td">
             <div class="b-form__field">
                 <input type="text" name="email" value="" id="email" class="b-form__field__input j-form__field__input">
                 <label for="email" class="b-form__field__label">Email<span class="b-form__field__label__invalid"></span></label>

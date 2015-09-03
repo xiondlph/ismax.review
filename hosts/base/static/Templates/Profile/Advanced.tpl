@@ -3,8 +3,16 @@
 <a href="/profile#advanced" class="b-section__action b-section__action_active icon-advanced">Интерграция</a>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td">
+        <div class="b-table__tr__td b-form__table_head">
             <div class="b-form__title">Интеграция</div>
+        </div>
+        <div class="b-table__tr__td b-form__table_head"></div>
+    </div>
+</div>
+<div class="b-loader__holder"></div>
+<div class="b-table b-table_wide b-form__table">
+    <div class="b-table__tr">
+        <div class="b-table__tr__td">
             <div class="b-form__field">
                 <textarea name="script" id="script" class="b-form__field__input j-form__field__input"></textarea>
                 <label for="script" class="b-form__field__label">Встраиваемый скрипт<span class="b-form__field__label__invalid"></span></label>

@@ -3,8 +3,16 @@
 <a href="/profile#advanced" class="b-section__action icon-advanced">Интерграция</a>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td">
+        <div class="b-table__tr__td b-form__table_head">
             <div class="b-form__title">Код виджета</div>
+        </div>
+        <div class="b-table__tr__td b-form__table_head"></div>
+    </div>
+</div>
+<div class="b-loader__holder"></div>
+<div class="b-table b-table_wide b-form__table">
+    <div class="b-table__tr">
+        <div class="b-table__tr__td">
             <div class="b-form__field">
                 <input type="text" value='<script type="text/javascript" src="http://www.shareview.ru/code" id="ismaxCode"></script>' id="code" class="b-form__field__input b-form__field__input_fill j-form__field__input" readonly="true">
                 <label for="code" class="b-form__field__label">Код для вставки<span class="b-form__field__label__invalid"></span></label>

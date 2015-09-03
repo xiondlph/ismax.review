@@ -68,6 +68,20 @@ exports.terms = function (req, res, next) {
 
 
 /**
+ * Демо страница виджета
+ *
+ * @method demo
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ * @param {Function} next
+ */
+exports.demo = function (req, res, next) {
+    req.local.text = req.params.text;
+    res.render(__dirname + '/../view/', 'demo');
+};
+
+
+/**
  * Страница Sitemap.xml
  *
  * @method sitemap

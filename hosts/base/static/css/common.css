@@ -243,14 +243,20 @@ strong {
   -o-transition: width 0.2s ease-in-out;
   transition: width 0.2s ease-in-out;
   background: #2F819F;
-  position: fixed;
+  position: absolute;
   display: block;
-  height: 3px;
+  height: 2px;
   width: 0%;
   bottom: 0;
   right: 0;
   left: 0;
   top: 0;
+}
+.b-loader__holder {
+  position: relative;
+  margin-top: -2px;
+  height: 2px;
+  width: 100%;
 }
 /*** Всплывающий контейнер ***/
 .b-popup {
@@ -532,7 +538,6 @@ strong {
 }
 .b-section__action {
   padding: 5px 5px 5px 30px;
-  border: 1px solid #ddd;
   background-color: #fff;
   display: inline-block;
   margin-bottom: -1px;
@@ -553,7 +558,6 @@ strong {
   color: #cc6666;
 }
 .b-section__action_active {
-  border-bottom: none;
   height: 30px;
 }
 /*** Блок сменяющегося контейнера ***/
@@ -573,10 +577,12 @@ strong {
   width: 100%;
 }
 .b-form__table {
-  border: 1px solid #ddd;
-  background-color: #fff;
+  background-color: #fcfaf2;
   margin: 0 auto;
-  padding: 10px;
+}
+.b-form__table_head {
+  background-color: #fff;
+  line-height: 50px;
 }
 .b-form__title {
   font-size: 20px;

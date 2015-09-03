@@ -2,8 +2,16 @@
 <a href="/profile#history" class="b-section__action b-section__action_active icon-clock">История платежей</a>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td b-table__tr__td_nowidth">
+        <div class="b-table__tr__td b-form__table_head">
             <div class="b-form__title">История платежных операций</div>
+        </div>
+        <div class="b-table__tr__td b-form__table_head"></div>
+    </div>
+</div>
+<div class="b-loader__holder"></div>
+<div class="b-table b-table_wide b-form__table">
+    <div class="b-table__tr">
+        <div class="b-table__tr__td b-table__tr__td_nowidth">
                 <table cellpadding="0" cellspacing="0" class="b-grid">
                     <tr class="b-grid__row">
                         <th class="b-grid__head">Дата</th>
@@ -22,6 +30,5 @@
         <div class="b-table__tr__td">
             <a href="#profile" class="f-btn f-btn_back">Назад</a>
         </div>
-        <div class="b-table__tr__td b-table__tr__td_right"></div>
     </div>
 </div>

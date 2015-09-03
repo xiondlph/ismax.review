@@ -21,5 +21,11 @@ module.exports = {
         files: {
             'hosts/base/static/css/simple.css': 'hosts/base/static/less/simple.less'
         }
+    },
+
+    demo: {
+        files: {
+            'hosts/base/static/css/demo.css': 'hosts/base/static/less/demo.less'
+        }
     }
 };

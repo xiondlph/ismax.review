@@ -42,5 +42,14 @@ module.exports = {
         files: {
             'hosts/base/static/build/simple.css': ['hosts/base/static/css/common.css', 'hosts/base/static/css/simple.css']
         }
+    },
+
+    demo: {
+        options: {
+            banner: '/* Demo minified */'
+        },
+        files: {
+            'hosts/base/static/build/demo.css': ['hosts/base/static/css/common.css', 'hosts/base/static/css/demo.css']
+        }
     }
 };

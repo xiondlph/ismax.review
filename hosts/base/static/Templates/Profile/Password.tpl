@@ -1,7 +1,12 @@
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td">
+        <div class="b-table__tr__td b-form__table_head">
             <div class="b-form__title">Сменить пароль</div>
+        </div>
+        <div class="b-table__tr__td b-form__table_head"></div>
+    </div>
+    <div class="b-table__tr">
+        <div class="b-table__tr__td">
             <div class="b-form__field">
                 <input type="password" name="password" id="password" class="b-form__field__input j-form__field__input">
                 <label for="password" class="b-form__field__label">Пароль<span class="b-form__field__label__invalid"></span></label>

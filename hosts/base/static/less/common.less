@@ -1,3 +1,4 @@
+@bg-color:              #f4f3eb;
 @red-color:             #cc6666;
 @red-color-active:      #bc5d58;
 
@@ -52,7 +53,7 @@
 
 
 html, body {
-    background-color: #f4f3eb;
+    background-color: @bg-color;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     font-size: 14px;
@@ -292,14 +293,20 @@ b, strong {
         transition: width 0.2s ease-in-out;
 
         background: #2F819F;
-        position: fixed;
+        position: absolute;
         display: block;
-        height: 3px;
+        height: 2px;
         width: 0%;
         bottom: 0;
         right: 0;
         left: 0;
         top: 0;
+    }
+    &__holder{
+        position: relative;
+        margin-top: -2px;
+        height: 2px;
+        width: 100%;
     }
 }
 
@@ -418,7 +425,7 @@ b, strong {
                     background-color: #339933;
                     border: 1px solid #339933;
                     text-shadow: none;
-                    color: #f4f3eb;
+                    color: @bg-color;
                 }
             }
         }
@@ -610,7 +617,6 @@ b, strong {
 
     &__action {
         padding: 5px 5px 5px 30px;
-        border: 1px solid #ddd;
         background-color: #fff;
         display: inline-block;
         margin-bottom: -1px;
@@ -630,7 +636,6 @@ b, strong {
             }
         }
         &_active {
-            border-bottom: none;
             height: 30px;
         }
     } 
@@ -655,10 +660,12 @@ b, strong {
 .b-form {
     width: 100%;
     &__table {
-        border: 1px solid #ddd;
-        background-color: #fff;
+        background-color: #fcfaf2;
         margin: 0 auto;
-        padding: 10px;
+        &_head {
+           background-color: #fff; 
+           line-height: 50px;
+        }
     }
     &__title {
         font-size: 20px;

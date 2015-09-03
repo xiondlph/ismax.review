@@ -65,7 +65,7 @@ window.ismaxWidget = {};
     loader.style.margin     = '0px auto';
     loader.style.textAlign  = 'center';
 
-    loader.innerHTML    = '<img src="http://www.shareview.ru/images/loader.gif" />';
+    loader.innerHTML    = '<img src="http://www.<#= process.env.HOST #>.ru/images/loader.gif" />';
 
     frame               = document.createElement('iframe');
     frame.src           = '/iframe?text=' + text;

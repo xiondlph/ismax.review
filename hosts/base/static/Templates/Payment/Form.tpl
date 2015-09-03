@@ -2,8 +2,16 @@
 <a href="/profile#history" class="b-section__action icon-clock">История платежей</a>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td b-table__tr__td_nowidth">
+        <div class="b-table__tr__td b-form__table_head">
             <div class="b-form__title">Продление услуги</div>
+        </div>
+        <div class="b-table__tr__td b-form__table_head"></div>
+    </div>
+</div>
+<div class="b-loader__holder"></div>
+<div class="b-table b-table_wide b-form__table">
+    <div class="b-table__tr">
+        <div class="b-table__tr__td b-table__tr__td_nowidth">
             <div class="b-form__field b-form__field_payment">
                 <select id="sum" name="sum" class="b-form__field__input b-form__field__input_fill b-form__field__input_payment j-form__field__input">
                     <option value="50">Сутки - 50 руб.</option>

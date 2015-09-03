@@ -65,26 +65,24 @@ define([
 
             setTimeout(function () {
                 me.options.obj.find('.b-switch_animate').remove();
+
+                $.ajax({
+                    url         : '/payment/last',
+                    type        : 'GET',
+                    dataType    : 'json'
+                }).done(function (data) {
+                    if (data.hasOwnProperty('payment')) {
+                        var last = $(_.template(lastTpl)(data.payment)).hide();
+                        me.$el.find('.j-last-payment').html(last);
+                        last.fadeIn();
+                    } else {
+                        me.$el.find('.j-last-payment').remove();
+                    }
+                }).fail(function () {
+                    popup = new PopupView({content: $(errorTpl)});
+                    popup.render();
+                });
             }, 200);
-
-
-            $.ajax({
-                url         : '/payment/last',
-                type        : 'GET',
-                dataType    : 'json',
-                global      : false
-            }).done(function (data) {
-                if (data.hasOwnProperty('payment')) {
-                    var last = $(_.template(lastTpl)(data.payment)).hide();
-                    me.$el.find('.j-last-payment').html(last);
-                    last.fadeIn();
-                } else {
-                    me.$el.find('.j-last-payment').remove();
-                }
-            }).fail(function () {
-                popup = new PopupView({content: $(errorTpl)});
-                popup.render();
-            });
 
             return me.$el;
         },
@@ -150,7 +148,7 @@ define([
             var me      = this,
                 popup;
 
-            me.$el.html('<center><img src="/images/reload.svg"></center>');
+            me.$el.html(_.template(historyTpl));
             me.options.obj.find('.b-switch').addClass('b-switch_animate');
             me.options.obj.append(me.$el);
             setTimeout(function () {
@@ -159,26 +157,24 @@ define([
 
             setTimeout(function () {
                 me.options.obj.find('.b-switch_animate').remove();
-            }, 200);
 
-            $.ajax({
-                url: '/payment/list',
-                type: 'GET',
-                dataType: 'json',
-                global      : false,
-                data: {
-                    skip: 0
-                }
-            }).done(function (data) {
-                me.$el.html(_.template(historyTpl));
-                me.$el.find('.b-grid').append(_.template(itemTpl)(data));
-                if (me.$el.find('.b-grid__row').length - 1 < data.total) {
-                    me.$el.find('.b-pagination').css({visibility: 'visible'});
-                }
-            }).fail(function () {
-                popup = new PopupView({content: $(errorTpl)});
-                popup.render();
-            });
+                $.ajax({
+                    url: '/payment/list',
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                        skip: 0
+                    }
+                }).done(function (data) {
+                    me.$el.find('.b-grid').append(_.template(itemTpl)(data));
+                    if (me.$el.find('.b-grid__row').length - 1 < data.total) {
+                        me.$el.find('.b-pagination').css({visibility: 'visible'});
+                    }
+                }).fail(function () {
+                    popup = new PopupView({content: $(errorTpl)});
+                    popup.render();
+                });
+            }, 200);
 
             return me.$el;
         },

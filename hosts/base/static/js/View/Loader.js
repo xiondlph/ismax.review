@@ -40,7 +40,7 @@ define([
 
                 xhr.onreadystatechange = function () {
 
-                    me.$el.find('.b-loader__line').stop().animate({
+                    me.loader.stop().animate({
                         width: (xhr.readyState * 100) + '%'
                     }, 100);
                 };
@@ -50,13 +50,23 @@ define([
 
 
             $(document).ajaxStart(function () {
-                me.$el.find('.b-loader__line').css('width', '0%');
-                me.$el.fadeIn();
+                if ($('.b-loader__holder').length) {
+                    $('.b-loader__holder').append(me.loader);
+                } else {
+                    me.$el.append(me.loader);
+                }
+                me.loader.css('width', '0%');
+                me.$el.fadeIn(function () {
+                    me.loader.show();
+                });
             });
 
             $(document).ajaxStop(function () {
                 setTimeout(function () {
                     me.$el.fadeOut();
+                    me.loader.fadeOut(function () {
+                        this.remove();
+                    });
                 }, 100);
             });
 
@@ -71,7 +81,7 @@ define([
         },
 
         render: function () {
-            this.$el.append('<div class="b-loader__line"></div>');
+            this.loader = $('<div class="b-loader__line"></div>');
             this.options.obj.append(this.$el);
 
             return this.$el;
