@@ -1,9 +1,9 @@
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td b-form__table_head">
+        <div class="b-table__tr__td b-form__table_head b-form__table_head_active">
             <div class="b-form__title">Личные данные</div>
         </div>
-        <div class="b-table__tr__td b-form__table_head"></div>
+        <div class="b-table__tr__td b-form__table_head b-form__table_head_active"></div>
     </div>
 </div>
 <div class="b-loader__holder"></div>

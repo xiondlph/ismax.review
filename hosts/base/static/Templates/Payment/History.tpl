@@ -1,11 +1,7 @@
-<a href="/profile#payment" class="b-section__action icon-credit-card">Продление услуги</a>
-<a href="/profile#history" class="b-section__action b-section__action_active icon-clock">История платежей</a>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td b-form__table_head">
-            <div class="b-form__title">История платежных операций</div>
-        </div>
-        <div class="b-table__tr__td b-form__table_head"></div>
+        <div class="b-table__tr__td b-form__table_head"><div class="b-form__title"><a href="/profile#payment" class="b-form__table_head__action">Продление услуги</a></div></div>
+        <div class="b-table__tr__td b-form__table_head b-form__table_head_active"><div class="b-form__title"><a href="/profile#history" class="b-form__table_head__action">История платежей</a></div></div>
     </div>
 </div>
 <div class="b-loader__holder"></div>

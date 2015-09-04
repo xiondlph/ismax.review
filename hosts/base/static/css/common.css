@@ -162,7 +162,7 @@ strong {
 .b-table__tr__td {
   display: table-cell;
   vertical-align: top;
-  padding: 10px;
+  padding: 20px;
   width: 50%;
 }
 .b-table__tr__td_wide {
@@ -537,13 +537,12 @@ strong {
   margin: 0 0 30px 0;
 }
 .b-section__action {
-  padding: 5px 5px 5px 30px;
-  background-color: #fff;
+  background-color: #fcfaf2;
   display: inline-block;
   margin-bottom: -1px;
   position: relative;
-  height: 27px;
   font-size: 12px;
+  padding: 10px 15px;
 }
 .b-section__action:before {
   position: absolute;
@@ -558,7 +557,7 @@ strong {
   color: #cc6666;
 }
 .b-section__action_active {
-  height: 30px;
+  background-color: #fff;
 }
 /*** Блок сменяющегося контейнера ***/
 .b-switch {
@@ -581,8 +580,15 @@ strong {
   margin: 0 auto;
 }
 .b-form__table_head {
+  background-color: #efefef;
+  text-align: center;
+  line-height: 30px;
+}
+.b-form__table_head_col3 {
+  width: 30%;
+}
+.b-form__table_head_active {
   background-color: #fff;
-  line-height: 50px;
 }
 .b-form__title {
   font-size: 20px;
@@ -603,12 +609,10 @@ strong {
   -webkit-box-shadow: inset 0 0 0 50px #fff;
   -moz-box-shadow: inset 0 0 0 50px #fff;
   box-shadow: inset 0 0 0 50px #fff;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
   background-color: transparent;
   border: 1px solid #cbcbcb;
-  padding: 16px 10px 3px 10px;
+  padding: 18px 10px 10px 10px;
+  font-size: 16px;
   color: #7c7c7c;
   outline: none;
   width: 100%;
@@ -641,10 +645,10 @@ strong {
   position: absolute;
   line-height: 10px;
   padding: 0 10px;
-  font-size: 12px;
+  font-size: 14px;
   color: #cbcbcb;
   width: 100%;
-  top: 18px;
+  top: 23px;
   left: 0;
 }
 .b-form__field__label__invalid {
