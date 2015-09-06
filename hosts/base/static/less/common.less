@@ -1,6 +1,7 @@
 @bg-color:              #f4f3eb;
 @red-color:             #cc6666;
 @red-color-active:      #bc5d58;
+@red-color-disable:     #f5d3d3;
 
 @green-color:           #669999;
 @green-color-active:    #527a7a;
@@ -251,7 +252,7 @@ b, strong {
         -moz-transition: color 0.2s ease-in-out;
         -o-transition: color 0.2s ease-in-out;
         transition: color 0.2s ease-in-out;
-        background-color: #fff;
+        background-color: transparent;
         color: @green-color-active;
         /*&:hover {
             background-color: #fff;
@@ -306,7 +307,7 @@ b, strong {
     }
     &__holder{
         position: relative;
-        margin-top: -2px;
+        margin-bottom: -2px;
         height: 2px;
         width: 100%;
     }
@@ -340,9 +341,9 @@ b, strong {
         -ms-transform: scale(0.8);
         transform: scale(0.8);
 
-        -webkit-border-radius: 6px;
-        -moz-border-radius: 6px;
-        border-radius: 6px;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 1px;
 
         -webkit-box-sizing: content-box;
         -moz-box-sizing: content-box;
@@ -453,9 +454,8 @@ b, strong {
         display: inline-block;
         position: relative;
         line-height: 40px;
-        font-weight: bold;
         margin: 0 10px;
-        color: #aeaeae;
+        color: @blue-color;
         &:last-child {
             margin: 0 0 0 10px;
         }
@@ -494,10 +494,9 @@ b, strong {
         display: inline-block;
         position: relative;
         line-height: 40px;
-        font-weight: bold;
         cursor: pointer;
         margin: 0 10px 0 10px;
-        color: #aeaeae;
+        color: @blue-color;
         &_active:before {
             background-color: @red-color;
             position: absolute;
@@ -664,14 +663,18 @@ b, strong {
         background-color: @form-color;
         margin: 0 auto;
         &_head {
-            background-color: #efefef; 
+            border-bottom: 1px solid @red-color-disable;
+            background-color: #fff; 
             text-align: center;
             line-height: 30px;
             &_col3 {
                 width: 30%;
             }
             &_active {
-                background-color: #fff;
+                border-bottom: 3px solid @red-color-active;
+            }
+            &__action:hover {
+                text-decoration: none;
             }
         }
     }
@@ -755,22 +758,28 @@ b, strong {
                 opacity: 0;
             }
         }
-        &__action {
-            padding: 0 0 0 25px;
-            position: absolute;
-            margin: -8px 0 0 0;
-            font-size: 12px;
-            width: 90px;
-            right: 10px;
-            top: 50%;
-            &:before {
-                position: absolute;
-                font-size: 16px;
-                left: 5px;
-                top: 0;
-            }
-        }
     }
+    &__action {
+        border: 1px solid @green-color;
+
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+
+        display: inline-block;
+        margin: 5px 0;
+        padding: 5px;
+    }
+}
+
+
+/*** Блок с кодом ***/
+.b-code {
+    border-left: 3px solid #fee9a5;
+    background-color: #fcf8e3;
+    margin: 0 0 15px 0;
+    font-weight: 400;
+    padding: 5px 10px;
 }
 
 
@@ -805,6 +814,21 @@ b, strong {
 /*** Блок табличных данных ***/
 .b-grid {
     width: 100%;
+    &_panel {
+        background-color: #efefef;
+        border: 1px solid #ddd;
+        margin: 10px 0;
+        padding: 10px;
+        &__cell {
+            padding: 0 5px;
+            width: 50%;
+            &_right {
+                text-align: right;
+                border-right: 1px solid #aaa;
+                color: #aaa;
+            }
+        }
+    }
     &__head {
         border-bottom: 1px solid #efefef;
         font-weight: normal;

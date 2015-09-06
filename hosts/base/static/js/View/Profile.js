@@ -74,13 +74,11 @@ define([
                     me.$el.find('input[name="email"]').val(data.profile.email);
 
                     if (data.profile.hasOwnProperty('_active') && data.profile._active) {
-                        me.$el.find('input[name="state"]').addClass('b-form__field__input_green');
-                        me.$el.find('input[name="state"]').val('Активен');
-                        me.$el.find('input[name="paidup"]').val(period);
+                        me.$el.find('.j-state').text('Активен');
+                        me.$el.find('.j-period').text(period);
                     } else {
-                        me.$el.find('input[name="state"]').addClass('b-form__field__input_red');
-                        me.$el.find('input[name="state"]').val('Заблокирован');
-                        me.$el.find('input[name="paidup"]').val(period);
+                        me.$el.find('.j-state').text('Заблокирован');
+                        me.$el.find('.j-period').text(period);
                     }
 
                     me.$el.find('.j-form__field__input').trigger('input');
