@@ -5,7 +5,12 @@
   color: #bc5d58;
 }
 .b-form__hint {
-  display: none;
+  font-size: 12px;
+  padding: 5px 0;
+  color: #aaa;
+}
+.b-form__editor {
+  height: 150px;
 }
 .b-form__field_payment:before {
   -webkit-border-radius: 3px 0px 0px 3px;

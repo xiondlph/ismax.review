@@ -15,6 +15,7 @@ require.config({
         validator   : '../lib/validator.min',
         underscore  : '../lib/underscore/underscore-min',
         backbone    : '../lib/backbone/backbone-min',
+        ace         : '../lib/ace-builds/src/ace',
 
         Templates   : '../Templates'
     },

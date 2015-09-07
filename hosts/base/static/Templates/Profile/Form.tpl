@@ -24,9 +24,9 @@
                     <td class="b-grid_panel__cell"><span class="j-state"></span></td>
                 </tr>
             </table>
-            <a href="#pass" class="b-form__action">Зменить пароль</a><br />
-            <a href="#settings" class="b-form__action">Настройки</a><br />
-            <a href="#payment" class="b-form__action">Оплата</a>
+            <a href="#pass" class="b-form__action icon-locked">Зменить пароль</a><br />
+            <a href="#settings" class="b-form__action icon-settings">Настройки</a><br />
+            <a href="#payment" class="b-form__action icon-credit-card">Оплата</a>
         </div>
         <div class="b-table__tr__td">
             <div class="b-form__hint j-form__hint_email">Email является вашим логином в системе и используется для идентификации вашего аккаунта.</div>

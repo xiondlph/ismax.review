@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?2sht3h');
-	src:url('fonts/icomoon.eot?#iefix2sht3h') format('embedded-opentype'),
-		url('fonts/icomoon.ttf?2sht3h') format('truetype'),
-		url('fonts/icomoon.woff?2sht3h') format('woff'),
-		url('fonts/icomoon.svg?2sht3h#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?-ulcr8v');
+	src:url('fonts/icomoon.eot?#iefix-ulcr8v') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?-ulcr8v') format('truetype'),
+		url('fonts/icomoon.woff?-ulcr8v') format('woff'),
+		url('fonts/icomoon.svg?-ulcr8v#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,8 +23,14 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-code:before {
-	content: "\e610";
+.icon-star:before {
+	content: "\e612";
+}
+.icon-checkmark:before {
+	content: "\e613";
+}
+.icon-arrow-down:before {
+	content: "\e611";
 }
 .icon-advanced:before {
 	content: "\e60e";
@@ -76,4 +82,10 @@
 }
 .icon-settings:before {
 	content: "\e60d";
+}
+.icon-code:before {
+	content: "\e610";
+}
+.icon-star-empty:before {
+	content: "\e614";
 }

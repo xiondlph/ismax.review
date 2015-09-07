@@ -11,10 +11,10 @@
                         <li class="b-menu__sub__item"><a href="/profile#payment" class="b-menu__sub__item__link icon-credit-card">Оплата</a></li>
                         <li class="b-menu__sub__item"><a href="/user/signout" class="b-menu__sub__item__link icon-exit">Выход</a></li>
                     </ul>
-                    <span class="b-menu__label"><#= this.data.user.email #></span>
+                    <span class="b-menu__label"><span class="b-menu__label__border b-menu__label__border_dropdownd icon-arrow-down"><#= this.data.user.email #></span></span>
                 </div>
                 <# } else { #>
-                <a href="/user" class="b-nav__item b-nav__item_right">Вход</a>
+                <a href="/user" class="b-nav__item b-nav__item_right"><span class="b-nav__item__border">Вход</span></a>
                 <# } #>
                 <a href="/demo" class="b-nav__item b-nav__item_right">Демо</a>
                 <div class="b-menu">

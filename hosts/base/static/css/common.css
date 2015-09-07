@@ -149,6 +149,15 @@ strong {
 .icon-code:before {
   content: "\e610";
 }
+.icon-arrow-down:before {
+  content: "\e611";
+}
+.icon-checkmark:before {
+  content: "\e613";
+}
+.icon-star-empty:before {
+  content: "\e614";
+}
 /*Табличная разметка*/
 .b-table {
   display: table;
@@ -307,12 +316,12 @@ strong {
 .b-popup__inner__icon {
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 30px;
+  background-size: 60px;
   display: block;
-  height: 50px;
+  height: 80px;
 }
 .b-popup__inner__icon_success {
-  background-image: url(../images/success.svg);
+  background-image: url(../images/checkmark.svg);
 }
 .b-popup__inner__icon_error {
   background-image: url(../images/warning.svg);
@@ -385,6 +394,20 @@ strong {
   margin: 0 10px;
   color: #4e8bba;
 }
+.b-nav__item__border {
+  -webkit-transition: border 0.3s linear;
+  -moz-transition: border 0.3s linear;
+  -o-transition: border 0.3s linear;
+  transition: border 0.3s linear;
+  border: 1px solid #4e8bba;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 0 3px;
+}
+.b-nav__item:hover .b-nav__item__border {
+  border: 1px solid #cc6666;
+}
 .b-nav__item:last-child {
   margin: 0 0 0 10px;
 }
@@ -435,6 +458,29 @@ strong {
 }
 .b-menu__label:hover {
   color: #cc6666;
+}
+.b-menu__label__border {
+  -webkit-transition: border 0.3s linear;
+  -moz-transition: border 0.3s linear;
+  -o-transition: border 0.3s linear;
+  transition: border 0.3s linear;
+  border: 1px solid #4e8bba;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  padding: 0 5px;
+}
+.b-menu__label__border_dropdownd {
+  padding: 0 20px 0 5px;
+  position: relative;
+}
+.b-menu__label__border_dropdownd:before {
+  position: absolute;
+  right: 0;
+  top: 3px;
+}
+.b-menu__label:hover .b-menu__label__border {
+  border: 1px solid #cc6666;
 }
 .b-menu__sub {
   -webkit-transition: top 0.1s linear;
@@ -670,21 +716,23 @@ strong {
   opacity: 0;
 }
 .b-form__action {
-  border: 1px solid #669999;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
   display: inline-block;
-  margin: 5px 0;
-  padding: 5px;
+  padding: 0 0 0 25px;
+  position: relative;
+}
+.b-form__action:before {
+  margin: 0 4px 0 -20px;
+}
+.b-form__action:hover {
+  text-decoration: none;
 }
 /*** Блок с кодом ***/
 .b-code {
   border-left: 3px solid #fee9a5;
   background-color: #fcf8e3;
-  margin: 0 0 15px 0;
-  font-weight: 400;
+  margin: 15px 0 15px 0;
   padding: 5px 10px;
+  font-weight: 400;
 }
 /*** Разметка блока ***/
 .b-block {

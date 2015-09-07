@@ -10,6 +10,7 @@
 
 define([
     'backbone',
+    'ace',
     'validator',
     'View/Popup',
     'text!Templates/Profile/Form.tpl',
@@ -19,7 +20,7 @@ define([
     'text!Templates/Profile/Advanced.tpl',
     'text!Templates/Popup/Success.tpl',
     'text!Templates/Popup/Error.tpl'
-], function (Backbone, Validator, PopupView, formTpl, passwordTpl, settingsTpl, codeTpl, advancedTpl, successTpl, errorTpl) {
+], function (Backbone, Ace, Validator, PopupView, formTpl, passwordTpl, settingsTpl, codeTpl, advancedTpl, successTpl, errorTpl) {
     var Form,
         Password,
         Settings,
@@ -54,6 +55,9 @@ define([
 
             me.options.obj.find('.b-switch').addClass('b-switch_animate');
             me.options.obj.append(me.$el);
+
+            me.$el.find('.b-form__hint:not(".j-form__hint")').hide();
+
             setTimeout(function () {
                 me.$el.removeClass('b-switch_animate');
             });
@@ -82,7 +86,11 @@ define([
                     }
 
                     me.$el.find('.j-form__field__input').trigger('input');
-                    me.$el.find('input[name="email"]').trigger('focus');
+                    setTimeout(function () {
+                        if (!me.$el.find('input[name="email"]').is(':focus')) {
+                            me.$el.find('input[name="email"]').trigger('focus');
+                        }
+                    }, 2000);
                 }).fail(function () {
                     popup = new PopupView({content: $(errorTpl)});
                     popup.render();
@@ -198,6 +206,9 @@ define([
 
             me.options.obj.find('.b-switch').addClass('b-switch_animate');
             me.options.obj.append(me.$el);
+
+            me.$el.find('.b-form__hint:not(".j-form__hint")').hide();
+
             setTimeout(function () {
                 me.$el.removeClass('b-switch_animate');
             });
@@ -205,6 +216,12 @@ define([
             setTimeout(function () {
                 me.options.obj.find('.b-switch_animate').remove();
             }, 200);
+
+            setTimeout(function () {
+                if (!me.$el.find('input[name="password"]').is(':focus')) {
+                    me.$el.find('input[name="password"]').trigger('focus');
+                }
+            }, 2000);
 
             me.$el.find('.j-form__field__input').trigger('input');
 
@@ -463,8 +480,12 @@ define([
                     type        : 'GET',
                     dataType    : 'json'
                 }).done(function (data) {
-                    me.$el.find('textarea[name="script"]').val(data.settings.script);
-                    me.$el.find('.j-form__field__input').trigger('input');
+                    me.$el.find('#script').text(data.settings.script);
+
+                    me.editor = ace.edit("script");
+                    //me.editor.setTheme("ace/theme/twilight");
+                    me.editor.getSession().setMode("ace/mode/javascript");
+                    me.editor.setReadOnly(true);
                 }).fail(function () {
                     popup = new PopupView({content: $(errorTpl)});
                     popup.render();
@@ -472,15 +493,6 @@ define([
             }, 200);
 
             return this.$el;
-        },
-
-        input: function (e) {
-            if ($(e.currentTarget).val().length > 0) {
-                $(e.currentTarget).addClass('b-form__field__input_fill');
-                $(e.currentTarget).removeClass('b-form__field__input_invalid');
-            } else {
-                $(e.currentTarget).removeClass('b-form__field__input_fill');
-            }
         },
 
         submit: function (e) {
@@ -495,7 +507,7 @@ define([
                     type        : 'POST',
                     dataType    : 'json',
                     data: JSON.stringify({
-                        script: this.$el.find('textarea[name="script"]').val()
+                        script: this.editor.getValue()
                     })
                 }).done(function (data) {
                     popup = new PopupView({content: $(_.template(successTpl)({message: 'Данные сохранены'}))});

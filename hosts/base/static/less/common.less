@@ -191,6 +191,15 @@ b, strong {
     &-code:before {
         content: "\e610";
     }
+    &-arrow-down:before {
+        content: "\e611";
+    }
+    &-checkmark:before {
+        content: "\e613";
+    }
+    &-star-empty:before {
+        content: "\e614";
+    }
 }
 
 
@@ -367,12 +376,12 @@ b, strong {
         &__icon {
             background-repeat: no-repeat;
             background-position: center;
-            background-size: 30px;
+            background-size: 60px;
             display: block;
-            height: 50px;
+            height: 80px;
 
             &_success {
-                background-image: url(../images/success.svg);
+                background-image: url(../images/checkmark.svg);
             }
 
             &_error {
@@ -456,6 +465,23 @@ b, strong {
         line-height: 40px;
         margin: 0 10px;
         color: @blue-color;
+        &__border {
+            -webkit-transition: border 0.3s linear;
+            -moz-transition: border 0.3s linear;
+            -o-transition: border 0.3s linear;
+            transition: border 0.3s linear;
+
+            border: 1px solid @blue-color;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            padding: 0 3px;
+        }
+
+        &:hover &__border {
+            border: 1px solid @red-color;
+        }
+
         &:last-child {
             margin: 0 0 0 10px;
         }
@@ -509,6 +535,32 @@ b, strong {
         }
         &:hover {
             color: @red-color;
+        }
+
+        &__border {
+            -webkit-transition: border 0.3s linear;
+            -moz-transition: border 0.3s linear;
+            -o-transition: border 0.3s linear;
+            transition: border 0.3s linear;
+
+            border: 1px solid @blue-color;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            padding: 0 5px;
+            &_dropdownd {
+                padding: 0 20px 0 5px;
+                position: relative;
+                &:before {
+                    position: absolute;
+                    right: 0;
+                    top: 3px;
+                }
+            }
+        }
+
+        &:hover &__border {
+            border: 1px solid @red-color;
         }
     }
     &__sub {
@@ -760,15 +812,15 @@ b, strong {
         }
     }
     &__action {
-        border: 1px solid @green-color;
-
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        border-radius: 2px;
-
         display: inline-block;
-        margin: 5px 0;
-        padding: 5px;
+        padding: 0 0 0 25px;
+        position: relative;
+        &:before {
+            margin: 0 4px 0 -20px;
+        }
+        &:hover {
+            text-decoration: none;
+        }
     }
 }
 
@@ -777,9 +829,9 @@ b, strong {
 .b-code {
     border-left: 3px solid #fee9a5;
     background-color: #fcf8e3;
-    margin: 0 0 15px 0;
-    font-weight: 400;
+    margin: 15px 0 15px 0;
     padding: 5px 10px;
+    font-weight: 400;
 }
 
 
