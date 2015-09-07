@@ -377,15 +377,22 @@ b, strong {
             background-repeat: no-repeat;
             background-position: center;
             background-size: 60px;
+            text-align: center;
+            line-height: 80px;
+            font-size: 70px;
+            color: #669999;
             display: block;
             height: 80px;
-
             &_success {
                 background-image: url(../images/checkmark.svg);
             }
 
             &_error {
                 background-image: url(../images/warning.svg);
+            }
+
+            &:before {
+
             }
         }
 
@@ -971,10 +978,10 @@ b, strong {
             color: #aaa;
             &__link {
                 color: #ddd;
-            }
-            &:hover{
-                text-decoration: none;
-                color: #fff;
+                &:hover{
+                    text-decoration: none;
+                    color: #fff;
+                }
             }
             &:not(:last-child) {
                 padding: 0 10px 0 0;

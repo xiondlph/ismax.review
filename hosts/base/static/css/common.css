@@ -317,6 +317,10 @@ strong {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 60px;
+  text-align: center;
+  line-height: 80px;
+  font-size: 70px;
+  color: #669999;
   display: block;
   height: 80px;
 }
@@ -869,7 +873,7 @@ strong {
 .b-footer__menu__item__link {
   color: #ddd;
 }
-.b-footer__menu__item:hover {
+.b-footer__menu__item__link:hover {
   text-decoration: none;
   color: #fff;
 }

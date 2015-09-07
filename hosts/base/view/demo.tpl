@@ -37,9 +37,9 @@
                 <div class="b-table__tr">
                     <div class="b-table__tr__td">
 <# if (this.data.hasOwnProperty('text') && text) { #>
-                        <iframe height="0" frameborder="no" width="100%" src="/iframe?text=<#= text #>" scrolling="no" id="ismaxFrame"></iframe><script id="ismaxCode" src="/code" type="text/javascript"></script>
+                        <script id="ismaxCode" src="/code?text=<#= text #>" type="text/javascript"></script>
 <# } else { #>
-                        <iframe height="0" frameborder="no" width="100%" src="/iframe?text=Rowenta%20CF%209320" scrolling="no" id="ismaxFrame"></iframe><script id="ismaxCode" src="/code" type="text/javascript"></script>
+                        <script id="ismaxCode" src="/code?text=Rowenta%20CF%209320" type="text/javascript"></script>
 <# } #>
                     </div>
                 </div>

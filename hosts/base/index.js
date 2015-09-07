@@ -93,8 +93,8 @@ router.get('^http://www.' + host + '.ru/?$', controller.secure.guest, controller
 router.get('^https://www.' + host + '.ru/?$', controller.secure.guest, controller.secure.http);
 
 // Текстовые стр.
-router.get('^http://www.' + host + '.ru/(about|destiny|terms)/?$', controller.secure.auth);
-router.get('^https://www.' + host + '.ru/(about|destiny|terms)/?$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
+router.get('^http://www.' + host + '.ru/(about|destiny|terms|demo)/?$', controller.secure.auth);
+router.get('^https://www.' + host + '.ru/(about|destiny|terms|demo)/?$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
 
 router.get('^(http|https)://www.' + host + '.ru/about/?$', controller.index.about);
 router.get('^(http|https)://www.' + host + '.ru/destiny/?$', controller.index.destiny);
