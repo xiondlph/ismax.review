@@ -32,10 +32,10 @@
         </div>
     </div>
 </div>
-<input type="hidden" name="receiver" value="410013408881478"/>
-<input type="hidden" name="formcomment" value="ISMAX - Продление услуги на сутки"/>
-<input type="hidden" name="short-dest" value="ISMAX - Продление услуги на сутки"/>
+<input type="hidden" name="receiver" value="410013488679585"/>
+<input type="hidden" name="formcomment" value="Shareview - Продление услуги на сутки"/>
+<input type="hidden" name="short-dest" value="Shareview - Продление услуги на сутки"/>
 <input type="hidden" name="quickpay-form" value="shop"/>
-<input type="hidden" name="targets" value="ISMAX - Продление услуги на сутки"/>
+<input type="hidden" name="targets" value="Shareview - Продление услуги на сутки"/>
 <input type="hidden" name="paymentType" value="PC"/>
 <input type="hidden" name="label" value=""/>

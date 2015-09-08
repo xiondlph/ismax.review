@@ -91,15 +91,15 @@ define([
             var sum = +$(e.currentTarget).val();
             switch (sum) {
             case 100:
-                this.$el.find('input[name="formcomment"], input[name="short-dest"], input[name="targets"]').val('ISMAX - Продление услуги на сутки');
+                this.$el.find('input[name="formcomment"], input[name="short-dest"], input[name="targets"]').val('Shareview - Продление услуги на сутки');
                 break;
 
             case 3000:
-                this.$el.find('input[name="formcomment"], input[name="short-dest"], input[name="targets"]').val('ISMAX - Продление услуги на 1 месяц');
+                this.$el.find('input[name="formcomment"], input[name="short-dest"], input[name="targets"]').val('Shareview - Продление услуги на 1 месяц');
                 break;
 
             case 6000:
-                this.$el.find('input[name="formcomment"], input[name="short-dest"], input[name="targets"]').val('ISMAX - Продление услуги на 2 месяц');
+                this.$el.find('input[name="formcomment"], input[name="short-dest"], input[name="targets"]').val('Shareview - Продление услуги на 2 месяц');
                 break;
             }
         },

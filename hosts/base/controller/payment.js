@@ -105,7 +105,7 @@ exports.notification = function (req, res, next) {
     notice(req.params, 'Входящий платеж');
 
     if (req.params) {
-        hash = req.params.notification_type + '&' + req.params.operation_id + '&' + req.params.amount + '&' + req.params.currency + '&' + req.params.datetime + '&' + req.params.sender + '&' + req.params.codepro + '&+aMXyVPml0TWDHYEF/gfVsw5&' + req.params.label;
+        hash = req.params.notification_type + '&' + req.params.operation_id + '&' + req.params.amount + '&' + req.params.currency + '&' + req.params.datetime + '&' + req.params.sender + '&' + req.params.codepro + '&A5AjbuCuxVcr6Y8upKzPVqp4&' + req.params.label;
         hash = crypto.createHash('sha1').update(hash).digest('hex');
 
         if (req.params.sha1_hash === hash) {
