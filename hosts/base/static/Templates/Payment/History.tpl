@@ -13,7 +13,6 @@
                         <th class="b-grid__head">Дата</th>
                         <th class="b-grid__head">Сумма</th>
                         <th class="b-grid__head">Период</th>
-                        <th class="b-grid__head">Итог</th>
                         <th class="b-grid__head">Статус</th>
                     </tr>
                 </table>

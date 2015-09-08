@@ -157,8 +157,7 @@ exports.last = function (req, res, next) {
             response.payment = {
                 withdraw_amount:    payment.withdraw_amount,
                 datetime:           payment.datetime,
-                requests:           payment._requests,
-                quantity:           payment._quantity
+                period:             payment.newPeriod
             };
         }
 

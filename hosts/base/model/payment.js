@@ -111,7 +111,7 @@ module.exports = function (req, res, next) {
                         throw new Error('Mongo error - ' + err.message);
                     }
 
-                    collection.find({label: email}, {fields: {'datetime': 1, 'withdraw_amount': 1, '_quantity': 1, '_requests': 1}, sort: {_id: -1}, skip: skip, limit: limit}).toArray(function (err, payments) {
+                    collection.find({label: email}, {fields: {'datetime': 1, 'withdraw_amount': 1, 'newPeriod': 1}, sort: {_id: -1}, skip: skip, limit: limit}).toArray(function (err, payments) {
                         if (err) {
                             throw new Error('Mongo error - ' + err);
 

@@ -8,18 +8,26 @@
     </tr>
     <tr class="b-grid__row">
         <td class="b-grid__cell b-grid__cell_item">
-<% var _datetime = new Date(datetime); %>
-            <% print(_datetime.getDate() > 10 ? _datetime.getDate() : '0'+_datetime.getDate()) %>.
-            <% print(_datetime.getMonth() > 10 ? _datetime.getMonth() : '0'+_datetime.getMonth()) %>.
-            <% print(_datetime.getFullYear()) %><br />
-            <% print(_datetime.getHours() > 10 ? _datetime.getHours() : '0'+_datetime.getHours()) %>:
-            <% print(_datetime.getMinutes() > 10 ? _datetime.getMinutes() : '0'+_datetime.getMinutes()) %>:
-            <% print(_datetime.getSeconds() > 10 ? _datetime.getSeconds() : '0'+_datetime.getSeconds()) %>
+<% var _datetime = new Date(datetime);
+            print(_datetime.getDate() > 10 ? _datetime.getDate() : '0'+_datetime.getDate()) %>.<%
+            print(_datetime.getMonth() > 10 ? _datetime.getMonth() : '0'+_datetime.getMonth()) %>.<%
+            print(_datetime.getFullYear()) %> <%
+            print(_datetime.getHours() > 10 ? _datetime.getHours() : '0'+_datetime.getHours()) %>:<%
+            print(_datetime.getMinutes() > 10 ? _datetime.getMinutes() : '0'+_datetime.getMinutes()) %>:<%
+            print(_datetime.getSeconds() > 10 ? _datetime.getSeconds() : '0'+_datetime.getSeconds()) %>
         </td>
         <td class="b-grid__cell b-grid__cell_item"><%= withdraw_amount %> руб.</td>
-        <td class="b-grid__cell b-grid__cell_item"><%= quantity %></td>
         <td class="b-grid__cell b-grid__cell_item">
-<% if(quantity > 0){ %>
+<% var _datetime = new Date(period);
+            print(_datetime.getDate() > 10 ? _datetime.getDate() : '0'+_datetime.getDate()) %>.<%
+            print(_datetime.getMonth() > 10 ? _datetime.getMonth() : '0'+_datetime.getMonth()) %>.<%
+            print(_datetime.getFullYear()) %> <%
+            print(_datetime.getHours() > 10 ? _datetime.getHours() : '0'+_datetime.getHours()) %>:<%
+            print(_datetime.getMinutes() > 10 ? _datetime.getMinutes() : '0'+_datetime.getMinutes()) %>:<%
+            print(_datetime.getSeconds() > 10 ? _datetime.getSeconds() : '0'+_datetime.getSeconds()) %>
+        </td>
+        <td class="b-grid__cell b-grid__cell_item">
+<% if(period){ %>
             <img src="/images/success.svg" alt="Платеж успешно выполнен" title="Платеж успешно выполнен"/>
 <% }else{ %>
             <img src="/images/error.svg" alt="Платеж не выполнен" title="Платеж не выполнен"/>
