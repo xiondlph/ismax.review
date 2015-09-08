@@ -18,7 +18,7 @@
         <form class="b-form b-switch b-switch_animate" action="http://www.<#= process.env.HOST #>.ru/demo" method="get">
             <div class="b-table b-table_wide b-form__table">
                 <div class="b-table__tr">
-                    <div class="b-table__tr__td b-form__table_head b-form__table_head_active">
+                    <div class="b-table__tr__td b-form__table_head">
                         <div class="b-form__title">Демо виджета</div>
                     </div>
                 </div>
@@ -37,9 +37,9 @@
                 <div class="b-table__tr">
                     <div class="b-table__tr__td">
 <# if (this.data.hasOwnProperty('text') && text) { #>
-                        <script id="ismaxCode" src="/code?text=<#= text #>" type="text/javascript"></script>
+                        <script async id="ismaxCode" src="/code?text=<#= text #>" type="text/javascript"></script>
 <# } else { #>
-                        <script id="ismaxCode" src="/code?text=Rowenta%20CF%209320" type="text/javascript"></script>
+                        <script async id="ismaxCode" src="/code?text=Rowenta%20CF%209320" type="text/javascript"></script>
 <# } #>
                     </div>
                 </div>

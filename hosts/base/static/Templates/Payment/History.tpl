@@ -1,8 +1,8 @@
 <div class="b-loader__holder"></div>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td b-form__table_head"><div class="b-form__title"><a href="/profile#payment" class="b-form__table_head__action">Продление услуги</a></div></div>
-        <div class="b-table__tr__td b-form__table_head b-form__table_head_active"><div class="b-form__title"><a href="/profile#history" class="b-form__table_head__action">История платежей</a></div></div>
+        <div class="b-table__tr__td b-form__table_head"><a href="/profile#payment" class="b-form__table_head__action">Продление услуги</a></div>
+        <div class="b-table__tr__td b-form__table_head b-form__table_head_active"><div class="b-form__title">История платежей</div></div>
     </div>
 </div>
 <div class="b-table b-table_wide b-form__table">
@@ -12,7 +12,7 @@
                     <tr class="b-grid__row">
                         <th class="b-grid__head">Дата</th>
                         <th class="b-grid__head">Сумма</th>
-                        <th class="b-grid__head">Запросы</th>
+                        <th class="b-grid__head">Период</th>
                         <th class="b-grid__head">Итог</th>
                         <th class="b-grid__head">Статус</th>
                     </tr>

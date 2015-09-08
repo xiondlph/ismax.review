@@ -87,14 +87,15 @@ exports.code = function (req, res, next) {
     if (req.headers.hasOwnProperty('referer')) {
         req.model.secure.getUserByDomain(url.parse(req.headers.referer).host, function (user) {
             if (user && user.period > Date.now()) {
-                req.local.user = user;
+                req.local.user  = user;
+                req.local.proto = req.headers['x-forwarded-proto'];
             }
 
             req.local.text = req.params.text;
             res.render(__dirname + '/../view/', 'code', function (out) {
-                //var _out = UglifyJS.minify(out, {fromString: true});
+                var _out = UglifyJS.minify(out, {fromString: true});
 
-                res.write(out);
+                res.write(_out.code);
                 res.end();
             });
         });
@@ -163,10 +164,10 @@ exports.widget = function (req, res, next) {
                     req.local.text    = req.params.text;
                     req.local.isFirst = +page === 1;
                     res.render(__dirname + '/../view/', 'widget', function (out) {
-                        //var _out = UglifyJS.minify(out, {fromString: true});
+                        var _out = UglifyJS.minify(out, {fromString: true});
 
                         res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
-                        res.write(out);
+                        res.write(_out.code);
                         res.end();
                     });
                 });

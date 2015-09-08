@@ -264,13 +264,13 @@ function removeClass(obj, cls) {
     ].join('\n')));
     body.appendChild(createElement('div', {class: '_<#= ('ismaxReviewList' + text).fnv32a() #>', id: '_<#= ('ismaxReviewList' + text).fnv32a() #>'}));
     body.appendChild(createElement('div', {class: '_<#= ('ismaxMoreBtn' + text).fnv32a() #>', id: <#= ('ismaxMoreBtn' + text).fnv32a() #>}, null, 'Предыдущие отзывы &darr;'));
-    body.appendChild(createElement('div', {class: '_<#= ('ismaxLoader' + text).fnv32a() #>', id: <#= ('ismaxLoader' + text).fnv32a() #>}, null, '<img src="http://www.<#= process.env.HOST #>.ru/images/loader.gif" />'));
+    body.appendChild(createElement('div', {class: '_<#= ('ismaxLoader' + text).fnv32a() #>', id: <#= ('ismaxLoader' + text).fnv32a() #>}, null, '<img src="/images/loader.gif" />'));
 
     Event.add(document.getElementById(<#= ('ismaxMoreBtn' + text).fnv32a() #>), 'click', function () {
         var page = document.getElementsByClassName('_<#= ('ismaxReviewItem' + text).fnv32a() #>').length / 10 + 1;
         document.getElementById('<#= ('ismaxMoreBtn' + text).fnv32a() #>').style.display = 'none';
         document.getElementById('<#= ('ismaxLoader' + text).fnv32a() #>').style.display = 'block';
-        body.insertBefore(createElement('script', {src: 'http://www.<#= process.env.HOST #>.ru/widget?text=<#= text #>&page=' + page}), this);
+        body.insertBefore(createElement('script', {src: '/widget?text=<#= text #>&page=' + page}), this);
     });
 
 }());

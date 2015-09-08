@@ -65,10 +65,10 @@ window.ismaxWidget = {};
     loader.style.margin     = '0px auto';
     loader.style.textAlign  = 'center';
 
-    loader.innerHTML    = '<img src="http://www.<#= process.env.HOST #>.ru/images/loader.gif" />';
+    loader.innerHTML    = '<img src="<#= proto #>://www.<#= process.env.HOST #>.ru/images/loader.gif" />';
 
     frame               = document.createElement('iframe');
-    frame.src           = '/iframe?text=' + text;
+    frame.src           = '<#= proto #>://www.<#= process.env.HOST #>.ru/iframe?text=' + text;
     frame.scrolling     = 'no';
     frame.frameBorder   = 'no';
     frame.width         = '100%';
@@ -81,7 +81,10 @@ window.ismaxWidget = {};
 
 
     code.parentNode.insertBefore(loader, code);
-    code.parentNode.insertBefore(frame, code);
+
+    window.onload = function () {
+        code.parentNode.insertBefore(frame, code);
+    }
 }(window));
 <# } else { #>
 ({})

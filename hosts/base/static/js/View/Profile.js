@@ -482,10 +482,11 @@ define([
                 }).done(function (data) {
                     me.$el.find('#script').text(data.settings.script);
 
-                    me.editor = ace.edit("script");
-                    //me.editor.setTheme("ace/theme/twilight");
-                    me.editor.getSession().setMode("ace/mode/javascript");
-                    me.editor.setReadOnly(true);
+                    me.scriptEditor = ace.edit("script");
+                    //me.scriptEditor.setTheme("ace/theme/twilight");
+                    me.scriptEditor.getSession().setMode("ace/mode/javascript");
+                    me.scriptEditor.setReadOnly(true);
+                    window._scriptEditor = me.scriptEditor;
                 }).fail(function () {
                     popup = new PopupView({content: $(errorTpl)});
                     popup.render();
@@ -507,7 +508,7 @@ define([
                     type        : 'POST',
                     dataType    : 'json',
                     data: JSON.stringify({
-                        script: this.editor.getValue()
+                        script: this.scriptEditor.getValue()
                     })
                 }).done(function (data) {
                     popup = new PopupView({content: $(_.template(successTpl)({message: 'Данные сохранены'}))});

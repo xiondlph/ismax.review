@@ -1,9 +1,9 @@
 <div class="b-loader__holder"></div>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
-        <div class="b-table__tr__td b-form__table_head b-form__table_head_col3 b-form__table_head_active"><div class="b-form__title"><a href="/profile#settings" class="b-form__table_head__action">Настройки</a></div></div>
-        <div class="b-table__tr__td b-form__table_head b-form__table_head_col3"><div class="b-form__title"><a href="/profile#code" class="b-form__table_head__action">Установка</a></div></div>
-        <div class="b-table__tr__td b-form__table_head b-form__table_head_col3"><div class="b-form__title"><a href="/profile#advanced" class="b-form__table_head__action">Интерграция</a></div></div>
+        <div class="b-table__tr__td b-form__table_head b-form__table_head_col3 b-form__table_head_active"><div class="b-form__title">Настройки</div></div>
+        <div class="b-table__tr__td b-form__table_head b-form__table_head_col3"><a href="/profile#code" class="b-form__table_head__action">Установка</a></div>
+        <div class="b-table__tr__td b-form__table_head b-form__table_head_col3"><a href="/profile#advanced" class="b-form__table_head__action">Интерграция</a></div>
     </div>
 </div>
 <div class="b-table b-table_wide b-form__table">

@@ -632,6 +632,7 @@ strong {
   background-color: #fff;
   text-align: center;
   line-height: 30px;
+  padding-bottom: 5px;
 }
 .b-form__table_head_col3 {
   width: 30%;

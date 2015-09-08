@@ -11,7 +11,7 @@
 </head>
 <body>
 <# if (this.data.hasOwnProperty('text') && text){ #>
-    <script src="http://www.<#= process.env.HOST #>.ru/widget?text=<#= text #>"></script>
+    <script src="/widget?text=<#= text #>"></script>
 <# } #>
 </body>
 </html>
