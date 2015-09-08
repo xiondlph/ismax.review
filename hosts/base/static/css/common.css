@@ -320,15 +320,14 @@ strong {
   text-align: center;
   line-height: 80px;
   font-size: 70px;
-  color: #669999;
   display: block;
   height: 80px;
 }
 .b-popup__inner__icon_success {
-  background-image: url(../images/checkmark.svg);
+  color: #669999;
 }
 .b-popup__inner__icon_error {
-  background-image: url(../images/warning.svg);
+  color: #ffbb4d;
 }
 .b-popup__inner__title {
   text-align: center;
