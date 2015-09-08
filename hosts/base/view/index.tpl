@@ -12,12 +12,12 @@
     <link href="/build/index.css" rel="stylesheet" type="text/css" />
     <script src="/build/index.js"></script>
 <# } #>
-    <title>Готовые отзывы для вашего интренет магазина</title>
+    <title>Готовые отзывы для вашего интернет магазина</title>
 </head>
 <body>
 <#@ /inc/header #>
     <section class="b-section">
-        <h1>Готовые отзывы для вашего интренет магазина</h1>
+        <h1>Готовые отзывы для вашего интернет магазина</h1>
         <p>Виджет отзывов для вашего интернет магазина.</p>
     </section>
 <#@ /inc/footer #>
