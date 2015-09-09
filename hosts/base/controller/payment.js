@@ -10,7 +10,8 @@
 
 
 // Объявление модулей
-var crypto          = require('crypto'),
+var moment          = require('moment'),
+    crypto          = require('crypto'),
     nodemailer      = require("nodemailer"),
     fs              = require('fs');
 
@@ -156,8 +157,8 @@ exports.last = function (req, res, next) {
         if (payment) {
             response.payment = {
                 withdraw_amount:    payment.withdraw_amount,
-                datetime:           payment.datetime,
-                period:             payment.newPeriod
+                datetime:           moment(payment.datetime).format('DD.MM.YYYY HH:MM:SS'),
+                period:             moment(payment.newPeriod).format('DD.MM.YYYY')
             };
         }
 
@@ -184,7 +185,11 @@ exports.list = function (req, res, next) {
         var response = {
             auth: true,
             success: true,
-            payments: payments,
+            payments: payments.map(function(payment) {
+                payment.datetime    = moment(payment.datetime).format('DD.MM.YYYY HH:MM:SS');
+                payment.newPeriod   = moment(payment.newPeriod).format('DD.MM.YYYY');
+                return payment;
+            }),
             total: count
         };
 

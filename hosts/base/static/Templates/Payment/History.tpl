@@ -10,9 +10,9 @@
         <div class="b-table__tr__td b-table__tr__td_nowidth">
                 <table cellpadding="0" cellspacing="0" class="b-grid">
                     <tr class="b-grid__row">
-                        <th class="b-grid__head b-grid__head_col4">Дата</th>
+                        <th class="b-grid__head b-grid__head_col4 b-grid__head_center">Дата</th>
                         <th class="b-grid__head b-grid__head_col4 b-grid__head_center">Сумма</th>
-                        <th class="b-grid__head b-grid__head_col4">Период</th>
+                        <th class="b-grid__head b-grid__head_col4 b-grid__head_center">Период</th>
                         <th class="b-grid__head b-grid__head_col4 b-grid__head_center">Статус</th>
                     </tr>
                 </table>

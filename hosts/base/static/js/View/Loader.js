@@ -39,9 +39,8 @@ define([
                 };
 
                 xhr.onreadystatechange = function () {
-
                     me.loader.stop().animate({
-                        width: (xhr.readyState * 100) + '%'
+                        width: (xhr.readyState * 25) + '%'
                     }, 100);
                 };
 

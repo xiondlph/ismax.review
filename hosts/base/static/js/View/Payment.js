@@ -74,7 +74,9 @@ define([
                     if (data.hasOwnProperty('payment')) {
                         var last = $(_.template(lastTpl)(data.payment)).hide();
                         me.$el.find('.j-last-payment').html(last);
-                        last.fadeIn();
+                        setTimeout(function () {
+                            last.fadeIn();
+                        }, 500);
                     } else {
                         me.$el.find('.j-last-payment').remove();
                     }

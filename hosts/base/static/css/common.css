@@ -793,7 +793,7 @@ strong {
   font-size: 12px;
 }
 .b-grid__head_col4 {
-  width: 25px;
+  width: 25%;
 }
 .b-grid__head_center {
   text-align: center;
@@ -807,7 +807,7 @@ strong {
   font-size: 12px;
 }
 .b-grid__cell_col4 {
-  width: 25px;
+  width: 25%;
 }
 .b-grid__cell_center {
   text-align: center;

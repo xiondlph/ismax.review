@@ -48,7 +48,7 @@
   box-shadow: none;
   display: block;
   float: left;
-  width: auto;
+  width: 60px;
 }
 .b-form__field__input_domain {
   padding: 16px 0 3px 3px;
