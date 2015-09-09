@@ -9,12 +9,16 @@
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
         <div class="b-table__tr__td">
-            <div class="b-form__field">
-                <input type="text" name="domain" value="" id="domain" class="b-form__field__input j-form__field__input">
-                <label for="domain" class="b-form__field__label">Домен<span class="b-form__field__label__invalid"></span></label>
+            <div class="b-form__field b-form__field_domain">
+                <input type="text" value="http://" class="b-form__field__input b-form__field__input_proto j-form__field__input" size="5" disabled>
+                <input type="text" name="domain" value="" id="domain" class="b-form__field__input b-form__field__input_domain j-form__field__input">
+                <label for="domain" class="b-form__field__label b-form__field__label_domain">Адрес сайта<span class="b-form__field__label__invalid"></span></label>
             </div>
         </div>
-        <div class="b-table__tr__td"></div>
+        <div class="b-table__tr__td">
+            <div class="b-form__hint j-form__hint">Отзывы буду доступны только для сайта, привязаннго к вашему аккауну в сервисе.</div>
+            <div class="b-form__hint j-form__hint_domain">Введите адрес сайта, для которого подключается виджет отзывов.</div>
+        </div>
     </div>
     <div class="b-table__tr">
         <div class="b-table__tr__td">

@@ -789,9 +789,11 @@ strong {
   white-space: nowrap;
   padding: 5px 10px;
   color: #77808b;
-  line-height: 30px;
   text-align: left;
   font-size: 12px;
+}
+.b-grid__head_col4 {
+  width: 25px;
 }
 .b-grid__head_center {
   text-align: center;
@@ -801,9 +803,11 @@ strong {
 }
 .b-grid__cell {
   padding: 10px 10px 0 10px;
-  line-height: 30px;
   text-align: left;
   font-size: 12px;
+}
+.b-grid__cell_col4 {
+  width: 25px;
 }
 .b-grid__cell_center {
   text-align: center;

@@ -325,9 +325,11 @@ define([
         className:  'b-form  b-switch b-switch_animate',
 
         events: {
-            'input input':                              'input',
-            'input textarea':                           'input',
-            'submit':                                   'submit'
+            'input input':                      'input',
+            'input textarea':                   'input',
+            'focus .j-form__field__input':      'focus',
+            'blur .j-form__field__input':       'blur',
+            'submit':                           'submit'
         },
 
         render: function () {
@@ -338,6 +340,9 @@ define([
 
             me.options.obj.find('.b-switch').addClass('b-switch_animate');
             me.options.obj.append(me.$el);
+
+            me.$el.find('.b-form__hint:not(".j-form__hint")').hide();
+
             setTimeout(function () {
                 me.$el.removeClass('b-switch_animate');
             });
@@ -370,9 +375,30 @@ define([
             }
         },
 
+        focus: function (e) {
+            var me = this;
+
+            me.$el.find('.b-form__hint').hide();
+
+            me.$el.find('.j-form__hint_' + e.currentTarget.id).stop().fadeIn();
+        },
+
+        blur: function (e) {
+            var me = this;
+
+            me.$el.find('.j-form__hint_' + e.currentTarget.id).stop().fadeOut();
+
+            setTimeout(function () {
+                if (!me.$el.find('.b-form__hint:visible').length && me.$el.find('.j-form__hint').length) {
+                    me.$el.find('.j-form__hint').stop().fadeIn();
+                }
+            }, 500);
+        },
+
         submit: function (e) {
             var valid   = true,
-                popup;
+                popup,
+                parser;
 
             e.preventDefault();
 
@@ -386,6 +412,9 @@ define([
             }
 
             if (valid) {
+                parser = document.createElement('a');
+                parser.href = this.$el.find('input[name="domain"]').val();
+                this.$el.find('input[name="domain"]').val(parser.hostname);
                 $.ajax({
                     url         : '/profile/settings',
                     type        : 'POST',

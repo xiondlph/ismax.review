@@ -1,6 +1,6 @@
 <% for(var i=0; i <= payments.length -1; i++){ %>
     <tr class="b-grid__row">
-        <td class="b-grid__cell b-grid__cell_item">
+        <td class="b-grid__cell b-grid__cell_col4 b-grid__cell_item">
 <% var _datetime = new Date(payments[i].datetime);
             print(_datetime.getDate() > 10 ? _datetime.getDate() : '0'+_datetime.getDate()) %>.<%
             print(_datetime.getMonth() > 10 ? _datetime.getMonth() : '0'+_datetime.getMonth()) %>.<%
@@ -9,8 +9,8 @@
             print(_datetime.getMinutes() > 10 ? _datetime.getMinutes() : '0'+_datetime.getMinutes()) %>:<%
             print(_datetime.getSeconds() > 10 ? _datetime.getSeconds() : '0'+_datetime.getSeconds()) %>
         </td>
-        <td class="b-grid__cell b-grid__cell_item"><%= payments[i].withdraw_amount %> руб.</td>
-        <td class="b-grid__cell b-grid__cell_item">
+        <td class="b-grid__cell b-grid__cell_col4 b-grid__cell_center b-grid__cell_item"><%= payments[i].withdraw_amount %> руб.</td>
+        <td class="b-grid__cell b-grid__cell_col4 b-grid__cell_item">
 <% var _datetime = new Date(payments[i].newPeriod);
             print(_datetime.getDate() > 10 ? _datetime.getDate() : '0'+_datetime.getDate()) %>.<%
             print(_datetime.getMonth() > 10 ? _datetime.getMonth() : '0'+_datetime.getMonth()) %>.<%
@@ -19,7 +19,7 @@
             print(_datetime.getMinutes() > 10 ? _datetime.getMinutes() : '0'+_datetime.getMinutes()) %>:<%
             print(_datetime.getSeconds() > 10 ? _datetime.getSeconds() : '0'+_datetime.getSeconds()) %>
         </td>
-        <td class="b-grid__cell b-grid__cell_item">
+        <td class="b-grid__cell b-grid__cell_col4 b-grid__cell_center b-grid__cell_item">
 <%  if(payments[i].newPeriod){ %>
             <img src="/images/success.svg" alt="Платеж успешно выполнен" title="Платеж успешно выполнен"/>
 <%  }else{ %>

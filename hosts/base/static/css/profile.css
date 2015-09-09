@@ -37,25 +37,27 @@
   margin: 0 0 0 87px;
   width: 70%;
 }
-.b-form__field__input_payment:after {
-  -webkit-transition: top 0.2s ease-in-out, right 0.2s ease-in-out;
-  -moz-transition: top 0.2s ease-in-out, right 0.2s ease-in-out;
-  -o-transition: top 0.2s ease-in-out, right 0.2s ease-in-out;
-  transition: top 0.2s ease-in-out, right 0.2s ease-in-out;
-  position: absolute;
-  content: "руб.";
-  display: block;
-  right: 310px;
-  top: 0;
-}
 .b-form__field__label_payment {
   padding: 0 100px 0 5px;
   left: 90px;
 }
-.b-form__field__input_fill + .b-form__field__label_payment:after {
-  opacity: 1;
-  right: 100px;
-  top: 14px;
+.b-form__field__input_proto {
+  background-color: #efefef;
+  padding: 16px 0 3px 3px;
+  text-align: center;
+  box-shadow: none;
+  display: block;
+  float: left;
+  width: auto;
+}
+.b-form__field__input_domain {
+  padding: 16px 0 3px 3px;
+  margin: 0 0 0 -1px;
+  width: 70%;
+}
+.b-form__field__label_domain {
+  padding: 0 100px 0 5px;
+  left: 60px;
 }
 /* Таблица последней платежной операций */
 .b-last-payment {
