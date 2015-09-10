@@ -735,8 +735,10 @@ strong {
   border-left: 3px solid #fee9a5;
   background-color: #fcf8e3;
   margin: 15px 0 15px 0;
+  text-align: center;
   padding: 5px 10px;
   font-weight: 400;
+  font-size: 12px;
 }
 /*** Разметка блока ***/
 .b-block {

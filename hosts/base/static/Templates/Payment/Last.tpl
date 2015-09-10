@@ -3,7 +3,7 @@
     <tr class="b-grid__row">
         <th class="b-grid__head b-grid__head_col4 b-grid__head_center">Дата</th>
         <th class="b-grid__head b-grid__head_col4 b-grid__head_center">Сумма</th>
-        <th class="b-grid__head b-grid__head_col4 b-grid__head_center">Запросы</th>
+        <th class="b-grid__head b-grid__head_col4 b-grid__head_center">Период</th>
         <th class="b-grid__head b-grid__head_col4 b-grid__head_center">Статус</th>
     </tr>
     <tr class="b-grid__row">
