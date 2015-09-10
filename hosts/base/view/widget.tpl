@@ -167,7 +167,7 @@ function removeClass(obj, cls) {
         '    margin: 8px;',
         '    padding: 0;',
         '}',
-        '._<#= ('ismaxReviewItem' + text).fnv32a() #> {',
+        '._<#= ('shareviewReviewItem' + text).fnv32a() #> {',
         '    -webkit-transition: opacity .3s ease;',
         '    -moz-transition: opacity .3s ease;',
         '    -o-transition: opacity .3s ease;',
@@ -175,43 +175,43 @@ function removeClass(obj, cls) {
         '    margin: 10px 0 0 0;',
         '    opacity: 1;',
         '}',
-        '._<#= ('ismaxReviewItemAnimate' + text).fnv32a() #> {',
+        '._<#= ('shareviewReviewItemAnimate' + text).fnv32a() #> {',
         '    opacity: 0;',
         '}',
-        '._<#= ('ismaxReviewItemLabel' + text).fnv32a() #> {',
+        '._<#= ('shareviewReviewItemLabel' + text).fnv32a() #> {',
         '    font-weight: bold;',
         '    padding: 10px 10px 0% 10px;',
         '}',
-        '._<#= ('ismaxReviewItemField' + text).fnv32a() #> {',
+        '._<#= ('shareviewReviewItemField' + text).fnv32a() #> {',
         '    -webkit-box-sizing: border-box;',
         '    -moz-box-sizing: border-box;',
         '    box-sizing: border-box;',
         '    padding: 0% 10px 10px 10px;',
         '}',
-        '._<#= ('ismaxReviewItemAuthor' + text).fnv32a() #> {',
+        '._<#= ('shareviewReviewItemAuthor' + text).fnv32a() #> {',
         '    background-color: #f6f5f3;',
         '    padding: 10px 10px 10px 10px;',
         '    white-space: nowrap;',
         '    float: left;',
         '    width: 50%;',
         '}',
-        '._<#= ('ismaxReviewItemDate' + text).fnv32a() #> {',
+        '._<#= ('shareviewReviewItemDate' + text).fnv32a() #> {',
         '    background-color: #f6f5f3;',
         '    padding: 10px 10px 10px 10px;',
         '    text-align: right;',
         '    float: right;',
         '    width: 50%;',
         '}',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #> {',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #> {',
         '    padding: 10px 10px 0% 10px;',
         '    clear: both;',
         '}',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #> ul {',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #> ul {',
         '    list-style: none;',
         '    padding: 0;',
         '    margin: 0;',
         '}',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #> ul li {',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #> ul li {',
         '    background-image: url(../images/stars.png);',
         '    background-position: -49px 0px;',
         '    background-repeat: no-repeat;',
@@ -219,32 +219,32 @@ function removeClass(obj, cls) {
         '    height: 15px;',
         '    width: 15px;',
         '}',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="-2"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"] {',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="-2"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"] {',
         '    background-position: -49px -15px;',
         '}',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="-1"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="-1"] ul li[_<#= ('grade' + text).fnv32a() #>="-1"] {',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="-1"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="-1"] ul li[_<#= ('grade' + text).fnv32a() #>="-1"] {',
         '    background-position: -49px -15px;',
         '}',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="0"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="0"] ul li[_<#= ('grade' + text).fnv32a() #>="-1"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="0"] ul li[_<#= ('grade' + text).fnv32a() #>="0"] {',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="0"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="0"] ul li[_<#= ('grade' + text).fnv32a() #>="-1"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="0"] ul li[_<#= ('grade' + text).fnv32a() #>="0"] {',
         '    background-position: -49px -15px;',
         '}',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="1"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="1"] ul li[_<#= ('grade' + text).fnv32a() #>="-1"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="1"] ul li[_<#= ('grade' + text).fnv32a() #>="0"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="1"] ul li[_<#= ('grade' + text).fnv32a() #>="1"] {',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="1"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="1"] ul li[_<#= ('grade' + text).fnv32a() #>="-1"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="1"] ul li[_<#= ('grade' + text).fnv32a() #>="0"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="1"] ul li[_<#= ('grade' + text).fnv32a() #>="1"] {',
         '    background-position: -49px -15px;',
         '}',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="-1"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="0"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="1"],',
-        '._<#= ('ismaxReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="2"] {',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="-2"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="-1"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="0"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="1"],',
+        '._<#= ('shareviewReviewItemGrade' + text).fnv32a() #>[_<#= ('grade' + text).fnv32a() #>="2"] ul li[_<#= ('grade' + text).fnv32a() #>="2"] {',
         '    background-position: -49px -15px;',
         '}',
-        '._<#= ('ismaxMoreBtn' + text).fnv32a() #> {',
+        '._<#= ('shareviewMoreBtn' + text).fnv32a() #> {',
         '    text-align: center;',
         '    line-height: 30px;',
         '    cursor: pointer;',
@@ -252,7 +252,7 @@ function removeClass(obj, cls) {
         '    height: 30px;',
         '    color: #ccc;',
         '}',
-        '._<#= ('ismaxLoader' + text).fnv32a() #> {',
+        '._<#= ('shareviewLoader' + text).fnv32a() #> {',
         '    text-align: center;',
         '    line-height: 30px;',
         '    cursor: pointer;',
@@ -262,14 +262,14 @@ function removeClass(obj, cls) {
         '    color: #ccc;',
         '}'
     ].join('\n')));
-    body.appendChild(createElement('div', {class: '_<#= ('ismaxReviewList' + text).fnv32a() #>', id: '_<#= ('ismaxReviewList' + text).fnv32a() #>'}));
-    body.appendChild(createElement('div', {class: '_<#= ('ismaxMoreBtn' + text).fnv32a() #>', id: <#= ('ismaxMoreBtn' + text).fnv32a() #>}, null, 'Предыдущие отзывы &darr;'));
-    body.appendChild(createElement('div', {class: '_<#= ('ismaxLoader' + text).fnv32a() #>', id: <#= ('ismaxLoader' + text).fnv32a() #>}, null, '<img src="/images/loader.gif" />'));
+    body.appendChild(createElement('div', {class: '_<#= ('shareviewReviewList' + text).fnv32a() #>', id: '_<#= ('shareviewReviewList' + text).fnv32a() #>'}));
+    body.appendChild(createElement('div', {class: '_<#= ('shareviewMoreBtn' + text).fnv32a() #>', id: <#= ('shareviewMoreBtn' + text).fnv32a() #>}, null, 'Предыдущие отзывы &darr;'));
+    body.appendChild(createElement('div', {class: '_<#= ('shareviewLoader' + text).fnv32a() #>', id: <#= ('shareviewLoader' + text).fnv32a() #>}, null, '<img src="/images/loader.gif" />'));
 
-    Event.add(document.getElementById(<#= ('ismaxMoreBtn' + text).fnv32a() #>), 'click', function () {
-        var page = document.getElementsByClassName('_<#= ('ismaxReviewItem' + text).fnv32a() #>').length / 10 + 1;
-        document.getElementById('<#= ('ismaxMoreBtn' + text).fnv32a() #>').style.display = 'none';
-        document.getElementById('<#= ('ismaxLoader' + text).fnv32a() #>').style.display = 'block';
+    Event.add(document.getElementById(<#= ('shareviewMoreBtn' + text).fnv32a() #>), 'click', function () {
+        var page = document.getElementsByClassName('_<#= ('shareviewReviewItem' + text).fnv32a() #>').length / 10 + 1;
+        document.getElementById('<#= ('shareviewMoreBtn' + text).fnv32a() #>').style.display = 'none';
+        document.getElementById('<#= ('shareviewLoader' + text).fnv32a() #>').style.display = 'block';
         body.insertBefore(createElement('script', {src: '/widget?text=<#= text #>&page=' + page}), this);
     });
 
@@ -279,10 +279,10 @@ function removeClass(obj, cls) {
 (function () {
 
 <# for(var index=0; index <= reviews.modelOpinions.opinion.length -1; index++) { #>
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.appendChild(createElement('div', {class: '_<#= ('ismaxReviewItem' + text).fnv32a() #> _<#= ('ismaxReviewItemAnimate' + text).fnv32a() #>'}, null));
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemAuthor' + text).fnv32a() #> _<#= ('ismaxReviewItemField' + text).fnv32a() #>'}, null, '<#= reviews.modelOpinions.opinion[index].author ? reviews.modelOpinions.opinion[index].author : "Гость" #>') );
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemDate' + text).fnv32a() #> _<#= ('ismaxReviewItemField' + text).fnv32a() #>'}, null, '<#= new Date(reviews.modelOpinions.opinion[index].date).dateParse() #>') );
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemGrade' + text).fnv32a() #> _<#= ('ismaxReviewItemField' + text).fnv32a() #>', _<#= ('grade' + text).fnv32a() #>: <#= reviews.modelOpinions.opinion[index].grade #>}, null, [
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.appendChild(createElement('div', {class: '_<#= ('shareviewReviewItem' + text).fnv32a() #> _<#= ('shareviewReviewItemAnimate' + text).fnv32a() #>'}, null));
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('shareviewReviewItemAuthor' + text).fnv32a() #> _<#= ('shareviewReviewItemField' + text).fnv32a() #>'}, null, '<#= reviews.modelOpinions.opinion[index].author ? reviews.modelOpinions.opinion[index].author : "Гость" #>') );
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('shareviewReviewItemDate' + text).fnv32a() #> _<#= ('shareviewReviewItemField' + text).fnv32a() #>'}, null, '<#= new Date(reviews.modelOpinions.opinion[index].date).dateParse() #>') );
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('shareviewReviewItemGrade' + text).fnv32a() #> _<#= ('shareviewReviewItemField' + text).fnv32a() #>', _<#= ('grade' + text).fnv32a() #>: <#= reviews.modelOpinions.opinion[index].grade #>}, null, [
         '    <ul>',
         '      <li _<#= ('grade' + text).fnv32a() #>="-2"></li>',
         '      <li _<#= ('grade' + text).fnv32a() #>="-1"></li>',
@@ -292,33 +292,33 @@ function removeClass(obj, cls) {
         '    </ul>'
     ].join('\n')) );
 <#     if (reviews.modelOpinions.opinion[index].hasOwnProperty('pro')) { #>
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemProLabel' + text).fnv32a() #> _<#= ('ismaxReviewItemLabel' + text).fnv32a() #>'}, null, "Достоинства:") );
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemPro' + text).fnv32a() #> _<#= ('ismaxReviewItemField' + text).fnv32a() #>'}, null, <#= JSON.stringify(reviews.modelOpinions.opinion[index].pro) #>) );
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('shareviewReviewItemProLabel' + text).fnv32a() #> _<#= ('shareviewReviewItemLabel' + text).fnv32a() #>'}, null, "Достоинства:") );
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('shareviewReviewItemPro' + text).fnv32a() #> _<#= ('shareviewReviewItemField' + text).fnv32a() #>'}, null, <#= JSON.stringify(reviews.modelOpinions.opinion[index].pro) #>) );
 <#     }  #>
 <#     if (reviews.modelOpinions.opinion[index].hasOwnProperty('contra')) { #>
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemContraLabel' + text).fnv32a() #> _<#= ('ismaxReviewItemLabel' + text).fnv32a() #>'}, null, "Недостатки:") );
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemContra' + text).fnv32a() #> _<#= ('ismaxReviewItemField' + text).fnv32a() #>'}, null, <#= JSON.stringify(reviews.modelOpinions.opinion[index].contra) #>) );
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('shareviewReviewItemContraLabel' + text).fnv32a() #> _<#= ('shareviewReviewItemLabel' + text).fnv32a() #>'}, null, "Недостатки:") );
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('shareviewReviewItemContra' + text).fnv32a() #> _<#= ('shareviewReviewItemField' + text).fnv32a() #>'}, null, <#= JSON.stringify(reviews.modelOpinions.opinion[index].contra) #>) );
 <#     }  #>
 <#     if (reviews.modelOpinions.opinion[index].hasOwnProperty('text')) { #>
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemTextLabel' + text).fnv32a() #> _<#= ('ismaxReviewItemLabel' + text).fnv32a() #>'}, null, "Комментарий:") );
-    _<#= ('ismaxReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('ismaxReviewItemText' + text).fnv32a() #> _<#= ('ismaxReviewItemField' + text).fnv32a() #>'}, null, <#= JSON.stringify(reviews.modelOpinions.opinion[index].text) #>) );
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('shareviewReviewItemTextLabel' + text).fnv32a() #> _<#= ('shareviewReviewItemLabel' + text).fnv32a() #>'}, null, "Комментарий:") );
+    _<#= ('shareviewReviewList' + text).fnv32a() #>.lastChild.appendChild( createElement('div', {class: '_<#= ('shareviewReviewItemText' + text).fnv32a() #> _<#= ('shareviewReviewItemField' + text).fnv32a() #>'}, null, <#= JSON.stringify(reviews.modelOpinions.opinion[index].text) #>) );
 <#     }  #>
 <# }  #>
     setTimeout(function () {
-        var items = document.getElementsByClassName('_<#= ('ismaxReviewItemAnimate' + text).fnv32a() #>');
+        var items = document.getElementsByClassName('_<#= ('shareviewReviewItemAnimate' + text).fnv32a() #>');
 
         while(items.length > 0) {
-           removeClass(items[0], '_<#= ('ismaxReviewItemAnimate' + text).fnv32a() #>'); 
+           removeClass(items[0], '_<#= ('shareviewReviewItemAnimate' + text).fnv32a() #>'); 
         }
 
-        top.postMessage({action: 'ismaxSetHeight', height: document.body.clientHeight + 10}, '*');
+        top.postMessage({action: 'shareviewSetHeight', height: document.body.clientHeight + 10}, '*');
     }, 10);
-    if (document.getElementsByClassName('_<#= ('ismaxReviewItem' + text).fnv32a() #>').length < <#= reviews.modelOpinions.total #>) {
-        document.getElementById('<#= ('ismaxMoreBtn' + text).fnv32a() #>').style.display = 'block';
-        document.getElementById('<#= ('ismaxLoader' + text).fnv32a() #>').style.display = 'none';
+    if (document.getElementsByClassName('_<#= ('shareviewReviewItem' + text).fnv32a() #>').length < <#= reviews.modelOpinions.total #>) {
+        document.getElementById('<#= ('shareviewMoreBtn' + text).fnv32a() #>').style.display = 'block';
+        document.getElementById('<#= ('shareviewLoader' + text).fnv32a() #>').style.display = 'none';
     } else {
-        document.getElementById('<#= ('ismaxMoreBtn' + text).fnv32a() #>').style.display = 'none';
-        document.getElementById('<#= ('ismaxLoader' + text).fnv32a() #>').style.display = 'none';
+        document.getElementById('<#= ('shareviewMoreBtn' + text).fnv32a() #>').style.display = 'none';
+        document.getElementById('<#= ('shareviewLoader' + text).fnv32a() #>').style.display = 'none';
     }
 }());
 <# } else { #>

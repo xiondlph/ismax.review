@@ -27,11 +27,11 @@ module.exports = function (req, res, next) {
     var _cookie = cookie.parse(req.headers.cookie),
         index;
 
-    if (_cookie && _cookie.ismax_session) {
-        index = _cookie.ismax_session;
+    if (_cookie && _cookie.shareview_session) {
+        index = _cookie.shareview_session;
     } else {
         index = cookie.uid(64);
-        res.setHeader("Set-Cookie", 'ismax_session=' + index + '; path=/; domain=' + req.currentHost + '.ru; secure');
+        res.setHeader("Set-Cookie", 'shareview_session=' + index + '; path=/; domain=' + req.currentHost + '.ru; secure');
     }
 
     /**

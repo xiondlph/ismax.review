@@ -45,14 +45,14 @@ exports.user = function (req, res, next) {
 
     req.model.secure.getUserBySession(req.sissionId, function (user) {
         if (user) {
-            _cookie.push('ismax_auth=true; path=/; domain=' + req.currentHost + '.ru;');
+            _cookie.push('shareview_auth=true; path=/; domain=' + req.currentHost + '.ru;');
             res.setHeader('Set-Cookie', _cookie);
 
             user._active    = user.period > Date.now();
             req.user        = user;
             req.local.user  = user;
         } else {
-            _cookie.push('ismax_auth=false; path=/; domain=' + req.currentHost + '.ru;');
+            _cookie.push('shareview_auth=false; path=/; domain=' + req.currentHost + '.ru;');
             res.setHeader('Set-Cookie', _cookie);
         }
         next();
@@ -113,7 +113,7 @@ exports.auth = function (req, res, next) {
         response,
         auth;
 
-    if (_cookie && _cookie.ismax_auth && _cookie.ismax_auth === 'true') {
+    if (_cookie && _cookie.shareview_auth && _cookie.shareview_auth === 'true') {
         auth = true;
     } else {
         auth = false;
@@ -204,7 +204,7 @@ exports.guest = function (req, res, next) {
         response,
         auth;
 
-    if (_cookie && _cookie.ismax_auth && _cookie.ismax_auth === 'true') {
+    if (_cookie && _cookie.shareview_auth && _cookie.shareview_auth === 'true') {
         auth = true;
     } else {
         auth = false;

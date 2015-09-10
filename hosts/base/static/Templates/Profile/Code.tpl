@@ -13,7 +13,7 @@
             <div class="b-form__hint">Скопируйте этот код на страницу вашего сайта где вы хотели бы разместить виджет.</div>
 
             <div class="b-code j-code">
-                <pre style="color:#080808">&lt;<span style="color:#bf4f24">script</span> <span style="color:#bf4f24">async</span> <span style="color:#bf4f24">type</span>=<span style="color:#0b6125">"text/javascript"</span> <span style="color:#bf4f24">src</span>=<span style="color:#0b6125">"http://www.shareview.ru/code"</span> <span style="color:#bf4f24">id</span><span style="color:#794938">=</span><span style="color:#0b6125">"ismaxCode"</span>>&lt;/<span style="color:#bf4f24">script</span>></pre>
+                <pre style="color:#080808">&lt;<span style="color:#bf4f24">script</span> <span style="color:#bf4f24">async</span> <span style="color:#bf4f24">type</span>=<span style="color:#0b6125">"text/javascript"</span> <span style="color:#bf4f24">src</span>=<span style="color:#0b6125">"http://www.shareview.ru/code"</span> <span style="color:#bf4f24">id</span><span style="color:#794938">=</span><span style="color:#0b6125">"shareviewCode"</span>>&lt;/<span style="color:#bf4f24">script</span>></pre>
             </div>
         </div>
     </div>

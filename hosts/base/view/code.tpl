@@ -1,5 +1,5 @@
 <# if (this.data.hasOwnProperty('user')) { #>
-window.ismaxWidget = {};
+window.shareviewWidget = {};
 (function (window) {
     var text,
         code,
@@ -44,21 +44,21 @@ window.ismaxWidget = {};
 
     addEvent(window, 'message', function (event) {
         switch (event.data.action) {
-        case 'ismaxSetHeight':
-            document.getElementById('ismaxFrame').setAttribute('height', event.data.height);
+        case 'shareviewSetHeight':
+            document.getElementById('shareviewFrame').setAttribute('height', event.data.height);
             break;
         }
     });
 <#     if (this.data.hasOwnProperty('text') && text ) { #>
     text = '<#= text #>';
 <#     } else { #>
-    text = window.ismaxWidget.text || '';
+    text = window.shareviewWidget.text || '';
 <#     } #>
 
-    code                = document.getElementById('ismaxCode');
+    code                = document.getElementById('shareviewCode');
 
     loader              = document.createElement('div');
-    loader.id           = 'ismaxLoader';
+    loader.id           = 'shareviewLoader';
 
     loader.style.height     = '30px';
     loader.style.lineHeight = '30px';
@@ -73,7 +73,7 @@ window.ismaxWidget = {};
     frame.frameBorder   = 'no';
     frame.width         = '100%';
     frame.height        = '0';
-    frame.id            = 'ismaxFrame';
+    frame.id            = 'shareviewFrame';
 
     frame.onload        = function () {
         loader.parentNode.removeChild(loader);

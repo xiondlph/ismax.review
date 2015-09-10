@@ -54,7 +54,7 @@ exports.create = function (req, res) {
                 data        = {
                     email:      req.params.email,
                     active:     false,
-                    script:     'window.ismaxWidget.text = document.getElementsByTagName(\'title\')[0].innerHTML;'
+                    script:     'window.shareviewWidget.text = document.getElementsByTagName(\'title\')[0].innerHTML;'
                 };
 
                 // Шифрование

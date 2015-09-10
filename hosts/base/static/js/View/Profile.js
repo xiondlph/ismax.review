@@ -77,6 +77,12 @@ define([
                     }
                     me.$el.find('input[name="email"]').val(data.profile.email);
 
+                    if (data.profile.hasOwnProperty('domain') && data.profile.domain) {
+                        me.$el.find('.j-domain').text(data.profile.domain);
+                    } else {
+                        me.$el.find('.j-domain').html('<a href="#settings">Указать</a>');
+                    }
+                    
                     if (data.profile.hasOwnProperty('_active') && data.profile._active) {
                         me.$el.find('.j-state').text('Активен');
                         me.$el.find('.j-period').text(period);

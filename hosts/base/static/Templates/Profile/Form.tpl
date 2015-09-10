@@ -16,6 +16,10 @@
             </div>
             <table border="0" cellpadding="0" cellspacing="5" class="b-grid b-grid_panel">
                 <tr>
+                    <td class="b-grid_panel__cell b-grid_panel__cell_right">Сайт</td>
+                    <td class="b-grid_panel__cell"><span class="j-domain"></span></td>
+                </tr>
+                <tr>
                     <td class="b-grid_panel__cell b-grid_panel__cell_right">Действителен до</td>
                     <td class="b-grid_panel__cell"><span class="j-period"></span></td>
                 </tr>
@@ -29,6 +33,12 @@
             <a href="#payment" class="b-form__action icon-credit-card">Оплата</a>
         </div>
         <div class="b-table__tr__td">
+            <div class="b-form__hint j-form__hint">
+                <span>Для работы виджета вам нужно выполнить всего три шага:</span><br />
+                <span> - Оплатить услугу</span><br />
+                <span> - Указать адрес вашего сайта</span><br />
+                <span> - Установить код виджета на сайт</span>
+            </div>
             <div class="b-form__hint j-form__hint_email">Email является вашим логином в системе и используется для идентификации вашего аккаунта.</div>
         </div>
     </div>

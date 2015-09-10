@@ -36,7 +36,7 @@ define([
             $('.b-nav__item[href="' + document.location.pathname + '"]').addClass('b-nav__item_active');
 
             this.$el.find('.b-menu__sub__item__link').each(function (index, el) {
-                if ($(el).attr('href') === document.location.pathname + document.location.hash) {
+                if (el.pathname === document.location.pathname) {
                     $(el).addClass('b-menu__sub__item__link_active');
                     $(el).parents('.b-menu__sub').next().addClass('b-menu__label_active');
                 }
