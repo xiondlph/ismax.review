@@ -418,9 +418,6 @@ define([
             }
 
             if (valid) {
-                parser = document.createElement('a');
-                parser.href = this.$el.find('input[name="domain"]').val();
-                this.$el.find('input[name="domain"]').val(parser.hostname);
                 $.ajax({
                     url         : '/profile/settings',
                     type        : 'POST',

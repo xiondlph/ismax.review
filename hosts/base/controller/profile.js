@@ -11,7 +11,8 @@
 
 // Объявление модулей
 var crypto        = require('crypto'),
-    validator     = require('validator');
+    validator     = require('validator'),
+    url           = require('url');
 
 //---------------------- HTTP запросы ----------------------//
 
@@ -207,7 +208,7 @@ exports.setSettings = function (req, res) {
                 throw new Error('Validate error - domain is invalid');
             }
 
-            settings.domain = req.params.domain;
+            settings.domain = url.parse(req.params.domain).hostname || url.parse(req.params.domain).href;
         }
 
 
