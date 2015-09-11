@@ -44,6 +44,7 @@ exports.get = function (req, res) {
             email:      req.user.email,
             domain:     req.user.domain,
             period:     req.user.period,
+            active:     req.user.active,
             _active:    req.user._active
         }
     };

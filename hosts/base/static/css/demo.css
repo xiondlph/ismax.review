@@ -1,3 +1,22 @@
 #shareviewFrame {
   background-color: #fff;
 }
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #fff;
+  cursor: default;
+  overflow: auto;
+}
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #3399ff;
+}
+.autocomplete-suggestion {
+  padding: 10px 5px;
+  font-size: 1.2em;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.autocomplete-selected {
+  background: #f0f0f0;
+}

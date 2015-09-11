@@ -15,7 +15,7 @@
 <body>
 <#@ /inc/header #>
     <section class="b-section">
-        <form class="b-form b-switch b-switch_animate" action="http://www.<#= process.env.HOST #>.ru/demo" method="get">
+        <form class="b-form b-switch b-switch_animate" action="/demo" method="get">
             <div class="b-table b-table_wide b-form__table">
                 <div class="b-table__tr">
                     <div class="b-table__tr__td b-form__table_head">

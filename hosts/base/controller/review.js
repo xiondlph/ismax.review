@@ -180,3 +180,52 @@ exports.widget = function (req, res, next) {
         res.render(__dirname + '/../view/', 'widget');
     }
 };
+
+
+/**
+ * Поисковые подсказки
+ *
+ * @method suggest
+ * @param {Object} req Объект запроса сервера
+ * @param {Object} res Объект ответа сервера
+ * @param {Function} next
+ */
+exports.suggest = function (req, res, next) {
+    var response;
+
+    if (req.params && req.params.hasOwnProperty('part') && req.params.part) {
+
+
+        req.api('/v1/suggest.json?part=' + req.params.part, function (err, status, data) {
+            console.log(err);
+            console.log(status);
+            console.log(data);
+            if (err || status !== 200) {
+                response = {
+                    success: false
+                };
+            } else {
+                response = {
+                    success:    true,
+                    result:     JSON.parse(data)
+                };
+            }
+
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application-json; charset=UTF-8');
+            res.write(JSON.stringify(response, null, "\t"));
+            res.end();
+        });
+
+
+    } else {
+        response = {
+            success: false
+        };
+
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application-json; charset=UTF-8');
+        res.write(JSON.stringify(response, null, "\t"));
+        res.end();
+    }
+};

@@ -1,3 +1,22 @@
+<div class="b-table b-table_wide b-form__table">
+    <div class="b-table__tr">
+        <div class="b-table__tr__td b-form__table_head">
+            <div class="b-form__title">С чего начать</div>
+        </div>
+    </div>
+    <div class="b-table__tr">
+        <div class="b-table__tr__td">
+            <ul class="b-steps">
+                <li class="b-steps__item"><a class="b-steps__item__link j-steps__pay" href="#payment">Оплатить<br />услугу</a></li>
+                <li class="b-steps__arrow"><span class="b-steps__arrow__cont icon-circle-right"></span></li>
+                <li class="b-steps__item"><a class="b-steps__item__link j-steps__domain" href="#settings">Привязать<br />сайт</a></li>
+                <li class="b-steps__arrow"><span class="b-steps__arrow__cont icon-circle-right"></span></li>
+                <li class="b-steps__item"><a class="b-steps__item__link j-steps__code" href="#code">Скопировать<br />код</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br />
 <div class="b-loader__holder"></div>
 <div class="b-table b-table_wide b-form__table">
     <div class="b-table__tr">
@@ -25,7 +44,7 @@
                 </tr>
                 <tr>
                     <td class="b-grid_panel__cell b-grid_panel__cell_right">Состояние</td>
-                    <td class="b-grid_panel__cell"><span class="j-state"></span></td>
+                    <td class="b-grid_panel__cell"><span class="b-form__state j-state"></span></td>
                 </tr>
             </table>
             <a href="#pass" class="b-form__action icon-locked">Зменить пароль</a><br />
@@ -33,12 +52,7 @@
             <a href="#payment" class="b-form__action icon-credit-card">Оплата</a>
         </div>
         <div class="b-table__tr__td">
-            <div class="b-form__hint j-form__hint">
-                <span>Для работы виджета вам нужно выполнить всего три шага:</span><br />
-                <span> - Оплатить услугу</span><br />
-                <span> - Указать адрес вашего сайта</span><br />
-                <span> - Установить код виджета на сайт</span>
-            </div>
+            <div class="b-form__hint j-form__hint"> </div>
             <div class="b-form__hint j-form__hint_email">Email является вашим логином в системе и используется для идентификации вашего аккаунта.</div>
         </div>
     </div>

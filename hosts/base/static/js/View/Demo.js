@@ -11,10 +11,11 @@
 define([
     'backbone',
     'validator',
+    'autocomplete',
     'View/Popup',
     'text!Templates/Popup/Success.tpl',
     'text!Templates/Popup/Error.tpl'
-], function (Backbone, Validator, PopupView, successTpl, errorTpl) {
+], function (Backbone, Autocomplete, Validator, PopupView, successTpl, errorTpl) {
 
 
     /**
@@ -30,7 +31,8 @@ define([
         className:  'b-form b-switch b-switch_animate',
 
         events: {
-            'input input': 'input'
+            'input input':      'input',
+            'keydown input':    'keydown'
         },
 
         render: function () {
@@ -42,6 +44,16 @@ define([
 
             me.$el.find('.j-form__field__input').trigger('input');
 
+
+            me.$el.find('.j-form__field__input').autocomplete({
+                serviceUrl: '/suggest',
+                dataType: 'json',
+                paramName: 'part',
+                onSelect: function (suggestion) {
+                    me.$el.get(0).submit();
+                }
+            });
+
             return this.$el;
         },
 
@@ -51,6 +63,12 @@ define([
                 $(e.currentTarget).removeClass('b-form__field__input_invalid');
             } else {
                 $(e.currentTarget).removeClass('b-form__field__input_fill');
+            }
+        },
+
+        keydown: function (e) {
+            if ( e.which == 13 ) {
+               e.preventDefault();
             }
         }
     });

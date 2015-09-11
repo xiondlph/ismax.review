@@ -75,28 +75,59 @@ define([
                     if (data.profile.hasOwnProperty('period') && data.profile.period) {
                         period = (new Date(data.profile.period)).toLocaleDateString();
                     }
+
+                    if (data.profile.hasOwnProperty('_active') && data.profile._active) {
+                        me.$el.find('.j-steps__pay').addClass('b-steps__item__link_active');
+                    }
+
+
+                    if (data.profile.hasOwnProperty('active') && data.profile.active) {
+                        me.$el.find('.j-steps__code').addClass('b-steps__item__link_active');
+                    }
+
                     me.$el.find('input[name="email"]').val(data.profile.email);
 
                     if (data.profile.hasOwnProperty('domain') && data.profile.domain) {
                         me.$el.find('.j-domain').text(data.profile.domain);
+                        me.$el.find('.j-steps__domain').addClass('b-steps__item__link_active');
                     } else {
                         me.$el.find('.j-domain').html('<a href="#settings">Указать</a>');
                     }
                     
                     if (data.profile.hasOwnProperty('_active') && data.profile._active) {
+                        me.$el.find('.j-state').addClass('b-form__state_green');
                         me.$el.find('.j-state').text('Активен');
                         me.$el.find('.j-period').text(period);
                     } else {
+                        me.$el.find('.j-state').addClass('b-form__state_red');
                         me.$el.find('.j-state').text('Заблокирован');
                         me.$el.find('.j-period').text(period);
                     }
 
                     me.$el.find('.j-form__field__input').trigger('input');
-                    setTimeout(function () {
-                        if (!me.$el.find('input[name="email"]').is(':focus')) {
-                            me.$el.find('input[name="email"]').trigger('focus');
+                    if (me.$el.find('.b-steps__item__link_active').length < 3) {
+                        if (!me.$el.find('.j-steps__code').hasClass('b-steps__item__link_active')) {
+                            me.$el.find('.j-form__hint').text('Выполняется автоматическое обнаружение виджета на вашем сайте и его настройка. Это может занять некоторое время.');
                         }
-                    }, 2000);
+
+                        if (!me.$el.find('.j-steps__domain').hasClass('b-steps__item__link_active')) {
+                            me.$el.find('.j-form__hint').text('Для работы виджета следует выполнить привязку вашего сайта.');
+                        }
+
+                        if (!me.$el.find('.j-steps__pay').hasClass('b-steps__item__link_active')) {
+                            me.$el.find('.j-form__hint').text('Для работы виджета вам необходимо оплатить услугу.');
+                        }
+
+                    } else {
+                        me.$el.find('.j-form__hint').text('Ваш профиль полностью настроен для работы виджета');
+
+                        setTimeout(function () {
+                            if (!me.$el.find('input[name="email"]').is(':focus')) {
+                                me.$el.find('input[name="email"]').trigger('focus');
+                            }
+                        }, 2000);
+
+                    }
                 }).fail(function () {
                     popup = new PopupView({content: $(errorTpl)});
                     popup.render();

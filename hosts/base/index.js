@@ -93,14 +93,15 @@ router.get('^http://www.' + host + '.ru/?$', controller.secure.guest, controller
 router.get('^https://www.' + host + '.ru/?$', controller.secure.guest, controller.secure.http);
 
 // Текстовые стр.
-router.get('^http://www.' + host + '.ru/(about|destiny|terms|demo)/?$', controller.secure.auth);
-router.get('^https://www.' + host + '.ru/(about|destiny|terms|demo)/?$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
+router.get('^http://www.' + host + '.ru/(about|destiny|terms|demo|suggest)/?$', controller.secure.auth);
+router.get('^https://www.' + host + '.ru/(about|destiny|terms|demo|suggest)/?$', middleware.sessions, model.secure, controller.secure.user, controller.secure.auth);
 
 router.get('^(http|https)://www.' + host + '.ru/about/?$', controller.index.about);
 router.get('^(http|https)://www.' + host + '.ru/destiny/?$', controller.index.destiny);
 router.get('^(http|https)://www.' + host + '.ru/terms/?$', controller.index.terms);
 
 router.get('^(http|https)://www.' + host + '.ru/demo/?$', middleware.query, controller.index.demo);
+router.get('^(http|https)://www.' + host + '.ru/suggest/?$', middleware.query, controller.request.api, controller.review.suggest);
 
 // Sitemap.xml
 router.get('^http://www.' + host + '.ru/Sitemap.xml$', controller.index.sitemap);
