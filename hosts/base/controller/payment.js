@@ -185,7 +185,7 @@ exports.list = function (req, res, next) {
         var response = {
             auth: true,
             success: true,
-            payments: payments.map(function(payment) {
+            payments: payments.map(function (payment) {
                 payment.datetime    = moment(payment.datetime).format('DD.MM.YYYY HH:MM:SS');
                 payment.newPeriod   = moment(payment.newPeriod).format('DD.MM.YYYY');
                 return payment;

@@ -93,7 +93,7 @@ define([
                     } else {
                         me.$el.find('.j-domain').html('<a href="#settings">Указать</a>');
                     }
-                    
+
                     if (data.profile.hasOwnProperty('_active') && data.profile._active) {
                         me.$el.find('.j-state').addClass('b-form__state_green');
                         me.$el.find('.j-state').text('Активен');
@@ -434,8 +434,7 @@ define([
 
         submit: function (e) {
             var valid   = true,
-                popup,
-                parser;
+                popup;
 
             e.preventDefault();
 

@@ -6,7 +6,6 @@ module.exports = {
                 requireLib  : '../lib/requirejs/require',
                 text        : '../lib/requirejs/text',
                 jquery      : '../lib/jquery/jquery-2.1.1.min',
-                ui          : '../lib/jquery-ui/jquery-ui.min',
                 validator   : '../lib/validator.min',
                 underscore  : '../lib/underscore/underscore-min',
                 backbone    : '../lib/backbone/backbone-min',
@@ -35,7 +34,6 @@ module.exports = {
                 requireLib  : '../lib/requirejs/require',
                 text        : '../lib/requirejs/text',
                 jquery      : '../lib/jquery/jquery-2.1.1.min',
-                ui          : '../lib/jquery-ui/jquery-ui.min',
                 validator   : '../lib/validator.min',
                 underscore  : '../lib/underscore/underscore-min',
                 backbone    : '../lib/backbone/backbone-min',
@@ -64,7 +62,6 @@ module.exports = {
                 requireLib  : '../lib/requirejs/require',
                 text        : '../lib/requirejs/text',
                 jquery      : '../lib/jquery/jquery-2.1.1.min',
-                ui          : '../lib/jquery-ui/jquery-ui.min',
                 validator   : '../lib/validator.min',
                 underscore  : '../lib/underscore/underscore-min',
                 backbone    : '../lib/backbone/backbone-min',
@@ -94,7 +91,6 @@ module.exports = {
                 requireLib  : '../lib/requirejs/require',
                 text        : '../lib/requirejs/text',
                 jquery      : '../lib/jquery/jquery-2.1.1.min',
-                ui          : '../lib/jquery-ui/jquery-ui.min',
                 validator   : '../lib/validator.min',
                 underscore  : '../lib/underscore/underscore-min',
                 backbone    : '../lib/backbone/backbone-min',
@@ -120,15 +116,15 @@ module.exports = {
         options: {
             baseUrl: "hosts/base/static/js",
             paths: {
-                requireLib  : '../lib/requirejs/require',
-                text        : '../lib/requirejs/text',
-                jquery      : '../lib/jquery/jquery-2.1.1.min',
-                ui          : '../lib/jquery-ui/jquery-ui.min',
-                validator   : '../lib/validator.min',
-                underscore  : '../lib/underscore/underscore-min',
-                backbone    : '../lib/backbone/backbone-min',
+                requireLib      : '../lib/requirejs/require',
+                text            : '../lib/requirejs/text',
+                jquery          : '../lib/jquery/jquery-2.1.1.min',
+                validator       : '../lib/validator.min',
+                autocomplete    : '../lib/autocomplete.min',
+                underscore      : '../lib/underscore/underscore-min',
+                backbone        : '../lib/backbone/backbone-min',
 
-                Templates   : '../Templates'
+                Templates       : '../Templates'
             },
 
             shim: {

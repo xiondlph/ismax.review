@@ -9,17 +9,17 @@
  */
 
 
-String.prototype.fnv32a = function () {
-    var i,
-        FNV1_32A_INIT   = 0x811c9dc5,
-        hval            = FNV1_32A_INIT;
+// String.prototype.fnv32a = function () {
+//     var i,
+//         FNV1_32A_INIT   = 0x811c9dc5,
+//         hval            = FNV1_32A_INIT;
 
-    for (i = 0; i < this.length; ++i) {
-        hval ^= this.charCodeAt(i);
-        hval += (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
-    }
-    return hval >>> 0;
-};
+//     for (i = 0; i < this.length; ++i) {
+//         hval ^= this.charCodeAt(i);
+//         hval += (hval << 1) + (hval << 4) + (hval << 7) + (hval << 8) + (hval << 24);
+//     }
+//     return hval >>> 0;
+// };
 
 
 Date.prototype.dateParse = function () {
@@ -191,23 +191,27 @@ exports.widget = function (req, res, next) {
  * @param {Function} next
  */
 exports.suggest = function (req, res, next) {
-    var response;
+    var response,
+        suggests,
+        result;
 
     if (req.params && req.params.hasOwnProperty('part') && req.params.part) {
 
-
-        req.api('/v1/suggest.json?part=' + req.params.part, function (err, status, data) {
-            console.log(err);
-            console.log(status);
-            console.log(data);
+        req.api('/v1/suggest.json?' + querystring.stringify(req.params), function (err, status, data) {
             if (err || status !== 200) {
                 response = {
                     success: false
                 };
             } else {
+                result      = JSON.parse(data);
+                suggests    = result.suggests.filter(function (item) {
+                    return item.params.type === 'model';
+                }).map(function (item) {
+                    return {value: item.text};
+                });
+
                 response = {
-                    success:    true,
-                    result:     JSON.parse(data)
+                    suggestions:   suggests
                 };
             }
 

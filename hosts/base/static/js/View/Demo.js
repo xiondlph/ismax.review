@@ -31,8 +31,7 @@ define([
         className:  'b-form b-switch b-switch_animate',
 
         events: {
-            'input input':      'input',
-            'keydown input':    'keydown'
+            'input input':      'input'
         },
 
         render: function () {
@@ -46,9 +45,12 @@ define([
 
 
             me.$el.find('.j-form__field__input').autocomplete({
-                serviceUrl: '/suggest',
-                dataType: 'json',
-                paramName: 'part',
+                serviceUrl:         '/suggest',
+                dataType:           'json',
+                paramName:          'part',
+                minChars:           3,
+                deferRequestBy:     500,
+                autoSelectFirst:    true,
                 onSelect: function (suggestion) {
                     me.$el.get(0).submit();
                 }
@@ -63,12 +65,6 @@ define([
                 $(e.currentTarget).removeClass('b-form__field__input_invalid');
             } else {
                 $(e.currentTarget).removeClass('b-form__field__input_fill');
-            }
-        },
-
-        keydown: function (e) {
-            if ( e.which == 13 ) {
-               e.preventDefault();
             }
         }
     });
