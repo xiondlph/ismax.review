@@ -77,19 +77,19 @@ define([
                     }
 
                     if (data.profile.hasOwnProperty('_active') && data.profile._active) {
-                        me.$el.find('.j-steps__pay').addClass('b-steps__item__link_active');
+                        me.$el.find('.j-steps__pay').addClass('b-steps__item_active').find('.j-steps__item__round').addClass('icon-ok');
                     }
 
 
                     if (data.profile.hasOwnProperty('active') && data.profile.active) {
-                        me.$el.find('.j-steps__code').addClass('b-steps__item__link_active');
+                        me.$el.find('.j-steps__code').addClass('b-steps__item_active').find('.j-steps__item__round').addClass('icon-ok');
                     }
 
                     me.$el.find('input[name="email"]').val(data.profile.email);
 
                     if (data.profile.hasOwnProperty('domain') && data.profile.domain) {
                         me.$el.find('.j-domain').text(data.profile.domain);
-                        me.$el.find('.j-steps__domain').addClass('b-steps__item__link_active');
+                        me.$el.find('.j-steps__domain').addClass('b-steps__item_active').find('.j-steps__item__round').addClass('icon-ok');
                     } else {
                         me.$el.find('.j-domain').html('<a href="#settings">Указать</a>');
                     }
@@ -105,16 +105,16 @@ define([
                     }
 
                     me.$el.find('.j-form__field__input').trigger('input');
-                    if (me.$el.find('.b-steps__item__link_active').length < 3) {
-                        if (!me.$el.find('.j-steps__code').hasClass('b-steps__item__link_active')) {
+                    if (me.$el.find('.b-steps__item_active').length < 3) {
+                        if (!me.$el.find('.j-steps__code').hasClass('b-steps__item_active')) {
                             me.$el.find('.j-form__hint').text('Выполняется автоматическое обнаружение виджета на вашем сайте и его настройка. Это может занять некоторое время.');
                         }
 
-                        if (!me.$el.find('.j-steps__domain').hasClass('b-steps__item__link_active')) {
+                        if (!me.$el.find('.j-steps__domain').hasClass('b-steps__item_active')) {
                             me.$el.find('.j-form__hint').text('Для работы виджета следует выполнить привязку вашего сайта.');
                         }
 
-                        if (!me.$el.find('.j-steps__pay').hasClass('b-steps__item__link_active')) {
+                        if (!me.$el.find('.j-steps__pay').hasClass('b-steps__item_active')) {
                             me.$el.find('.j-form__hint').text('Для работы виджета вам необходимо оплатить услугу.');
                         }
 

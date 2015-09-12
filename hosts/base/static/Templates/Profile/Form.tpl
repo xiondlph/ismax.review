@@ -7,11 +7,18 @@
     <div class="b-table__tr">
         <div class="b-table__tr__td">
             <ul class="b-steps">
-                <li class="b-steps__item"><a class="b-steps__item__link j-steps__pay" href="#payment">Оплатить<br />услугу</a></li>
-                <li class="b-steps__arrow"><span class="b-steps__arrow__cont icon-circle-right"></span></li>
-                <li class="b-steps__item"><a class="b-steps__item__link j-steps__domain" href="#settings">Привязать<br />сайт</a></li>
-                <li class="b-steps__arrow"><span class="b-steps__arrow__cont icon-circle-right"></span></li>
-                <li class="b-steps__item"><a class="b-steps__item__link j-steps__code" href="#code">Скопировать<br />код</a></li>
+                <li class="b-steps__item b-steps__item_first j-steps__pay">
+                    <span class="b-steps__item__round j-steps__item__round"></span>
+                    <a class="b-steps__item__link" href="#payment">Оплатить услугу</a>
+                </li>
+                <li class="b-steps__item j-steps__domain">
+                    <span class="b-steps__item__round j-steps__item__round"></span>
+                    <a class="b-steps__item__link" href="#settings">Привязать сайт</a>
+                </li>
+                <li class="b-steps__item b-steps__item_last j-steps__code">
+                    <span class="b-steps__item__round j-steps__item__round"></span>
+                    <a class="b-steps__item__link" href="#code">Скопировать код</a>
+                </li>
             </ul>
         </div>
     </div>
