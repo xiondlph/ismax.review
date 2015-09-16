@@ -30,7 +30,7 @@
 <# } else { #>
                             <input type="text" name="text" class="b-form__field__input j-form__field__input" id="text" value="Rowenta CF 9320">
 <# } #>
-                            <label class="b-form__field__label" for="text">Название товара<span class="b-form__field__label__invalid"></span></label>
+                            <label class="b-form__field__label" for="text">Введите наиболее полное и точное название товара<span class="b-form__field__label__invalid"></span></label>
                         </div>
                     </div>
                 </div>

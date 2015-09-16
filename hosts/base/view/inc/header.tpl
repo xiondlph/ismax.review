@@ -17,6 +17,9 @@
                 <a href="/user" class="b-nav__item b-nav__item_right"><span class="b-nav__item__border">Вход</span></a>
                 <# } #>
                 <a href="/demo" class="b-nav__item b-nav__item_right">Демо</a>
+                <a href="/about" class="b-nav__item b-nav__item_right">Описание</a>
+<#
+/*
                 <div class="b-menu">
                     <ul class="b-menu__sub">
                         <li class="b-menu__sub__item"><a href="/about" class="b-menu__sub__item__link icon-page">Описание</a></li>
@@ -25,5 +28,7 @@
                     </ul>
                     <span class="b-menu__label">О сервисе</span>
                 </div>
+*/
+#>
             </nav>
         </header>

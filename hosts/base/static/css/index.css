@@ -1,8 +1,11 @@
-h1 {
+.b-home__header {
   margin: 20% 0 15px 0;
 }
-p {
+p.b-home__text {
+  display: block;
+  margin: 0 auto;
   text-align: justify;
+  width: 60%;
 }
 .b-form__table_signup {
   background-color: transparent;

@@ -3,8 +3,6 @@
         <ul class="b-footer__menu">
             <li class="b-footer__menu__item b-footer__menu__item_copyright">&copy; 2015 Shareview</li>
             <li class="b-footer__menu__item"><a href="/about" class="b-footer__menu__item__link">Описание</a></li>
-            <li class="b-footer__menu__item"><a href="/destiny" class="b-footer__menu__item__link">Возможности</a></li>
-            <li class="b-footer__menu__item"><a href="/terms" class="b-footer__menu__item__link">Условия</a></li>
             <li class="b-footer__menu__item b-footer__menu__item_counter">
 
 <!--LiveInternet counter--><script type="text/javascript"><!--
