@@ -37,9 +37,9 @@ var server = http.createServer(function (req, res) {
 exports.start = function () {
     // Запуск web сервера на порту 3005/4005
     if (process.env.NODE_ENV !== 'prod') {
-        server.listen(process.env.PORT || 4000);
-        console.log('Start server at port ' + (process.env.PORT || 4000));
+        server.listen(process.env.PORT || 4001);
+        console.log('Start server at port ' + (process.env.PORT || 4001));
     } else {
-        server.listen(process.env.PORT || 3000);
+        server.listen(process.env.PORT || 3001);
     }
 };
