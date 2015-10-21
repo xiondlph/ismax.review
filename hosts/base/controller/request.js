@@ -41,7 +41,7 @@ exports.api = function (req, res, next) {
         var request;
 
         request = http.request({
-            host:     '194.58.98.18',
+            host:     '127.0.0.1',
             port:     3000,
             path:     url,
             method:   'GET',
